@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="app/assets/stylesheets/splash.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body>
+    <header>
+        <img src="app/assets/images/small-g-logo.png" class="small-logo">
+
+    </header>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({delay: 100, duration: 500});
+        let prevPos = 0;
+        // let origPos = 0;
+        let prevScroll = false;
+        document.addEventListener("scroll", e => {
+            e.preventDefault();
+            if ( prevPos === 0 && window.scrollY === 1) {
+                window.scrollTo(0, prevPos + 2)
+            } else {
+                window.scrollTo(0, prevPos)
+            }
+            // console.log("orig:")
+            // console.log(origPos);
+            console.log("prev:")
+            console.log(prevPos);
+            // origPos = prevPos;
+            prevPos = window.scrollY;
+        })
+
+    </script>
+    <div class="splash" data-aos="fade-in" data-aos-delay="50" data-aos-duration="1000"></div>
+    <div class="splash-2" id="splash-2" >
+        <div class="anchor-1" data-aos="custom-slide" data-aos-anchor="#splash-2" data-aos-anchor-placement="top-bottom"></div>
+    </div>
+    <div class="splash-3" id="splash-3" >
+        <div class="anchor-2" data-aos="custom-slide" data-aos-anchor="#splash-3" data-aos-anchor-placement="top-bottom"></div>
+    </div>
+</body>
+
+</html>

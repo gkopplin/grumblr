@@ -1,0 +1,52 @@
+html, body, div[class^='splash'] {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #151547;
+    color: whitesmoke;
+}
+
+div[class^='splash-'] {
+    z-index: -1;
+    position: relative;
+    top: -77px;
+    width: 100%;
+}
+
+.splash {
+    background-image: url('../images/grumpy-cat-web_bkg_tex_lay_37352857_ver1.0_1280_720.jpg');
+    background-size: 100% 100%;
+    /* need to make image cut off when change screen size */
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: -1;
+    top: -79px;
+}
+
+[data-aos="custom-slide"] {
+    transition-property: transform;
+}
+
+[data-aos="custom-slide"].aos-animate {
+    transform: translateY(-100%);
+}
+
+.anchor-1 {
+
+    height: 100%;
+    background: lightseagreen;
+}
+
+.anchor-2 {
+
+    height: 100%;
+    background: blue;
+}
+
+
+
+
+  
+
