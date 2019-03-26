@@ -6,6 +6,11 @@ export const signup = user => dispatch => {
         .then(user => dispatch(receiveCurrentUser(user)));
 };
 
+export const login = user => dispatch => {
+    return ApiSessionUtil.createSession(user)
+        .then(user => dispatch(receiveCurrentUser(user)));
+};
+
 export const receiveCurrentUser = currentUser => {
     return {
         type: RECEIVE_CURRENT_USER,

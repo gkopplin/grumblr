@@ -5,3 +5,11 @@ export const createUser = user => {
         data: { user }
     });
 };
+
+export const createSession = user => {
+    return $.ajax({
+        method: 'post',
+        url: 'api/session',
+        data: { user }
+    });
+};
