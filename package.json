@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "webpack": "webpack --watch --mode=development",
-    "postinstall": "webpack --watch --mode=development"
+    "postinstall": "webpack"
   },
   "engines": {
     "node": "10.13.0",
