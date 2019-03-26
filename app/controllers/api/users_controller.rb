@@ -14,6 +14,7 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render "api/users/show"
         else
+            render json: @user.errors.full_messages
         end
     end
 
