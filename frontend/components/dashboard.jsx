@@ -1,9 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { logout } from '../actions/session_actions';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     return (
-        <p>dashboard</p>
+        <button onClick={props.logout}>Log Out</button>
     );
 };
 
-export default Dashboard;
+const mdp = dispatch => {
+    return {
+        logout: () => dispatch(logout())
+    };
+};
+
+export default connect(null, mdp)(Dashboard);
