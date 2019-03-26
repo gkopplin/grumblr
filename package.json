@@ -2,7 +2,12 @@
   "name": "grumblr",
   "private": true,
   "scripts": {
-    "webpack": "webpack --watch --mode=development"
+    "webpack": "webpack --watch --mode=development",
+    "postinstall": "webpack --watch --mode=development"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
   },
   "dependencies": {
     "@babel/core": "^7.4.0",
