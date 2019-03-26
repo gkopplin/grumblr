@@ -6,7 +6,7 @@ import {signup} from '../../actions/session_actions';
 
 const msp = ({errors}) => {
     return {
-        formType: "signup",
+        formType: "Sign Up",
         errors: errors.session,
         link: <Link to="/login">Log in</Link>
     };
