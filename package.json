@@ -10,11 +10,16 @@
     "@babel/preset-react": "^7.0.0",
     "aos": "^3.0.0-beta.6",
     "babel-loader": "^8.0.5",
+    "jquery": "^3.3.1",
+    "jquery-ujs": "^1.2.2",
+    "lodash": "^4.17.11",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }
