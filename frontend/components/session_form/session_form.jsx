@@ -8,12 +8,18 @@ class sessionForm extends React.Component {
             email: "",
             password: ""
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInput (field) {
         return e => {
             this.setState({[field]: e.target.value});
         };
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.processSession(this.state);
     }
 
     renderErrors() {
@@ -30,9 +36,9 @@ class sessionForm extends React.Component {
 
     render () {
         return (
-            <div class = "session-form-container">
+            <div className = "session-form-container">
                 <h2>{this.props.formType}</h2>
-                <form class="session-form">
+                <form className="session-form" onSubmit={this.handleSubmit}>
                     <label>Username:
                         <input type="text" value = {this.state.username} onChange={this.handleInput("username")}/>
                     </label>

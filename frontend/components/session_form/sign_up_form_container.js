@@ -1,14 +1,11 @@
 import {connect} from 'react-redux';
-import SessionForm from './session_form';
-import {Link} from 'react-router-dom';
+import sessionForm from './session_form';
 import {signup} from '../../actions/session_actions';
 
 
 const msp = ({errors}) => {
     return {
-        formType: "Sign Up",
-        errors: errors.session,
-        link: <Link to="/login">Log in</Link>
+        formType: "Sign Up"
     };
 };
 
@@ -18,4 +15,4 @@ const mdp = dispatch => {
     };
 };
 
-export default connect(msp, mdp)(SessionForm);
+export default connect(msp, mdp)(sessionForm);

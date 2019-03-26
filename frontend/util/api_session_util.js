@@ -13,3 +13,10 @@ export const createSession = user => {
         data: { user }
     });
 };
+
+export const deleteSession = () => {
+    return $.ajax({
+        method: 'delete',
+        url: 'api/session'
+    });
+};
