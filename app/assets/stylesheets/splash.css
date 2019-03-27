@@ -61,6 +61,7 @@ body {
     color: whitesmoke;
     width: 100%;
     height: 100%;
+
 }
 
 [id$='login'] {
@@ -69,6 +70,19 @@ body {
 
 [id$='login'] > a {
     color: grey;
+}
+
+.session-form input {
+    height: 40px;
+    line-height: 40px;
+    width: 200px;
+    border: none;
+    text-align: center;
+    padding: 0px;
+}
+
+input[class^='button-'] {
+    margin-top: 15px;
 }
 
 
