@@ -71,11 +71,11 @@ body {
     color: white
 }
 
-[id$='login'] {
+#button-demo {
     background: white;
 }
 
-[id$='login'] > a {
+#button-demo > a {
     color: grey;
 }
 
