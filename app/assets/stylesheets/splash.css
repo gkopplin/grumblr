@@ -1,6 +1,7 @@
 body {
     background-color: #151547;
     color: whitesmoke;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* div[class^='splash-'] {
@@ -11,17 +12,65 @@ body {
 } */
 
 .splash {
-    margin: 0;
-    background-image: url('../images/grumpy-cat.jpg');
-    height: 100%;
-    width: 100%;
+    /* margin: 0; */
+    /* background-image: url('../images/grumpy-cat.jpg'); */
+
     background-size: 100% 100%;
     /* need to make image cut off when change screen size */
     background-repeat: no-repeat;
-    position: relative;
-    z-index: -1;
-    top: -79px;
+    /* position: relative; */
+    /* z-index: -1; */
+    /* top: -79px; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.session-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.main-logo {
+    font-family: 'Bookman Old Style';
+    font-size: 75px;
+}
+
+.tag-line {
+    font-size: 16px;
+    margin: 5px 0px 20px 0px;
+}
+
+[class^='button-'] {
+    text-decoration: none;
+    background: lightskyblue;
+    color: whitesmoke;
+    height: 40px;
+    line-height: 40px;
+    width: 200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[class^='button-'] > a {
+    text-decoration: none;
+    color: whitesmoke;
+    width: 100%;
+    height: 100%;
+}
+
+[id$='login'] {
+    background: white;
+}
+
+[id$='login'] > a {
+    color: grey;
+}
+
 
 /* [data-aos="custom-slide"] {
     transition-property: transform;
