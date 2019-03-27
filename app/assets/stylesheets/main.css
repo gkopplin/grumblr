@@ -14,7 +14,7 @@ h1, h3 {
 }
 
 header {
-    border-bottom: grey solid 1px;
+    border-bottom: whitesmoke solid 1px;
     display: flex;
     justify-content: space-between;
     padding: 5px;

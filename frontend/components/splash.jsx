@@ -1,12 +1,13 @@
 import React from 'react';
-
-import { Link, Route } from 'react-router-dom';
-import {AuthRoute} from '../util/route_util';
+import Header from './header/header';
+import { Link } from 'react-router-dom';
 
 
 
 const Splash = () => {
     return (
+        <>
+        {/* <Header loggedIn={false}/> */}
         <div className="splash" style={{backgroundImage: `url(${window.splashBG})`}}>
             <div className="session-container">
                 <h1 className="main-logo">grumblr</h1>
@@ -20,6 +21,7 @@ const Splash = () => {
                 
             </div>
         </div>
+        </>
     );
 };
 

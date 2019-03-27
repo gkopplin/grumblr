@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from '../header/header';
+
 
 class sessionForm extends React.Component {
     constructor (props) {
@@ -36,6 +38,8 @@ class sessionForm extends React.Component {
 
     render () {
         return (
+            <>
+            {/* <Header loggedIn={false} /> */}
             <div className="splash" style={{ backgroundImage: `url(${window.splashBG})` }}>
                 <div className = "session-container">
                     <h1 className="main-logo">grumblr</h1>
@@ -61,6 +65,7 @@ class sessionForm extends React.Component {
                     </form>
                 </div>
             </div>
+            </>
         );
     }
 }

@@ -18,9 +18,9 @@ body {
     background-size: 100% 100%;
     /* need to make image cut off when change screen size */
     background-repeat: no-repeat;
-    /* position: relative; */
-    /* z-index: -1; */
-    /* top: -79px; */
+    /* position: relative;
+    z-index: -1;
+    top: -62px; */
     width: 100%;
     height: 100%;
     display: flex;
