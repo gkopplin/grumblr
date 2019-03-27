@@ -38,14 +38,14 @@ class sessionForm extends React.Component {
                             <input type="text" value = {this.state.username} 
                                 onChange={this.handleInput("username")} 
                                 onClick={() => this.setState({username: ""})}
-                                placeholder="Username"/>
+                                placeholder="Username" id="input-username"/>
                         </label><br/>
 
                         <label>
                             <input type="text" value = {this.state.email} 
                                 onChange={this.handleInput("email")} 
                                 onClick={() => this.setState({ email: "" })}
-                                placeholder="Email"/>
+                                placeholder="Email" id="input-email"/>
                         </label><br/>
 
                         <label>

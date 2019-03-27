@@ -20,7 +20,7 @@ body {
     background-repeat: no-repeat;
     position: relative;
     z-index: -1;
-    top: -62px;
+    top: -64px;
     width: 100%;
     height: 100%;
 }
@@ -53,7 +53,7 @@ body {
 
 [class^='button-'] {
     text-decoration: none;
-    background: lightskyblue;
+    background: #00B8FF;
     color: whitesmoke;
     height: 40px;
     line-height: 40px;
@@ -63,6 +63,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 100%;
+    border-radius: 5px;
 }
 
 [class^='button-'] > a {
@@ -83,7 +84,7 @@ body {
     color: white;
     background: rgba(192,192,192,0.3);
     padding: 5px;
-    border-radius: 20%;
+    border-radius: 8px;
 }
 
 .header-link:hover {
@@ -100,6 +101,11 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 100%;
     color: grey;
+    
+}
+
+#input-username, #input-email{
+    border-bottom: solid 1px lightgrey;
 }
 
 input[class^='button-'] {

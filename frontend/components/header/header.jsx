@@ -20,7 +20,9 @@ class Header extends React.Component {
         if (this.state.loggedIn) {
             return (
                 <header>
-                    <img src={window.smallLogo} className="small-logo"/>
+                    <Link to="/">
+                        <img src={window.smallLogo} className="small-logo" />
+                    </Link>
                     <nav className="main-nav">
                         <HomeIcon />
                         <ProfileIcon toggleDropdown = {this.toggleDropdown}/>
@@ -32,13 +34,17 @@ class Header extends React.Component {
         } else if (!this.state.formType) {
             return (
                 <header>
-                    <img src={window.smallLogo} className="small-logo" />
+                    <Link to="/">
+                        <img src={window.smallLogo} className="small-logo" />
+                    </Link>
                 </header>
             );
         }
         return (
             <header>
-                <img src={window.smallLogo} className="small-logo" />
+                <Link to="/">
+                    <img src={window.smallLogo} className="small-logo" />
+                </Link>
                 <Link to={this.state.formType === "Log In" ? "/signup" : "/login"}>
                     <span className="header-link">{this.state.formType === "Log In" ? "Get Started" : "Log In"}</span>
                 </Link>

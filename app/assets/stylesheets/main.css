@@ -36,6 +36,8 @@ ul {
 
 .errors {
     margin-top: 5px;
+    background: rgba(192,192,192,0.6);
+    border-radius: 5px;
 }
 
 .small-logo {
@@ -61,6 +63,7 @@ svg:hover #home, svg:hover #profile {
     color: #4d4d4d;
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
 }
 
 .profile-dropdown span {
