@@ -10,11 +10,7 @@ class Api::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        if @user.username == "Username" ||
-           @user.email == "Email" ||
-           @user.password == "Password"
-           render json: ["Invalid credentials"], status: 422
-        elsif @user.save
+        if @user.save
             login!(@user)
             render "api/users/show"
         else
