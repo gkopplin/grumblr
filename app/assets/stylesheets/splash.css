@@ -79,10 +79,15 @@ body {
     border: none;
     text-align: center;
     padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 100%;
+    color: grey;
 }
 
 input[class^='button-'] {
     margin-top: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
 }
 
 

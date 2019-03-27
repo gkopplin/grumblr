@@ -4,9 +4,9 @@ class sessionForm extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            username: "",
-            email: "",
-            password: ""
+            username: "Username",
+            email: "Email",
+            password: "Password"
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -41,18 +41,18 @@ class sessionForm extends React.Component {
                     <h1 className="main-logo">grumblr</h1>
                     <form className="session-form" onSubmit={this.handleSubmit}>
                         <label>
-                            <input type="text" value = {this.state.username ? this.state.username : "Username"} 
-                                onChange={this.handleInput("username")}/>
+                            <input type="text" value = {this.state.username} 
+                                onChange={this.handleInput("username")} onClick={() => this.setState({username: ""})}/>
                         </label><br/>
 
                         <label>
-                            <input type="text" value = {this.state.email ? this.state.email : "Email"} 
-                                onChange={this.handleInput("email")}/>
+                            <input type="text" value = {this.state.email} 
+                                onChange={this.handleInput("email")} onClick={() => this.setState({ email: "" })}/>
                         </label><br/>
 
                         <label>
-                            <input type="password" value = {this.state.password ? this.state.password : "Password"} 
-                                onChange={this.handleInput("password")}/>
+                            <input type="password" value = {this.state.password} 
+                                onChange={this.handleInput("password")} onClick={() => this.setState({ password: "" })}/>
                         </label><br/>
 
                         <input type="submit" value={this.props.formType} 
