@@ -8,7 +8,7 @@ class Header extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = { showDropdown: false, loggedIn: true};
+        this.state = { showDropdown: this.props.showDropdown, loggedIn: this.props.loggedIn, formType: this.props.formType};
         this.toggleDropdown = this.toggleDropdown.bind(this);
     }
 
@@ -39,7 +39,9 @@ class Header extends React.Component {
         return (
             <header>
                 <img src={window.smallLogo} className="small-logo" />
-                <Link to={this.state.formType === "Log In" ? "/signup" : "/login"}>{this.state.formType === "Log In" ? "Get Started" : "Log In"}</Link>
+                <Link to={this.state.formType === "Log In" ? "/signup" : "/login"}>
+                    <span className="header-link">{this.state.formType === "Log In" ? "Get Started" : "Log In"}</span>
+                </Link>
             </header>
         );
     }

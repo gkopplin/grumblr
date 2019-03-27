@@ -11,19 +11,27 @@ body {
     width: 100%;
 } */
 
-.splash {
+.splash-bg {
     /* margin: 0; */
     /* background-image: url('../images/grumpy-cat.jpg'); */
 
     background-size: 100% 100%;
     /* need to make image cut off when change screen size */
     background-repeat: no-repeat;
-    /* position: relative;
+    position: relative;
     z-index: -1;
-    top: -62px; */
+    top: -62px;
+    width: 100%;
+    height: 100%;
+}
+
+.splash {
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -58,11 +66,9 @@ body {
 }
 
 [class^='button-'] > a {
-    text-decoration: none;
-    color: whitesmoke;
     width: 100%;
     height: 100%;
-
+    color: white
 }
 
 [id$='login'] {
@@ -71,6 +77,17 @@ body {
 
 [id$='login'] > a {
     color: grey;
+}
+
+.header-link {
+    color: white;
+    background: rgba(192,192,192,0.3);
+    padding: 5px;
+    border-radius: 20%;
+}
+
+.header-link:hover {
+    opacity: 0.6;
 }
 
 .session-form input {

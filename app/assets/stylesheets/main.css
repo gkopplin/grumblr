@@ -17,7 +17,14 @@ header {
     border-bottom: whitesmoke solid 1px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 5px;
+    position: relative;
+    z-index: 2;
+}
+
+a {
+    text-decoration: none;
 }
 
 .small-logo {

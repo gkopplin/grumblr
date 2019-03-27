@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 const Splash = () => {
     return (
         <>
-        {/* <Header loggedIn={false}/> */}
-        <div className="splash" style={{backgroundImage: `url(${window.splashBG})`}}>
+        <Header loggedIn={false}/>
+        <div className="splash-bg" style={{backgroundImage: `url(${window.splashBG})`}}></div>
+        <div className="splash">
             <div className="session-container">
                 <h1 className="main-logo">grumblr</h1>
                 <p className="tag-line">For everything you love to hate</p>
@@ -18,7 +19,6 @@ const Splash = () => {
                 <div className="button-login" id="button-login">
                     <Link to="/login" id="link-login">Log In</Link>
                 </div>
-                
             </div>
         </div>
         </>

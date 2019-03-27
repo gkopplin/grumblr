@@ -3,6 +3,6 @@ import Header from './header/header';
 
 export default (props) => {
     return (
-        <Header />
+        <Header loggedIn = {true}/>
     );
 };
