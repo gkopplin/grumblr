@@ -9,7 +9,7 @@ export default (state= _nullUser, action) => {
 
     switch(action.type) {
         case RECEIVE_CURRENT_USER:
-            return {id: action.currentUser.id};
+            return {currentUser: action.currentUser.id};
         case LOGOUT_CURRENT_USER:
             return _nullUser;
         default:

@@ -20,7 +20,7 @@ export const ProfileDropdown = (props) => {
 
 const msp = state => {
     return {
-        currentUser: state.entities.users[state.session.currentUser.id]
+        currentUser: state.entities.users[state.session.currentUser]
     };
 };
 
