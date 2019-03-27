@@ -90,6 +90,12 @@ svg:hover #home, svg:hover #profile {
     margin: 5px;
 }
 
+#logout-link {
+    background: none;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
 }
