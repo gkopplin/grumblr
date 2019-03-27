@@ -14,8 +14,10 @@ class Header extends React.Component {
         return (
             <header>
                 <img src={window.smallLogo} className="small-logo"/>
-                <HomeIcon />
-                <ProfileIcon showDropdown={this.state.showDropdown}/>
+                <nav className="main-nav">
+                    <HomeIcon />
+                    <ProfileIcon showDropdown={this.state.showDropdown}/>
+                </nav>
                 <ProfileDropdown />
 
             </header>

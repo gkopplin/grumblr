@@ -9,7 +9,7 @@ html, body, #root, .app {
     height: 100%
 }
 
-h1 {
+h1, h3 {
     margin: 0;
 }
 
@@ -17,6 +17,7 @@ header {
     border-bottom: grey solid 1px;
     display: flex;
     justify-content: space-between;
+    padding: 5px;
 }
 
 .small-logo {
@@ -24,8 +25,29 @@ header {
     width: 50px;
 }
 
-svg:hover #home {
-    fill: grey;
+svg {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+}
+
+svg:hover #home, svg:hover #profile {
+    fill: lightgray;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 65px;
+    right: 0px;
+    background: whitesmoke;
+    color: #4d4d4d;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-dropdown span {
+    color: whitesmoke;
+    background: grey;
 }
 
 main {
