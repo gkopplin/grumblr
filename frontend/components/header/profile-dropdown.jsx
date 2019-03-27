@@ -5,14 +5,14 @@ import { logout } from '../../actions/session_actions';
 
 export const ProfileDropdown = (props) => {
     return (
-        <div className="profile-dropdown">
+        <div className={`profile-dropdown ${props.showDropdown ? '' : 'hidden'}`}>
             <span>Account</span>
-                <Link>Likes</Link>
-                <Link>Following</Link>
+                <a>Likes</a>
+                <a>Following</a>
             <span>Grumblrs</span>
                 <h3>{props.currentUser.username}</h3>
-                <Link>Posts</Link>
-                <Link>Followers</Link>
+                <a>Posts</a>
+                <a>Followers</a>
                 <button onClick={props.logout}>Log Out</button>
         </div>
     );

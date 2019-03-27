@@ -8,6 +8,11 @@ class Header extends React.Component {
     constructor(props){
         super(props);
         this.state = { showDropdown: false};
+        this.toggleDropdown = this.toggleDropdown.bind(this);
+    }
+
+    toggleDropdown () {
+        this.setState({showDropdown: this.state.showDropdown ? false : true});
     }
 
     render () {
@@ -16,9 +21,9 @@ class Header extends React.Component {
                 <img src={window.smallLogo} className="small-logo"/>
                 <nav className="main-nav">
                     <HomeIcon />
-                    <ProfileIcon showDropdown={this.state.showDropdown}/>
+                    <ProfileIcon toggleDropdown = {this.toggleDropdown}/>
                 </nav>
-                <ProfileDropdown />
+                <ProfileDropdown showDropdown = {this.state.showDropdown}/>
 
             </header>
         );

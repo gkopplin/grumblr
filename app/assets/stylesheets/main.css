@@ -50,6 +50,12 @@ svg:hover #home, svg:hover #profile {
     background: grey;
 }
 
+.hidden {
+    display: none;
+}
+
+
+
 main {
     display: flex;
     justify-content: center;
