@@ -13,7 +13,7 @@ export const ProfileDropdown = (props) => {
                 <h3>{props.currentUser.username}</h3>
                 <a>Posts</a>
                 <a>Followers</a>
-                <button onClick={props.logout}>Log Out</button>
+                <button onClick={props.logout} className="button-logout">Log Out</button>
         </div>
     );
 };

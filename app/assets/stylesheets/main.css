@@ -48,6 +48,11 @@ svg:hover #home, svg:hover #profile {
 .profile-dropdown span {
     color: whitesmoke;
     background: grey;
+    padding: 5px;
+}
+
+.profile-dropdown > a, h3 {
+    margin: 5px;
 }
 
 .hidden {
