@@ -6,14 +6,14 @@ import * as ApiSessionUtil from '../util/api_session_util';
 export const signup = user => dispatch => {
     return ApiSessionUtil.createUser(user)
         .then(user => dispatch(receiveCurrentUser(user)),
-            errors => dispatch(receiveSessionErrors(errors))
+            errors => dispatch(receiveSessionErrors(errors.responseJSON))
         );
 };
 
 export const login = user => dispatch => {
     return ApiSessionUtil.createSession(user)
         .then(user => dispatch(receiveCurrentUser(user)),
-            errors => dispatch(receiveSessionErrors(errors))
+            errors => dispatch(receiveSessionErrors(errors.responseJSON))
         );
 };
 
@@ -27,7 +27,7 @@ const receiveCurrentUser = currentUser => {
 export const logout = () => dispatch => {
     return ApiSessionUtil.deleteSession()
         .then( () => dispatch(logoutCurrentUser()),
-            errors => dispatch(receiveSessionErrors(errors))
+            errors => dispatch(receiveSessionErrors(errors.responseJSON))
         );
 };
 

@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
         if @user.username == "Username" ||
            @user.email == "Email" ||
            @user.password == "Password"
-           render json: ["Invalid credentials"]
+           render json: ["Invalid credentials"], status: 422
         elsif @user.save
             login!(@user)
             render "api/users/show"
