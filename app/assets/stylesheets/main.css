@@ -55,6 +55,17 @@ svg:hover #home, svg:hover #profile {
     fill: lightgray;
 }
 
+#like-icon, #following-icon {
+    height: 20px;
+    width: 20px;
+    margin: 2px 15px 2px 2px;
+}
+
+#like-link, #following-link {
+    display: flex;
+    align-items: center;
+}
+
 .profile-dropdown {
     position: absolute;
     top: 65px;
@@ -67,9 +78,12 @@ svg:hover #home, svg:hover #profile {
 }
 
 .profile-dropdown span {
-    color: whitesmoke;
-    background: grey;
+    background: lightgray;
+    color: #4d4d4d;
     padding: 5px;
+    text-transform: uppercase;
+    font-weight: 550;
+    font-size: 80%;
 }
 
 .profile-dropdown > a, h3 {
@@ -78,6 +92,10 @@ svg:hover #home, svg:hover #profile {
 
 .hidden {
     display: none;
+}
+
+#posts-link, #followers-link {
+    text-indent: 20%;
 }
 
 
