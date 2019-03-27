@@ -39,6 +39,7 @@ class sessionForm extends React.Component {
             <div className="splash" style={{ backgroundImage: `url(${window.splashBG})` }}>
                 <div className = "session-container">
                     <h1 className="main-logo">grumblr</h1>
+                    <p className="tag-line">For everything you love to hate</p>
                     <form className="session-form" onSubmit={this.handleSubmit}>
                         <label>
                             <input type="text" value = {this.state.username} 
