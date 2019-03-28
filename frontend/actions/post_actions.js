@@ -17,10 +17,10 @@ const receivePost = post => {
     };
 };
 
-const receivePosts = posts => {
+const receivePosts = postsResponse => {
     return {
         type: RECEIVE_POSTS,
-        posts
+        postsResponse
     };
 };
 
