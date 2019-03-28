@@ -21,19 +21,10 @@ class Api::PostsController < ApplicationController
     def destroy
         @post = Post.find_by(id: params[:id])
         @post.destroy
-
-        @posts = Post.all
-        render json: 'api/posts'
-        # ask adam
+        render 'api/posts/show'
     end
 
-    def index
-        # ask adam
-        @posts = Post.all 
-        render json: 'api/posts'
-    end
-
-    #show?
+    #show? index?
 
     private
 
