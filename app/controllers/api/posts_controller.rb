@@ -24,7 +24,10 @@ class Api::PostsController < ApplicationController
         render 'api/posts/show'
     end
 
-    #show? index?
+    def index
+        @posts = Post.all
+        render :index 
+    end
 
     private
 

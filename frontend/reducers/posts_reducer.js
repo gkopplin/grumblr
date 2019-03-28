@@ -1,4 +1,4 @@
-import {RECEIVE_POST, REMOVE_POST} from '../actions/post_actions';
+import { RECEIVE_POST, REMOVE_POST, RECEIVE_POSTS } from '../actions/post_actions';
 import merge from 'lodash/merge';
 
 export default (state = {}, action) => {
@@ -9,6 +9,8 @@ export default (state = {}, action) => {
         case RECEIVE_POST:
             newState = merge({}, oldState, {[action.post.id]: action.post});
             return newState;
+        case RECEIVE_POSTS:
+            return action.posts;
         case REMOVE_POST:
             newState = merge({}, oldState);
             delete newState[action.postId];
