@@ -7,12 +7,16 @@ class PostIcons extends React.Component {
         super(props);
         this.state = {visible: false};
         this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     openModal() {
         this.setState({ visible: true });
     }
 
+    closeModal() {
+        this.setState({ visible: false });
+    }
 
     render () {
         return (
@@ -48,7 +52,7 @@ class PostIcons extends React.Component {
                 </div>
             </div>
 
-            <PostModal visible = {this.state.visible} />
+            <PostModal visible={this.state.visible} closeModal={() => this.closeModal()} />
             </>
         );
     }

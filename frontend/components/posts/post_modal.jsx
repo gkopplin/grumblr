@@ -1,11 +1,11 @@
 import React from 'react';
 import Modal from 'react-modal';
+import PostForm from './post_form';
 
 class postModal extends React.Component {
     constructor (props) {
         super(props);
         this.state = {visible: this.props.visible};
-        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidUpdate (prevProps) {
@@ -14,14 +14,11 @@ class postModal extends React.Component {
         }
     }
 
-    closeModal() {
-        this.setState({ visible: false });
-    }
-
     render () {
         return (
             <Modal isOpen = {this.state.visible} width="300" height="300">
-                <button onClick={() => this.closeModal()}>Close</button>
+                <PostForm closeModal = {this.props.closeModal}/>
+                <button onClick={this.props.closeModal}>Close</button>
             </Modal>
         );
     }
