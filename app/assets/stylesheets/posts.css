@@ -1,0 +1,23 @@
+.post-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.post-item {
+    background: whitesmoke;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 540px;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 20px;
+}
+
+.post-author {
+    margin-bottom: 10px;
+    font-weight: 550;
+    font-size: 80%;
+}
