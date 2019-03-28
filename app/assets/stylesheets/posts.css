@@ -40,6 +40,7 @@
     margin-right: 6px;
     border-right: solid lightgrey 1px;
     padding: 9px;
+    cursor: pointer;
 }
 
 .post-icons > div:last-child {
