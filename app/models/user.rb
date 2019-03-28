@@ -2,6 +2,10 @@ class User < ApplicationRecord
     validates :username, :email, :session_token, uniqueness: true
     validates :username, :email, :session_token, :password_digest, presence: true 
 
+    has_many :posts,
+        class_name: "Post",
+        foreign_key: "author_id"
+
     attr_reader :password
 
     after_initialize :ensure_session_token
