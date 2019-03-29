@@ -24,7 +24,6 @@ class PostForm extends React.Component {
     }
 
     render () {
-        debugger
         if (this.props.formType === "update") {
             return (
                 <div className="post-form-container">
