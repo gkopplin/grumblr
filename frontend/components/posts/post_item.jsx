@@ -2,6 +2,7 @@ import React from 'react';
 import SettingsIcon from './post_form/settings_icon';
 import PostModal from './post_modal';
 import {Link} from 'react-router-dom';
+import PostDeleteModal from './post_delete_modal';
 
 
 class PostItem extends React.Component{ 
@@ -41,7 +42,8 @@ class PostItem extends React.Component{
                     }}> */}
                     <Link to = {newTo}>
                     <SettingsIcon togglePostSettings={() => this.togglePostSettings()} ownPost = {this.state.ownPost}/>
-                </Link>
+                    </Link>
+                    <PostDeleteModal visible={this.props.visible} closeModal={() => this.closeModal()}/>
                 {/* <PostModal visible={this.state.visible} formType="update" closeModal={() => this.closeModal()}/> */}
             </div>
         );
