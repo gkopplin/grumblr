@@ -6,7 +6,6 @@ export const REMOVE_POST = "REMOVE_POST";
 
 
 export const createPost = post => dispatch => {
-    debugger
     return ApiPostUtil.createPost(post)
         .then(post => dispatch(receivePost(post)));
 };

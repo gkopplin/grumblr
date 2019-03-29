@@ -1,48 +1,38 @@
 import { connect } from 'react-redux';
-import { updatePost, fetchPost } from '../../../actions/post_actions';
+import { updatePost } from '../../../actions/post_actions';
 import PostForm from './post_form';
 import React from 'react';
+import { closeModal } from '../../../actions/modal_actions';
 
 class EditPostForm extends React.Component {
-    componentDidMount () {
-        const id = this.props.match.params.postId;
-        this.props.fetchPost(id);
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps.post.id != this.props.match.params.postId) {
-            this.props.fetchPost(this.props.match.params.postId);
-        }
-    }
 
     render () {
-        const {author, formType, processPost, post} = this.props;
+        const {author, formType, processPost, post, closeModal} = this.props;
         return (
             <PostForm 
                 author={author} 
                 formType={formType}
                 processPost={processPost}
-                post = {post} />
+                post = {post}
+                closeModal = {closeModal} />
         );
     }
         
 }
 
-const msp = (state, ownProps) => {
-    const id = ownProps.match.params.postId;
-    const post = state.posts[id];
+const msp = (state) => {
 
     return {
         author: state.entities.users[state.session.currentUser],
         formType: "update",
-        post
+        post: state.ui.modal.post
     };
 };
 
 const mdp = dispatch => {
     return {
         processPost: (post) => dispatch(updatePost(post)),
-        fetchPost: id => dispatch(fetchPost(id))
+        closeModal: () => dispatch(closeModal())
     };
 };
 

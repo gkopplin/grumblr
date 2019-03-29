@@ -19,8 +19,7 @@ class PostItem extends React.Component{
                 <span className="post-author">{this.props.author.username}</span>
                 <div className="post-content">{this.props.post.content}</div>
                 <SettingsIcon ownPost = {this.state.ownPost}/>
-                {/* add model */}
-                {/* <PostModal visible={this.state.visible} formType="update" closeModal={() => this.closeModal()}/> */}
+                <button onClick={() => this.props.openModal("update", this.props.post)}>Edit</button>
             </div>
         );
     }

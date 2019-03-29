@@ -51,7 +51,7 @@ class PostModal extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        modal: state.ui.modal
+        modal: state.ui.modal.modal
     };
 };
 

@@ -7,7 +7,7 @@ export default (state = {}, action) => {
         case OPEN_MODAL:
             return action.modal;
         case CLOSE_MODAL:
-            return null;
+            return {modal: null, post: null};
         default:
             return oldState;
     }

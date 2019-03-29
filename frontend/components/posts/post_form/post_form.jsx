@@ -24,16 +24,32 @@ class PostForm extends React.Component {
     }
 
     render () {
-        return (
-            <div className="post-form-container">
-                <span className="post-author">{this.props.author.username}</span>
-                <form className="post-form">
-                    <input type="text" placeholder={this.props.formType === "update" ? this.state.content : "Your text here"}
-                        onChange={this.handleInput("content")} />
-                    <input type="submit" value={this.props.formType === "update" ? "Save" : "Submit"} onClick={this.handleSubmit}/>
-                </form>
-            </div>
-        );
+        if (this.props.formType === "update") {
+            return (
+                <div className="post-form-container">
+                    <span className="post-author">{this.props.author.username}</span>
+                    <form className="post-form">
+                        <input type="text" value={this.state.content}
+                            onChange={this.handleInput("content")} />
+                        <input type="submit" value="Save" onClick={this.handleSubmit} />
+                    </form>
+                </div>
+            );
+        } else {
+            return (
+                <div className="post-form-container">
+                    <span className="post-author">{this.props.author.username}</span>
+                    <form className="post-form">
+                        <input type="text" placeholder="Your text here"
+                            onChange={this.handleInput("content")} />
+                        <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+                    </form>
+                </div>
+            );
+        }
+
+
+
     }
 }
 
