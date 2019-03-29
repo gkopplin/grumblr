@@ -1,4 +1,5 @@
 import * as ApiPostUtil from '../util/api_post_util';
+import {closeModal} from './modal_actions';
 
 export const RECEIVE_POST = "RECEIVE_POST";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
@@ -7,8 +8,11 @@ export const RECEIVE_POST_ERRORS = "RECEIVE_POST_ERRORS";
 
 export const createPost = post => dispatch => {
     return ApiPostUtil.createPost(post)
-        .then(post => dispatch(receivePost(post)),
-            errors => dispatch(receivePostErrors(errors.responsJSON))
+        .then(post => {
+            dispatch(receivePost(post));
+            dispatch(closeModal());
+        },
+            errors => dispatch(receivePostErrors(errors.responseJSON))
         );
 };
 
@@ -29,29 +33,35 @@ const receivePosts = postsResponse => {
 export const fetchPosts = () => dispatch => {
     return ApiPostUtil.fetchPosts()
         .then(posts => dispatch(receivePosts(posts)),
-            errors => dispatch(receivePostErrors(errors.responsJSON))
+            errors => dispatch(receivePostErrors(errors.responseJSON))
             );
 };
 
 export const fetchPost = (id) => dispatch => {
     return ApiPostUtil.fetchPost(id)
         .then(post => dispatch(receivePost(post)),
-            errors => dispatch(receivePostErrors(errors.responsJSON))
+            errors => dispatch(receivePostErrors(errors.responseJSON))
             );
 };
 
 export const updatePost = post => dispatch => {
     return ApiPostUtil.updatePost(post)
-        .then(post => dispatch(receivePost(post)),
-            errors => dispatch(receivePostErrors(errors.responsJSON))
+        .then(post => {
+            dispatch(receivePost(post));
+            dispatch(closeModal());
+        },
+            errors => dispatch(receivePostErrors(errors.responseJSON))
             );
 };
 
 export const deletePost = id => dispatch => {
     return ApiPostUtil.deletePost(id)
-        .then(post => dispatch(removePost(post))),
-            errors => dispatch(receivePostErrors(errors.responsJSON))
-        ;
+        .then(post => {
+            dispatch(removePost(post));
+            dispatch(closeModal());
+        },
+            errors => dispatch(receivePostErrors(errors.responseJSON))
+        );
 };
 
 const removePost = post => {

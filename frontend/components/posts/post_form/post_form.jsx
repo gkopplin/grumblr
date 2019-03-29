@@ -6,7 +6,7 @@ class PostForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.state = this.props.post ? this.props.post : {
             post_type: "text",
-            content: "",
+            content: null,
             author_id: this.props.author.id
         };
     }
@@ -20,7 +20,6 @@ class PostForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.processPost(this.state);
-        this.props.closeModal();
     }
 
     render () {

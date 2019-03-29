@@ -7,14 +7,15 @@ import { closeModal } from '../../../actions/modal_actions';
 class EditPostForm extends React.Component {
 
     render () {
-        const {author, formType, processPost, post, closeModal} = this.props;
+        const {author, formType, processPost, post, closeModal, errors} = this.props;
         return (
             <PostForm 
                 author={author} 
                 formType={formType}
                 processPost={processPost}
                 post = {post}
-                closeModal = {closeModal} />
+                closeModal = {closeModal}
+                errors = {errors}/>
         );
     }
         
@@ -26,7 +27,7 @@ const msp = (state) => {
         author: state.entities.users[state.session.currentUser],
         formType: "update",
         post: state.ui.modal.post,
-        errors: state.errors.post
+        errors: state.errors.posts
     };
 };
 

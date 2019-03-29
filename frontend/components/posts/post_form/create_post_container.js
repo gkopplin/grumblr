@@ -8,7 +8,7 @@ const msp = state => {
     return {
         author: state.entities.users[state.session.currentUser],
         formType: "create",
-        errors: state.errors.post
+        errors: state.errors.posts
     };
 };
 
