@@ -1,5 +1,5 @@
 body {
-    background-color: #151547;
+    background-color: #001935;
     color: whitesmoke;
 }
 
@@ -14,7 +14,7 @@ h1, h3 {
 }
 
 header {
-    border-bottom: whitesmoke solid 1px;
+    border-bottom: #21364F solid 1px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,6 +75,8 @@ svg:hover #home, svg:hover #profile {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
+    width: 240px;
+    height: 410px;
 }
 
 .profile-dropdown span {
@@ -84,6 +86,8 @@ svg:hover #home, svg:hover #profile {
     text-transform: uppercase;
     font-weight: 550;
     font-size: 80%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .profile-dropdown > a, h3 {

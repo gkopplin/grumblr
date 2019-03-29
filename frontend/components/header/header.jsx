@@ -33,7 +33,7 @@ class Header extends React.Component {
             );
         } else if (!this.state.formType) {
             return (
-                <header>
+                <header className="splash-header">
                     <Link to="/">
                         <img src={window.smallLogo} className="small-logo" />
                     </Link>
@@ -41,7 +41,7 @@ class Header extends React.Component {
             );
         }
         return (
-            <header>
+            <header className="splash-header">
                 <Link to="/">
                     <img src={window.smallLogo} className="small-logo" />
                 </Link>
