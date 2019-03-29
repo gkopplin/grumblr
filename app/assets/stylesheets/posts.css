@@ -47,6 +47,10 @@
     border-right: none;
 }
 
+.settings-icon {
+    cursor: pointer;
+}
+
 
 .text-icon {
     font-weight: 800;

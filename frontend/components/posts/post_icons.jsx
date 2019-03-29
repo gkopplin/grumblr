@@ -52,7 +52,7 @@ class PostIcons extends React.Component {
                 </div>
             </div>
 
-            <PostModal visible={this.state.visible} closeModal={() => this.closeModal()} />
+            <PostModal visible={this.state.visible} closeModal={() => this.closeModal()} formType="create"/>
             </>
         );
     }

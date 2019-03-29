@@ -29,6 +29,11 @@ export const fetchPosts = () => dispatch => {
         .then(posts => dispatch(receivePosts(posts)));
 };
 
+export const fetchPost = (id) => dispatch => {
+    return ApiPostUtil.fetchPost(id)
+        .then(post => dispatch(receivePost(post)));
+};
+
 export const updatePost = post => dispatch => {
     return ApiPostUtil.updatePost(post)
         .then(post => dispatch(receivePost(post)));

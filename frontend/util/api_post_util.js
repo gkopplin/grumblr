@@ -23,6 +23,13 @@ export const deletePost = postId => {
     });
 };
 
+export const fetchPost = postId => {
+    return $.ajax({
+        method: 'get',
+        url: `api/posts/${postId}`
+    });
+};
+
 // temp
 
 export const fetchPosts = () => {
