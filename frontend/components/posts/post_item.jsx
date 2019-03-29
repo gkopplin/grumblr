@@ -23,7 +23,7 @@ class PostItem extends React.Component{
                 <span className="post-author">{this.props.author.username}</span>
                 <div className="post-content">{this.props.post.content}</div>
                 <SettingsIcon ownPost = {this.state.ownPost} togglePostSettings={this.togglePostSettings}/>
-                <SettingsContainer showSettings = {this.state.showSettings}/>
+                <SettingsContainer showSettings = {this.state.showSettings} post = {this.props.post}/>
             </div>
         );
     }
