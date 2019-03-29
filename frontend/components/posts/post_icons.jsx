@@ -1,28 +1,19 @@
 import React from 'react';
-import PostModal from './post_modal';
+import {openModal} from '../../actions/modal_actions';
+import {connect} from 'react-redux';
 
 class PostIcons extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {visible: false};
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-    }
-
-    openModal() {
-        this.setState({ visible: true });
-    }
-
-    closeModal() {
-        this.setState({ visible: false });
     }
 
     render () {
         return (
             <>
             <div className="post-icons">
-                <div onClick={() => this.openModal()}>
+                <div onClick={() => this.props.openModal("create")}>
                     <span className="text-icon">Aa</span>
                     <span>Text</span>
                 </div>
@@ -51,11 +42,15 @@ class PostIcons extends React.Component {
                     <span>Video</span>
                 </div>
             </div>
-
-            <PostModal visible={this.state.visible} closeModal={() => this.closeModal()} formType="create"/>
             </>
         );
     }
 };
 
-export default PostIcons;
+const mdp = dispatch => {
+    return {
+        openModal: (modal) => dispatch(openModal(modal))
+    }
+}
+
+export default connect(null, mdp)(PostIcons);

@@ -1,38 +1,65 @@
 import React from 'react';
 import Modal from 'react-modal';
-import CreatePostForm from './post_form/create_post_container';
 import UpdatePostForm from './post_form/update_post_container';
-import {Link} from 'react-router-dom';
+import CreatePostForm from './post_form/create_post_container';
+import {connect} from 'react-redux';
+import {closeModal} from '../../actions/modal_actions';
 
-class postModal extends React.Component {
-    constructor (props) {
+
+class PostModal extends React.Component {
+    constructor(props){
         super(props);
-        this.state = {visible: this.props.visible};
+        this.state = {component: null};
     }
 
-    componentDidUpdate (prevProps) {
-        if (prevProps.visible != this.props.visible) {
-            this.setState({visible: this.props.visible});
+    componentDidMount () {
+        this.checkModal();
+    }
+
+    componentDidUpdate (prevProps){
+        if (prevProps.modal !== this.props.modal) {
+            this.checkModal();
+        }
+    }
+   
+    checkModal () {
+        if (!this.props.modal) {
+            return this.setState({component: null});
+        }
+        switch (this.props.modal) {
+            case 'create':
+                return this.setState({ component: <CreatePostForm />});
+            case 'update':
+                return this.setState({ component: <UpdatePostForm/> });
+            default:
+                return this.setState({ component: null });
+
         }
     }
 
-    render () {
-        if (this.props.formType === "update"){
-            return (
-                <Modal isOpen={this.state.visible} width="300" height="300">
-                    <UpdatePostForm closeModal={this.props.closeModal} />
-                    <Link to="/dashboard">Close</Link>
-                </Modal>
-            );
-        } else {    
-            return (
-                <Modal isOpen = {this.state.visible} width="300" height="300">
-                    <CreatePostForm closeModal = {this.props.closeModal}/>
-                    <button onClick={this.props.closeModal}>Close</button>
-                </Modal>
-            );
-        }
+    render() {
+        // debugger
+        return (
+            <Modal className="modal" isOpen={this.state.component ? true : false} height="300" width="300">
+                {this.state.component}
+                <button onClick={this.props.closeModal}>Close</button>
+            </Modal>
+        );
     }
+
+
+}
+
+const mapStateToProps = state => {
+    return {
+        modal: state.ui.modal
+    };
 };
 
-export default postModal;
+const mapDispatchToProps = dispatch => {
+    return {
+        closeModal: () => dispatch(closeModal())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
