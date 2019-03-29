@@ -41,12 +41,12 @@ export const updatePost = post => dispatch => {
 
 export const deletePost = id => dispatch => {
     return ApiPostUtil.deletePost(id)
-        .then(id => dispatch(removePost(id)));
+        .then(post => dispatch(removePost(post)));
 };
 
-const removePost = postId => {
+const removePost = post => {
     return {
         type: REMOVE_POST,
-        postId 
+        postId: post.id 
     };
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import UpdatePostForm from './post_form/update_post_container';
 import CreatePostForm from './post_form/create_post_container';
+import DeletePostForm from './post_form/delete_post_form';
 import {connect} from 'react-redux';
 import {closeModal} from '../../actions/modal_actions';
 
@@ -30,6 +31,8 @@ class PostModal extends React.Component {
                 return this.setState({ component: <CreatePostForm />});
             case 'update':
                 return this.setState({ component: <UpdatePostForm/> });
+            case 'delete':
+                return this.setState({component: <DeletePostForm />});
             default:
                 return this.setState({ component: null });
 

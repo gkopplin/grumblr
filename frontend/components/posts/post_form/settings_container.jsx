@@ -6,7 +6,7 @@ const SettingsContainer = props => {
     return (
         <div className={props.showSettings ? "settings-container" : "hidden"}>
             <button onClick={() => props.openModal("update", props.post)}>Edit</button>
-            <button onClick={props.openModal}>Delete</button>
+            <button onClick={() => props.openModal("delete", props.post)}>Delete</button>
         </div>
     );
 };
