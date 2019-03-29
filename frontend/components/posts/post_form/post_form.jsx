@@ -24,6 +24,7 @@ class PostForm extends React.Component {
     }
 
     render () {
+        debugger
         if (this.props.formType === "update") {
             return (
                 <div className="post-form-container">
@@ -33,6 +34,13 @@ class PostForm extends React.Component {
                             onChange={this.handleInput("content")} />
                         <input type="submit" value="Save" onClick={this.handleSubmit} />
                     </form>
+                    <ul className="errors">
+                        {this.props.errors.map((error, i) => (
+                            <li key={`error-${i}`}>
+                                {error}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             );
         } else {
@@ -44,6 +52,13 @@ class PostForm extends React.Component {
                             onChange={this.handleInput("content")} />
                         <input type="submit" value="Submit" onClick={this.handleSubmit}/>
                     </form>
+                    <ul className="errors">
+                        {this.props.errors.map((error, i) => (
+                            <li key={`error-${i}`}>
+                                {error}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             );
         }

@@ -12,13 +12,21 @@ const deletePostForm = props => {
                     props.closeModal()
                 }}>OK</button>
             <button onClick={() => props.closeModal()}>Cancel</button>
+            <ul className="errors">
+                {props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
 
 const msp = state => {
     return {
-        post: state.ui.modal.post
+        post: state.ui.modal.post,
+        errors: state.errors.post
     }
 }
 

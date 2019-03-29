@@ -7,7 +7,8 @@ import { closeModal } from '../../../actions/modal_actions';
 const msp = state => {
     return {
         author: state.entities.users[state.session.currentUser],
-        formType: "create"
+        formType: "create",
+        errors: state.errors.post
     };
 };
 

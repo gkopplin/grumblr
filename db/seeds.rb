@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-Post.destory_all
+Post.destroy_all
 
 user_one = User.create!({username: 'Demo User', email: 'demo_user@demo_email.com', password: 'demo_password'})
 user_two = User.create!({username: 'Seed Data User', email: 'seed@seed_email.com', password: 'seed_password'})
