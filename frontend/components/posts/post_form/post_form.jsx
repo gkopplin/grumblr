@@ -28,9 +28,13 @@ class PostForm extends React.Component {
                 <div className="post-form-container">
                     <span className="post-author">{this.props.author.username}</span>
                     <form className="post-form">
-                        <input type="text" value={this.state.content}
-                            onChange={this.handleInput("content")} />
-                        <input type="submit" value="Save" onClick={this.handleSubmit} />
+                        <textarea type="text" value={this.state.content}
+                            onChange={this.handleInput("content")} 
+                            className="text-box"></textarea>
+                        <div className="post-form-buttons">
+                            <button onClick= {() => this.props.closeModal()}>Close</button>
+                            <input type="submit" value="Save" onClick={this.handleSubmit} />
+                        </div>
                     </form>
                     <ul className="errors">
                         {this.props.errors.map((error, i) => (
@@ -46,9 +50,13 @@ class PostForm extends React.Component {
                 <div className="post-form-container">
                     <span className="post-author">{this.props.author.username}</span>
                     <form className="post-form">
-                        <input type="text" placeholder="Your text here"
-                            onChange={this.handleInput("content")} />
-                        <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+                        <textarea type="text" placeholder="Your text here"
+                            onChange={this.handleInput("content")} 
+                            className="text-box"></textarea>
+                        <div className="post-form-buttons">
+                            <button onClick={() => this.props.closeModal()}>Close</button>
+                            <input type="submit" value="Post" onClick={this.handleSubmit} />
+                        </div>
                     </form>
                     <ul className="errors">
                         {this.props.errors.map((error, i) => (

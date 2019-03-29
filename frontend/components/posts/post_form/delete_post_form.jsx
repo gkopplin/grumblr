@@ -7,11 +7,16 @@ const deletePostForm = props => {
     return (
         <div className="delete-post-form">
             <h2>Are you sure you want to delete this post?</h2>
-            <button onClick={() => {
+            <div className="delete-buttons">
+                <button onClick={() => props.closeModal()}
+                    className="delete-cancel">Cancel</button>
+
+                <button onClick={() => {
                     props.deletePost(props.post.id)
                     props.closeModal()
-                }}>OK</button>
-            <button onClick={() => props.closeModal()}>Cancel</button>
+                }} className="delete-ok">OK</button>
+            </div>
+
             <ul className="errors">
                 {props.errors.map((error, i) => (
                     <li key={`error-${i}`}>

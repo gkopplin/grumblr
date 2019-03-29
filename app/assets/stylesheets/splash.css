@@ -68,6 +68,7 @@ body {
     justify-content: center;
     font-size: 100%;
     border-radius: 3px;
+    opacity: 0.8;
 }
 
 [class^='button-'] > a {
@@ -78,6 +79,7 @@ body {
 
 #button-demo {
     background: white;
+    opacity: 0.8;
 }
 
 #button-demo > a {
@@ -119,6 +121,8 @@ input[class^='button-'] {
     margin-top: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 

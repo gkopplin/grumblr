@@ -20,6 +20,7 @@
     margin-bottom: 10px;
     font-weight: 550;
     font-size: 80%;
+    color: black;
 }
 
 .post-icons {
@@ -49,6 +50,9 @@
 
 .settings-icon {
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin: 0;
 }
 
 
@@ -64,7 +68,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 25, 53, 0.95);
   z-index: 10;
 }
 
@@ -73,4 +77,114 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 5px;
+}
+
+.post-form-container {
+    padding: 30px;
+}
+
+.text-box {
+    border: none;
+    width: 500px;
+    height: 300px; 
+    font-size: 150%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.post-form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-form-buttons > button {
+    background: grey;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 105%;
+    cursor: pointer;
+}
+
+.post-form-buttons > input {
+    background: #00B8FF;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 105%;
+    cursor: pointer;
+}
+
+.settings-icon-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.settings-container {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-container > button {
+    width: 135px;
+    color: grey;
+    box-shadow: none;
+    text-align: start;
+    border: none;
+    position: relative;
+    top: -107px;
+    left: 410px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 90%;
+}
+
+.settings-container > button:first-of-type {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.settings-container > button:last-of-type {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.delete-post-form > h2 {
+    color: grey;
+}
+
+.delete-post-form {
+    padding: 15px;
+}
+
+.delete-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.delete-cancel {
+    background: grey;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 105%;
+    cursor: pointer;
+    margin-right: 5px;
+    height: 50px;
+    width: 180px;
+}
+
+.delete-ok {
+    background: #00B8FF;
+    color: white;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 105%;
+    cursor: pointer;
+    height: 50px;
+    width: 180px;
 }
