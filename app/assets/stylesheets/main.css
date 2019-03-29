@@ -98,6 +98,7 @@ svg:hover #home, svg:hover #profile {
 
 .hidden {
     display: none;
+    z-index: -1;
 }
 
 #posts-link, #followers-link {
