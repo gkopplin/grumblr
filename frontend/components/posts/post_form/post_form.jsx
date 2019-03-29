@@ -7,7 +7,7 @@ class PostForm extends React.Component {
         this.state = this.props.post ? this.props.post : {
             post_type: "text",
             content: "",
-            author_id: this.props.currentUser
+            author_id: this.props.author.id
         };
     }
 
@@ -29,7 +29,7 @@ class PostForm extends React.Component {
                 <span className="post-author">{this.props.author.username}</span>
                 <form className="post-form">
                     <input type="text" placeholder={this.props.formType === "update" ? this.state.content : "Your text here"}
-                        onChange={this.handleInput("content")} value={this.props.formType === "update" ? this.state.content : ""}/>
+                        onChange={this.handleInput("content")} />
                     <input type="submit" value={this.props.formType === "update" ? "Save" : "Submit"} onClick={this.handleSubmit}/>
                 </form>
             </div>

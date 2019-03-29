@@ -1,5 +1,4 @@
 import React from 'react';
-import Modal from 'react-modal';
 import UpdatePostForm from './post_form/update_post_container';
 import CreatePostForm from './post_form/create_post_container';
 import {connect} from 'react-redux';
@@ -38,12 +37,12 @@ class PostModal extends React.Component {
     }
 
     render() {
-        // debugger
         return (
-            <Modal className="modal" isOpen={this.state.component ? true : false} height="300" width="300">
-                {this.state.component}
-                <button onClick={this.props.closeModal}>Close</button>
-            </Modal>
+            <div className={`modal-background ${this.state.component ? "": "hidden"}`} onClick={this.props.closeModal}>
+                <div className="modal-child" onClick={e => e.stopPropagation()}>
+                    {this.state.component}
+                </div>
+            </div>
         );
     }
 

@@ -10,13 +10,13 @@ import PostModal from './posts/post_modal';
 const App = () => {
     return (
         <div className="app">
+            <PostModal />
             <Switch>
                 <AuthRoute exact path="/" component={Splash} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
                 <AuthRoute exact path="/login" component={LogInFormContainer} />
                 <AuthRoute exact path="/signup" component={SignUpFormContainer} />
             </Switch>
-            <PostModal />
         </div>
     );
 };
