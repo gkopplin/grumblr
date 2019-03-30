@@ -28,8 +28,8 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        @posts = Post.all
-        @users = User.all
+        @posts = Post.where(`author_id != #{current_user.id}`)
+        @users = User.where(`id != #{current_user.id}`)
         render :index 
     end
 
