@@ -1,3 +1,2 @@
-json.followers do 
-    json.array! @followers
-end
+json.array! @followers
+
