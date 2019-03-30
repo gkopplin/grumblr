@@ -28,7 +28,7 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        @posts = Post.where(`author_id != #{current_user.id}`)
+        @posts = Post.where(`author_id != #{current_user.id}`).order('updated_at DESC')
         @users = User.where(`id != #{current_user.id}`)
         render :index 
     end
