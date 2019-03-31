@@ -1,6 +1,7 @@
 import React from 'react';
 import SettingsIcon from './post_form/settings_icon';
 import SettingsContainer from './post_form/settings_container';
+import {Link} from 'react-router-dom';
 
 
 class PostItem extends React.Component{ 
@@ -21,10 +22,14 @@ class PostItem extends React.Component{
         return (
             <div className="post-container">
                 <div className="profile-container">
-                    <img src={window.profilePic} className="profile-pic"/>
+                    <Link to={`users/${this.props.author.id}`}>
+                        <img src={window.profilePic} className="profile-pic"/>
+                    </Link>
                 </div>
                 <div className="post-item">
-                    <span className="post-author">{this.props.author.username}</span>
+                    <Link to={`users/${this.props.author.id}`}>
+                        <span className="post-author">{this.props.author.username}</span>
+                    </Link>
                     <div className="post-content">{this.props.post.content}</div>
                     <div className="settings-icon-container">
                         <SettingsIcon ownPost = {this.state.ownPost} togglePostSettings={this.togglePostSettings}/>
