@@ -24,7 +24,7 @@ class PostItem extends React.Component{
                 <div className="profile-container">
                 
                     <Link to={this.props.page === 'dashboard' ? `users/${this.props.author.id}` : `${this.props.author.id}`}>
-                        <img src={window.profilePic} className="profile-pic"/>
+                        <img src={this.props.author.profilePic} className="profile-pic"/>
                     </Link>
                 </div>
                 <div className="post-item">

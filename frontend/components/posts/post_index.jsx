@@ -31,7 +31,7 @@ class PostIndex extends React.Component {
         });
         return (
             <ul className="post-index">
-                <PostIcons />
+                <PostIcons currentUser = {this.props.currentUser}/>
                 {posts}
             </ul>
         );

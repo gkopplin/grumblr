@@ -13,7 +13,7 @@ class PostIcons extends React.Component {
         return (
             <div className="post-container">
                 <div className="profile-container">
-                    <img src={window.profilePic} className="profile-pic" />
+                    <img src={this.props.currentUser.profilePic} className="profile-pic" />
                 </div>
                 <div className="post-icons">
                     <div onClick={() => this.props.openModal("create")}>
