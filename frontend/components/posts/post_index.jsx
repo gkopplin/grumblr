@@ -11,8 +11,7 @@ class PostIndex extends React.Component {
     }
 
     componentDidMount () {
-        //temp
-        this.props.fetchPosts(this.props.page);
+        this.props.fetchPosts(this.props.page, this.props.userId);
     }  
     
     render () {
@@ -42,7 +41,7 @@ const msp = (state) => {
 const mdp = dispatch => {
     //temp
     return {
-        fetchPosts: (page) => dispatch(fetchPosts(page)),
+        fetchPosts: (page, userId) => dispatch(fetchPosts(page, userId)),
         requestUser: id => dispatch(requestUser(id)),
         openModal: (modal, post) => dispatch(openModal(modal, post))
     };
