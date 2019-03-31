@@ -13,8 +13,8 @@ Post.destroy_all
 Follow.destroy_all
 
 user_one = User.create!({username: 'Demo User', email: 'demo_user@demo_email.com', password: 'demo_password'})
-pic_one = open('https://s3.amazonaws.com/grumblr-dev/Grumpy_Hot-Dog_Batman.jpg')
-user_one.profile_pic.attach(io: pic_one, filename: 'batman.jpg')
+# pic_one = open('https://s3.amazonaws.com/grumblr-dev/Grumpy_Hot-Dog_Batman.jpg')
+# user_one.profile_pic.attach(io: pic_one, filename: 'batman.jpg')
 
 user_two = User.create!({username: 'Seed Data User', email: 'seed@seed_email.com', password: 'seed_password'})
 user_three = User.create!({username: 'Seed Data User Two', email: 'seed2@seed_email.com', password: 'seed_password2'})

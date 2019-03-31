@@ -19,13 +19,16 @@ class PostItem extends React.Component{
 
     render() {
         return (
-            <div className="post-item">
-                <span className="post-author">{this.props.author.username}</span>
-                <div className="post-content">{this.props.post.content}</div>
-                <div className="settings-icon-container">
-                    <SettingsIcon ownPost = {this.state.ownPost} togglePostSettings={this.togglePostSettings}/>
+            <div className="post-container">
+                <img src={window.profilePic} className="profile-pic"/>
+                <div className="post-item">
+                    <span className="post-author">{this.props.author.username}</span>
+                    <div className="post-content">{this.props.post.content}</div>
+                    <div className="settings-icon-container">
+                        <SettingsIcon ownPost = {this.state.ownPost} togglePostSettings={this.togglePostSettings}/>
+                    </div>
+                    <SettingsContainer showSettings = {this.state.showSettings} post = {this.props.post}/>
                 </div>
-                <SettingsContainer showSettings = {this.state.showSettings} post = {this.props.post}/>
             </div>
         );
     }

@@ -29,8 +29,9 @@
     display: flex;
     width: 559px;
     border-radius: 5px;
-    margin: 15px auto;
+    margin: 15px;
     padding: 10px;
+
 }
 
 .post-icons > div {
@@ -187,4 +188,15 @@
     cursor: pointer;
     height: 50px;
     width: 180px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.post-container {
+    display: flex;
 }
