@@ -13,6 +13,7 @@ class User < ApplicationRecord
     has_many :followers,
         through: :followed_users
         
+    has_one_attached :profile_pic    
 
     attr_reader :password
 
