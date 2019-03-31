@@ -8,18 +8,26 @@ import PostIcons from './post_icons';
 class PostIndex extends React.Component {
     constructor(props){
         super(props);
+        this.state = { userId: this.props.userId};
     }
 
     componentDidMount () {
         this.props.fetchPosts(this.props.page, this.props.userId);
     }  
+
+    componentDidUpdate(prevProps) {
+        if (this.props.userId != prevProps.userId) {
+            this.setState({ userId: this.props.userId });
+            this.props.fetchPosts(this.props.page, this.props.userId);
+        }
+    }
     
     render () {
     const posts = this.props.posts.map(post => {
         return <PostItem key={post.id} post={post} author={this.props.users[post.author_id]}
                  currentUser = {this.props.currentUser}
                  openModal = {this.props.openModal}/> 
-    });
+        });
         return (
             <ul className="post-index">
                 <PostIcons />

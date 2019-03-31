@@ -15,7 +15,8 @@ export const ProfileDropdown = (props) => {
                 <a id="like-link"><LikeIcon /> Likes</a>
                 <a id="following-link"><FollowingIcon /> Following</a>
             <span>Grumblrs</span>
-                <Link to={`users/${props.currentUser.id}`} className="current-user">
+            {/* temp */}
+                <Link to={`${props.currentUser.id}`} className="current-user">
                     <img src={window.profilePic} className="current-user-pic"/>
                     <h3>{props.currentUser.username}</h3>
                 </Link>

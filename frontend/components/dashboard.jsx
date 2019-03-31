@@ -6,7 +6,7 @@ export default (props) => {
     return (
         <>
         <Header loggedIn = {true}/>
-        <PostIndex page="dashboard"/>
+            <PostIndex page="dashboard" userId={props.match.params.userId}/>
         </>
     );
 };
