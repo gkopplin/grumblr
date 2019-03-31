@@ -5,7 +5,7 @@ import PostIndex from './posts/post_index';
 export default (props) => {
     return (
         <>
-        <Header loggedIn = {true}/>
+            <Header page="dashboard" loggedIn = {true}/>
             <PostIndex page="dashboard" userId={props.match.params.userId}/>
         </>
     );

@@ -29,7 +29,7 @@ class Header extends React.Component {
                         </Link>
                         <ProfileIcon toggleDropdown = {this.toggleDropdown}/>
                     </nav>
-                    <ProfileDropdown showDropdown = {this.state.showDropdown}/>
+                    <ProfileDropdown showDropdown = {this.state.showDropdown} page = {this.props.page}/>
     
                 </header>
             );

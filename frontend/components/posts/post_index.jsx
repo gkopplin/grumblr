@@ -47,7 +47,6 @@ const msp = (state) => {
 };
 
 const mdp = dispatch => {
-    //temp
     return {
         fetchPosts: (page, userId) => dispatch(fetchPosts(page, userId)),
         requestUser: id => dispatch(requestUser(id)),
