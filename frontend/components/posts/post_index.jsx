@@ -26,7 +26,8 @@ class PostIndex extends React.Component {
     const posts = this.props.posts.map(post => {
         return <PostItem key={post.id} post={post} author={this.props.users[post.author_id]}
                  currentUser = {this.props.currentUser}
-                 openModal = {this.props.openModal}/> 
+                 openModal = {this.props.openModal}
+                 page = {this.props.page}/> 
         });
         return (
             <ul className="post-index">

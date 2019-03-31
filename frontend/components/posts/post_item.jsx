@@ -22,12 +22,13 @@ class PostItem extends React.Component{
         return (
             <div className="post-container">
                 <div className="profile-container">
-                    <Link to={`users/${this.props.author.id}`}>
+                
+                    <Link to={this.props.page === 'dashboard' ? `users/${this.props.author.id}` : `${this.props.author.id}`}>
                         <img src={window.profilePic} className="profile-pic"/>
                     </Link>
                 </div>
                 <div className="post-item">
-                    <Link to={`users/${this.props.author.id}`}>
+                    <Link to={this.props.page === 'dashboard' ? `users/${this.props.author.id}` : `${this.props.author.id}`}>
                         <span className="post-author">{this.props.author.username}</span>
                     </Link>
                     <div className="post-content">{this.props.post.content}</div>
