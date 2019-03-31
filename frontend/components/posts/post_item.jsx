@@ -20,7 +20,9 @@ class PostItem extends React.Component{
     render() {
         return (
             <div className="post-container">
-                <img src={window.profilePic} className="profile-pic"/>
+                <div className="profile-container">
+                    <img src={window.profilePic} className="profile-pic"/>
+                </div>
                 <div className="post-item">
                     <span className="post-author">{this.props.author.username}</span>
                     <div className="post-content">{this.props.post.content}</div>

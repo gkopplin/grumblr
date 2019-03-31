@@ -194,9 +194,24 @@
     width: 60px;
     height: 60px;
     margin-top: 15px;
+    margin-bottom: 15px;
     border-radius: 5px;
+}
+
+.profile-container {
+    width: 60px;
 }
 
 .post-container {
     display: flex;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+}
+
+.sticky-bottom {
+    display: flex;
+    align-items: flex-end;
 }

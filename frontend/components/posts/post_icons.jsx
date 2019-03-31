@@ -12,7 +12,9 @@ class PostIcons extends React.Component {
     render () {
         return (
             <div className="post-container">
-                <img src={window.profilePic} className="profile-pic" />
+                <div className="profile-container">
+                    <img src={window.profilePic} className="profile-pic" />
+                </div>
                 <div className="post-icons">
                     <div onClick={() => this.props.openModal("create")}>
                         <span className="text-icon">Aa</span>
