@@ -28,8 +28,8 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        @posts = Post.where(`author_id != #{current_user.id}`).order('updated_at DESC')
-        @users = User.where(`id != #{current_user.id}`)
+        @posts = Post.where.not(posts: {author_id: current_user.id}).order('updated_at DESC')
+        @users = User.where.not(id: current_user.id)
         render :index 
     end
 
@@ -37,5 +37,6 @@ class Api::PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:content, :post_type, :author_id)
+        params.require(:page)
     end
 end

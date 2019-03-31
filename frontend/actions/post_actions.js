@@ -30,8 +30,8 @@ const receivePosts = postsResponse => {
     };
 };
 
-export const fetchPosts = () => dispatch => {
-    return ApiPostUtil.fetchPosts()
+export const fetchPosts = (page) => dispatch => {
+    return ApiPostUtil.fetchPosts(page)
         .then(posts => dispatch(receivePosts(posts)),
             errors => dispatch(receivePostErrors(errors.responseJSON))
             );

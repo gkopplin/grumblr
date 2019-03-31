@@ -3,7 +3,8 @@ export const createPost = post => {
     return $.ajax({
         method: 'post',
         url: 'api/posts',
-        data: {post}
+        data: {post,
+            page: "dashboard"}
     });
 };
 
@@ -11,7 +12,8 @@ export const updatePost = post => {
     return $.ajax({
         method: 'patch',
         url: `api/posts/${post.id}`,
-        data: {post}
+        data: {post,
+            page: "dashboard"}
     });
 };
 
@@ -30,12 +32,11 @@ export const fetchPost = postId => {
     });
 };
 
-// temp
-
-export const fetchPosts = () => {
+export const fetchPosts = (page) => {
     return $.ajax({
         method: 'get',
-        url: 'api/posts'
+        url: 'api/posts',
+        data: {page}
     });
 };
 
