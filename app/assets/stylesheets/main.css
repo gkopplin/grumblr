@@ -53,6 +53,7 @@ svg {
 
 svg:hover #home, svg:hover #profile {
     fill: lightgray;
+    cursor: pointer;
 }
 
 #like-icon, #following-icon {
@@ -92,6 +93,11 @@ svg:hover #home, svg:hover #profile {
 
 .profile-dropdown > a, h3 {
     margin: 5px;
+    color: black;
+}
+
+.profile-dropdown > a:hover {
+    background: #d6e5f3;
 }
 
 #logout-link {

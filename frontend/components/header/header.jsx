@@ -24,7 +24,9 @@ class Header extends React.Component {
                         <img src={window.smallLogo} className="small-logo" />
                     </Link>
                     <nav className="main-nav">
-                        <HomeIcon />
+                        <Link to="/">
+                            <HomeIcon />
+                        </Link>
                         <ProfileIcon toggleDropdown = {this.toggleDropdown}/>
                     </nav>
                     <ProfileDropdown showDropdown = {this.state.showDropdown}/>
