@@ -15,7 +15,9 @@ export const ProfileDropdown = (props) => {
                 <a id="like-link"><LikeIcon /> Likes</a>
                 <a id="following-link"><FollowingIcon /> Following</a>
             <span>Grumblrs</span>
-                <Link to={props.page === 'dashboard' ? `users/${props.currentUser.id}` : `${props.currentUser.id}`} className="current-user">
+                <Link to={props.page === 'dashboard' ? `users/${props.currentUser.id}` : `${props.currentUser.id}`}
+                     className="current-user"
+                     onClick={() => props.toggleDropdown()}>
                     <img src={window.profilePic} className="current-user-pic"/>
                     <h3>{props.currentUser.username}</h3>
                 </Link>
