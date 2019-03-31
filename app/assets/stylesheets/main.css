@@ -100,9 +100,15 @@ svg:hover #home, svg:hover #profile {
     cursor: pointer;
 }
 
-.hidden {
-    display: none;
-    z-index: -1;
+.current-user {
+    display: flex;
+}
+
+.current-user-pic {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 3px;
 }
 
 #posts-link, #followers-link {
@@ -110,8 +116,12 @@ svg:hover #home, svg:hover #profile {
 }
 
 
-
 main {
     display: flex;
     justify-content: center;
+}
+
+.hidden {
+    display: none;
+    z-index: -1;
 }

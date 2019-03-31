@@ -6,6 +6,7 @@ import { Switch } from 'react-router-dom';
 import LogInFormContainer from './session_form/log_in_form_container';
 import SignUpFormContainer from './session_form/sign_up_form_container';
 import PostModal from './posts/post_modal';
+import Profile from './profile';
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
                 <AuthRoute exact path="/login" component={LogInFormContainer} />
                 <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+                <ProtectedRoute path="/users" component={Profile} />
             </Switch>
         </div>
     );

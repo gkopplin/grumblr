@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import LikeIcon from './like-icon';
 import FollowingIcon from './following-icon';
+import {Link} from 'react-router-dom';
 
 export const ProfileDropdown = (props) => {
     return (
@@ -14,7 +15,10 @@ export const ProfileDropdown = (props) => {
                 <a id="like-link"><LikeIcon /> Likes</a>
                 <a id="following-link"><FollowingIcon /> Following</a>
             <span>Grumblrs</span>
-                <h3>{props.currentUser.username}</h3>
+                <Link to={`users/${props.currentUser.id}`} className="current-user">
+                    <img src={window.profilePic} className="current-user-pic"/>
+                    <h3>{props.currentUser.username}</h3>
+                </Link>
                 <a id="posts-link">Posts</a>
                 <a id="followers-link">Followers</a>
                 
