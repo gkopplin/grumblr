@@ -59,8 +59,8 @@ body {
     text-decoration: none;
     background: #00B8FF;
     color: whitesmoke;
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     width: 300px;
     margin: auto;
     display: flex;
@@ -100,12 +100,12 @@ body {
 }
 
 .session-form input {
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
     width: 300px;
     border: none;
-    text-align: center;
-    padding: 0px;
+    text-align: left;
+    padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 100%;
     color: grey;

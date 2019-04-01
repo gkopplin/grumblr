@@ -35,12 +35,20 @@ class PostIndex extends React.Component {
                  deleteLike = {this.props.deleteLike}
                  likes = {this.props.likes.filter( like => like.post_id === post.id)}/> 
         });
-        return (
-            <ul className="post-index">
-                <PostIcons currentUser = {this.props.currentUser} page = {this.props.page}/>
-                {posts}
-            </ul>
-        );
+        if (this.props.page === "dashboard") {
+            return (
+                <ul className="post-index">
+                    <PostIcons currentUser = {this.props.currentUser} page = {this.props.page}/>
+                    {posts}
+                </ul>
+            );
+        } else {
+            return (
+                <ul className="post-index">
+                    {posts}
+                </ul>
+            );
+        }
     }
 
 };
