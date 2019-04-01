@@ -131,3 +131,7 @@ main {
     display: none;
     z-index: -1;
 }
+
+.likes-container {
+    cursor: pointer;
+}

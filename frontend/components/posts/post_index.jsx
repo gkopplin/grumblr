@@ -49,8 +49,7 @@ const msp = (state) => {
     return {
         posts: Object.values(state.entities.posts),
         users: state.entities.users,
-        currentUserId: state.session.currentUser,
-        currentUser: state.entities.users[state.session.currentUser],
+        currentUser: state.session.currentUser,
         likes: Object.values(state.entities.likes)
     };
 };
