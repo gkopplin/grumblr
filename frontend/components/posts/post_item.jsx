@@ -17,9 +17,15 @@ class PostItem extends React.Component{
         this.toggleLike = this.toggleLike.bind(this);
     }
 
-    componentDidMount () {
+    // componentDidMount () {
+    //     this.setState({ ownPost: this.props.currentUser === this.props.post.author_id });
+    // }
 
-    }
+    // componentDidUpdate (prevProps) {
+    //     if (prevProps.ownPost != this.props.ownPost) {
+    //         this.setState({ ownPost: this.props.currentUser === this.props.post.author_id });
+    //     }
+    // }
 
     toggleLike () {
         if (this.state.liked) {
@@ -51,9 +57,9 @@ class PostItem extends React.Component{
                     <div className="post-content">{this.props.post.content}</div>
 
                     <div className="likes-container" onClick={this.toggleLike}>
-                        <LikeIcon liked = {this.state.liked}/>
+                        <LikeIcon liked={this.state.liked} ownPost={this.state.ownPost}/>
                     </div>
-                    <div className="settings-icon-container">
+                    <div className={this.state.ownPost ? "settings-icon-container" : "hidden"}>
                         <SettingsIcon ownPost = {this.state.ownPost} togglePostSettings={this.togglePostSettings}/>
                     </div>
                     <SettingsContainer showSettings = {this.state.showSettings} post = {this.props.post}/>

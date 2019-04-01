@@ -2,6 +2,7 @@ import React from 'react';
 import {openModal} from '../../actions/modal_actions';
 import {connect} from 'react-redux';
 import ProfilePic from './profile_picture';
+import {Link} from 'react-router-dom';
 
 class PostIcons extends React.Component {
 
@@ -14,7 +15,10 @@ class PostIcons extends React.Component {
         return (
             <div className="post-container">
                 <div className="profile-container">
-                    <ProfilePic username={this.props.currentUser.username} />
+                    <Link to={this.props.page === 'dashboard' ? `users/${this.props.currentUser.id}` : `${this.props.currentUser.id}`}>
+
+                        <ProfilePic username={this.props.currentUser.username} />
+                    </Link>
                 </div>
                 <div className="post-icons">
                     <div onClick={() => this.props.openModal("create")}>

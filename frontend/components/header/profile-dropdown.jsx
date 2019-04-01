@@ -13,7 +13,7 @@ export const ProfileDropdown = (props) => {
                 Account
                 <button onClick={props.logout} id="logout-link">Log Out</button>
             </span>
-                <a id="like-link"><LikeIcon /> Likes</a>
+                <a id="like-link"><LikeIcon ownPost={true}/> Likes</a>
                 <a id="following-link"><FollowingIcon /> Following</a>
             <span>Grumblrs</span>
                 <Link to={props.page === 'dashboard' ? `users/${props.currentUser.id}` : `${props.currentUser.id}`}
