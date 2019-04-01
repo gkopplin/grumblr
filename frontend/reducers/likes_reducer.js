@@ -1,5 +1,5 @@
 import {RECEIVE_LIKE, REMOVE_LIKE} from '../actions/like_actions';
-import {RECEIVE_POST} from '../actions/post_actions';
+import {RECEIVE_POSTS} from '../actions/post_actions';
 import merge from 'lodash/merge';
 
 export default (state = {}, action) => {
@@ -14,8 +14,8 @@ export default (state = {}, action) => {
             newState = merge({}, oldState);
             delete newState[action.likeId];
             return newState;
-        case RECEIVE_POST:
-            newState = merge({}, oldState, action.postResponse.likes);
+        case RECEIVE_POSTS:
+            newState = Object.assign({}, oldState, action.postsResponse.likes);
             return newState;
         default:
             return oldState;
