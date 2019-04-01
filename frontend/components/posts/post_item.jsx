@@ -2,12 +2,8 @@ import React from 'react';
 import SettingsIcon from './post_form/settings_icon';
 import SettingsContainer from './post_form/settings_container';
 import {Link} from 'react-router-dom';
-<<<<<<< HEAD
 import ProfilePic from './profile_picture';
-
-=======
 import LikeIcon from '../header/like-icon';
->>>>>>> likes
 
 class PostItem extends React.Component{ 
     constructor(props) {
@@ -27,7 +23,7 @@ class PostItem extends React.Component{
 
     toggleLike () {
         if (this.state.liked) {
-            const like = this.props.likes
+            // const like = this.props.likes
         } else {
             this.props.createLike({ user_id: this.props.currentUser, post_id: this.props.post.id });
             this.setState({liked: true});
