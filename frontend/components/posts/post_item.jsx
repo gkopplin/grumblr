@@ -23,7 +23,9 @@ class PostItem extends React.Component{
 
     toggleLike () {
         if (this.state.liked) {
-            // const like = this.props.likes
+            const like = this.props.likes.filter(like => like.user_id === this.props.currentUser)[0];
+            this.props.deleteLike(like.id);
+            this.setState({liked: false});
         } else {
             this.props.createLike({ user_id: this.props.currentUser, post_id: this.props.post.id });
             this.setState({liked: true});

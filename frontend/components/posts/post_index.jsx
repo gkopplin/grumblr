@@ -23,7 +23,7 @@ class PostIndex extends React.Component {
         }
     }
     
-    render () {
+    render () { 
     const posts = this.props.posts.map(post => {
 
         return <PostItem key={post.id} post={post} 
@@ -32,7 +32,8 @@ class PostIndex extends React.Component {
                  openModal = {this.props.openModal}
                  page = {this.props.page}
                  createLike = {this.props.createLike}
-                 deleteLike = {this.props.deleteLike}/> 
+                 deleteLike = {this.props.deleteLike}
+                 likes = {this.props.likes.filter( like => like.post_id === post.id)}/> 
         });
         return (
             <ul className="post-index">
@@ -49,7 +50,8 @@ const msp = (state) => {
         posts: Object.values(state.entities.posts),
         users: state.entities.users,
         currentUserId: state.session.currentUser,
-        currentUser: state.entities.users[state.session.currentUser]
+        currentUser: state.entities.users[state.session.currentUser],
+        likes: Object.values(state.entities.likes)
     };
 };
 
