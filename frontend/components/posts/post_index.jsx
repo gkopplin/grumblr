@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {fetchPosts} from '../../actions/post_actions';
 import {openModal} from '../../actions/modal_actions';
 import PostIcons from './post_icons';
+import {createLike, deleteLike} from '../../actions/like_actions';
 
 class PostIndex extends React.Component {
     constructor(props){
@@ -24,10 +25,13 @@ class PostIndex extends React.Component {
     
     render () {
     const posts = this.props.posts.map(post => {
-        return <PostItem key={post.id} post={post} author={this.props.users[post.author_id]}
+        return <PostItem key={post.id} post={post} 
+                 author={this.props.users[post.author_id]}
                  currentUser = {this.props.currentUser}
                  openModal = {this.props.openModal}
-                 page = {this.props.page}/> 
+                 page = {this.props.page}
+                 createLike = {this.props.createLike}
+                 deleteLike = {this.props.deleteLike}/> 
         });
         return (
             <ul className="post-index">
@@ -51,7 +55,9 @@ const mdp = dispatch => {
     return {
         fetchPosts: (page, userId) => dispatch(fetchPosts(page, userId)),
         requestUser: id => dispatch(requestUser(id)),
-        openModal: (modal, post) => dispatch(openModal(modal, post))
+        openModal: (modal, post) => dispatch(openModal(modal, post)),
+        createLike: like => dispatch(createLike(like)),
+        deleteLike: likeId => dispatch(deleteLike(likeId))
     };
 };
 
