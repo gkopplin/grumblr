@@ -59,7 +59,11 @@ svg:hover #home, svg:hover #profile {
 #like-icon, #following-icon {
     height: 20px;
     width: 20px;
-    margin: 2px 15px 2px 2px;
+    margin: 2px;
+}
+
+.likes-text, .following-text {
+    margin: 2px 2px 2px 15px;
 }
 
 #like-link, #following-link {
