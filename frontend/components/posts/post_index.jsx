@@ -47,7 +47,7 @@ class PostIndex extends React.Component {
 
 const msp = (state) => {
     return {
-        posts: Object.values(state.entities.posts),
+        posts: Object.values(state.entities.posts).sort((post1, post2) => new Date(post2.updated_at) - new Date(post1.updated_at)),
         users: state.entities.users,
         currentUserId: state.session.currentUser,
         currentUser: state.entities.users[state.session.currentUser],

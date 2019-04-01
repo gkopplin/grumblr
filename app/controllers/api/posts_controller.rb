@@ -28,13 +28,16 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        if params[:page] == "dashboard" 
-            @posts = Post.where.not(posts: {author_id: current_user.id}).order('updated_at DESC')
-            @users = User.where.not(id: current_user.id)
-        elsif params[:page] == "profile" 
-            @posts = Post.where(posts: {author_id: params[:userId]}).order('updated_at DESC')
-            @users = User.where(id: params[:userId])
-        end
+        @posts = Post.all
+        @users = User.all
+        
+        # if params[:page] == "dashboard" 
+        #     @posts = Post.where.not(posts: {author_id: current_user.id}).order('updated_at DESC')
+        #     @users = User.where.not(id: current_user.id)
+        # elsif params[:page] == "profile" 
+        #     @posts = Post.where(posts: {author_id: params[:userId]}).order('updated_at DESC')
+        #     @users = User.where(id: params[:userId])
+        # end
     end
 
     private
