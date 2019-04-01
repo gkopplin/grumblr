@@ -30,6 +30,12 @@ class Api::PostsController < ApplicationController
     def index
         @posts = Post.all
         @users = User.all
+
+        if params[:page] == "profile" 
+            @posts = Post.where(posts: {author_id: params[:userId]})
+            @users = User.where(id: params[:userId])
+        end
+
         
         # if params[:page] == "dashboard" 
         #     @posts = Post.where.not(posts: {author_id: current_user.id}).order('updated_at DESC')
