@@ -17,16 +17,6 @@ class PostItem extends React.Component{
         this.toggleLike = this.toggleLike.bind(this);
     }
 
-    // componentDidMount () {
-    //     this.setState({ ownPost: this.props.currentUser === this.props.post.author_id });
-    // }
-
-    // componentDidUpdate (prevProps) {
-    //     if (prevProps.ownPost != this.props.ownPost) {
-    //         this.setState({ ownPost: this.props.currentUser === this.props.post.author_id });
-    //     }
-    // }
-
     toggleLike () {
         if (this.state.liked) {
             const like = this.props.likes.filter(like => like.user_id === this.props.currentUser)[0];
@@ -40,6 +30,17 @@ class PostItem extends React.Component{
 
     togglePostSettings () {
         this.setState({showSettings: this.state.showSettings ? false : true});
+    }
+
+    componentDidUpdate() {
+        document.addEventListener("click", (e) => {
+            if (e.target.className !== "settings-container" &&
+                e.target.className !== "settings-icon-container" &&
+                e.target.id !== "settings-icon" && 
+                e.target.className !== "settings-icon") {
+                this.setState({ showSettings: false });
+            }
+        });
     }
 
     render() {
