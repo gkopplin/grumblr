@@ -57,11 +57,14 @@ class PostItem extends React.Component{
                     </Link>
                     <div className="post-content">{this.props.post.content}</div>
 
-                    <div className="likes-container" onClick={this.toggleLike}>
-                        <LikeIcon liked={this.state.liked} ownPost={this.state.ownPost}/>
-                    </div>
-                    <div className={this.state.ownPost ? "settings-icon-container" : "hidden"}>
-                        <SettingsIcon ownPost = {this.state.ownPost} togglePostSettings={this.togglePostSettings}/>
+                    <div className="post-footer">
+                        <span className="likes-count">{`${this.props.likes.length} likes`}</span>
+                        <div className="likes-container" onClick={this.toggleLike}>
+                            <LikeIcon liked={this.state.liked} ownPost={this.state.ownPost}/>
+                        </div>
+                        <div className={this.state.ownPost ? "settings-icon-container" : "hidden"}>
+                            <SettingsIcon ownPost = {this.state.ownPost} togglePostSettings={this.togglePostSettings}/>
+                        </div>
                     </div>
                     <SettingsContainer showSettings = {this.state.showSettings} post = {this.props.post}/>
                 </div>

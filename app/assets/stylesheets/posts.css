@@ -222,3 +222,15 @@
     align-items: flex-end;
 }
 
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.likes-count {
+    font-size: 70%;
+    font-weight: bold;
+    color: grey;
+}
+
