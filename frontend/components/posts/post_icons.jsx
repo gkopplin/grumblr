@@ -1,6 +1,7 @@
 import React from 'react';
 import {openModal} from '../../actions/modal_actions';
 import {connect} from 'react-redux';
+import ProfilePic from './profile_picture';
 
 class PostIcons extends React.Component {
 
@@ -13,7 +14,7 @@ class PostIcons extends React.Component {
         return (
             <div className="post-container">
                 <div className="profile-container">
-                    <img src={this.props.currentUser.profilePic} className="profile-pic" />
+                    <ProfilePic username={this.props.currentUser.username} />
                 </div>
                 <div className="post-icons">
                     <div onClick={() => this.props.openModal("create")}>

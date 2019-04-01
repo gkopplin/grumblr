@@ -2,6 +2,7 @@ import React from 'react';
 import SettingsIcon from './post_form/settings_icon';
 import SettingsContainer from './post_form/settings_container';
 import {Link} from 'react-router-dom';
+import ProfilePic from './profile_picture';
 
 
 class PostItem extends React.Component{ 
@@ -24,7 +25,7 @@ class PostItem extends React.Component{
                 <div className="profile-container">
                 
                     <Link to={this.props.page === 'dashboard' ? `users/${this.props.author.id}` : `${this.props.author.id}`}>
-                        <img src={this.props.author.profilePic} className="profile-pic"/>
+                        <ProfilePic username = {this.props.author.username}/>
                     </Link>
                 </div>
                 <div className="post-item">
