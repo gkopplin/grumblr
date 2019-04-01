@@ -31,19 +31,17 @@ class Api::PostsController < ApplicationController
         @posts = Post.all
         @users = User.all
 
-        if params[:page] == "profile" 
+        if params[:search]
+            @users = User.where("username ILIKE ?", "%#{params[:search]}%")
+            ids = @users.map {|user| user.id}
+            @posts = Post.where('author_id IN (?)', ids)
+
+        elsif params[:page] == "profile" 
             @posts = Post.where(posts: {author_id: params[:userId]})
             @users = User.where(id: params[:userId])
         end
 
-        
-        # if params[:page] == "dashboard" 
-        #     @posts = Post.where.not(posts: {author_id: current_user.id}).order('updated_at DESC')
-        #     @users = User.where.not(id: current_user.id)
-        # elsif params[:page] == "profile" 
-        #     @posts = Post.where(posts: {author_id: params[:userId]}).order('updated_at DESC')
-        #     @users = User.where(id: params[:userId])
-        # end
+        render :index
     end
 
     private
