@@ -4,7 +4,7 @@ export default props => {
     switch(props.username) {
         case 'Demo User':
             return(
-                <img src="https://s3.amazonaws.com/grumblr-seeds/monkey.jpg" className="profile-pic"/>
+                <img src="https://s3.amazonaws.com/grumblr-seeds/monkey.jpg" className={props.dropdown ? "dropdown-picture" : "profile-pic"}/>
             );
         case 'Seed Data User':
             return (

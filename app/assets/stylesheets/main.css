@@ -118,9 +118,12 @@ svg:hover #home, svg:hover #profile {
 }
 
 #posts-link, #followers-link {
-    text-indent: 20%;
+    text-indent: 25%;
 }
 
+#posts-link {
+    margin-top: 0;
+}
 
 main {
     display: flex;
@@ -136,4 +139,17 @@ main {
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
+}
+
+.dropdown-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.dropdown-username {
+    font-weight: bold;
+    vertical-align: center;
+    margin-left: 8px;
 }

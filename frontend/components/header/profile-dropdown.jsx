@@ -4,6 +4,7 @@ import { logout } from '../../actions/session_actions';
 import LikeIcon from './like-icon';
 import FollowingIcon from './following-icon';
 import {Link} from 'react-router-dom';
+import ProfilePic from '../posts/profile_picture';
 
 export const ProfileDropdown = (props) => {
     return (
@@ -18,8 +19,8 @@ export const ProfileDropdown = (props) => {
                 <Link to={props.page === 'dashboard' ? `users/${props.currentUser.id}` : `${props.currentUser.id}`}
                      className="current-user"
                      onClick={() => props.toggleDropdown()}>
-                    <img src={window.profilePic} className="current-user-pic"/>
-                    <h3>{props.currentUser.username}</h3>
+                    <ProfilePic username={props.currentUser.username} dropdown={true}/>
+                    <p className="dropdown-username">{props.currentUser.username}</p>
                 </Link>
                 <a id="posts-link">Posts</a>
                 <a id="followers-link">Followers</a>
