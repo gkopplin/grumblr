@@ -22,7 +22,7 @@ class Search extends React.Component {
     handleInput(e) {
         this.setState({search: e.target.value});
         if (e.target.value) {
-            this.props.fetchSearchResults(this.state.search);
+            this.props.fetchSearchResults(e.target.value);
             this.setState({showResults: true});
         }
     }

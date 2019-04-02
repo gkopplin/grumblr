@@ -1,5 +1,4 @@
-import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
-import merge from 'lodash/merge';
+import { RECEIVE_SEARCH_RESULTS, REMOVE_SEARCH_RESULTS } from '../actions/search_actions';
 
 export default (state={}, action) => {
     const oldState = Object.freeze(state);
@@ -7,8 +6,7 @@ export default (state={}, action) => {
     
     switch(action.type) {
         case RECEIVE_SEARCH_RESULTS:
-            newState = merge({}, oldState, action.postsResponse);
-            return newState;
+            return action.postsResponse;
         default:
             return oldState;
     }
