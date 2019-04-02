@@ -35,7 +35,7 @@ class Search extends React.Component {
         });
 
         if (this.props.users !== prevProps.users &&
-                this.showResults) {
+                this.state.showResults) {
             this.setState({users: this.props.users});
         }
 
@@ -55,7 +55,7 @@ class Search extends React.Component {
 
 const msp = state => {
     return {
-        users: Object.values(state.entities.users)
+        users: state.ui.search.authors ? Object.values(state.ui.search.authors) : []
     }
 }
 
