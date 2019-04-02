@@ -1,20 +1,24 @@
 import React from 'react';
 import SettingsIcon from './post_form/settings_icon';
-import SettingsContainer from './post_form/settings_container';
 import {Link} from 'react-router-dom';
 import ProfilePic from './profile_picture';
 import LikeIcon from '../header/like-icon';
+import ReactDOM from 'react-dom';
 
 class PostItem extends React.Component{ 
     constructor(props) {
         super(props);
         this.state = { 
             ownPost: this.props.currentUser === this.props.post.author_id,
-            showSettings: false,
-            liked: false
+            liked: false,
+            position: 0
         };
-        this.togglePostSettings = this.togglePostSettings.bind(this);
         this.toggleLike = this.toggleLike.bind(this);
+    }
+
+    componentDidMount () {
+        const element = ReactDOM.findDOMNode(this);
+        this.setState({position: element.offsetTop});
     }
 
     toggleLike () {
@@ -26,21 +30,6 @@ class PostItem extends React.Component{
             this.props.createLike({ user_id: this.props.currentUser, post_id: this.props.post.id });
             this.setState({liked: true});
         }
-    }
-
-    togglePostSettings () {
-        this.setState({showSettings: this.state.showSettings ? false : true});
-    }
-
-    componentDidUpdate() {
-        document.addEventListener("click", (e) => {
-            if (e.target.className !== "settings-container" &&
-                e.target.className !== "settings-icon-container" &&
-                e.target.id !== "settings-icon" && 
-                e.target.className !== "settings-icon") {
-                this.setState({ showSettings: false });
-            }
-        });
     }
 
     render() {
@@ -63,10 +52,10 @@ class PostItem extends React.Component{
                             <LikeIcon liked={this.state.liked} ownPost={this.state.ownPost}/>
                         </div>
                         <div className={this.state.ownPost ? "settings-icon-container" : "hidden"}>
-                            <SettingsIcon ownPost = {this.state.ownPost} togglePostSettings={this.togglePostSettings}/>
+                            <SettingsIcon ownPost = {this.state.ownPost} position={this.state.position}/>
                         </div>
                     </div>
-                    <SettingsContainer showSettings = {this.state.showSettings} post = {this.props.post}/>
+                    {/* <SettingsContainer showSettings = {this.state.showSettings} post = {this.props.post}/> */}
                 </div>
             </div>
         );

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {closeModal} from '../actions/modal_actions';
 import ProfileDropdown from './header/profile-dropdown';
 import SearchResults from './header/search-results';
+import SettingsContainer from './posts/post_form/settings_container';
 
 class Modal extends React.Component {
     constructor(props){
@@ -29,6 +30,8 @@ class Modal extends React.Component {
                 return this.setState({ component: <ProfileDropdown /> });
             case "search-results":
                 return this.setState({ component: <SearchResults /> });
+            case "settings":    
+                return this.setState({ component: <SettingsContainer position={this.props.position}/> });
             default:
                 return this.setState({ component: null });
         }
@@ -49,7 +52,8 @@ class Modal extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        modal: state.ui.modal.name
+        modal: state.ui.modal.name,
+        position: state.ui.modal.data ? state.ui.modal.data.position : 0
     };
 };
 
