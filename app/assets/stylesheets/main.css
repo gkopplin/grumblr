@@ -163,11 +163,11 @@ main {
     flex-direction: column;
     background: white;
     position: absolute;
-    top: 50px;
-    left: 50px;
+    top: 60px;
+    left: 55px;
     border-radius: 5px;
     padding: 8px;
-    width: 223%;
+    width: 68%;
 }
 
 .search-results > a {

@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import SearchResults from './search-results';
 import {fetchSearchResults} from '../../actions/search_actions';
 import {openModal, closeModal} from '../../actions/modal_actions';
 
@@ -19,7 +18,7 @@ class Search extends React.Component {
         this.setState({search: e.target.value});
         if (e.target.value) {
             this.props.fetchSearchResults(e.target.value);
-            this.props.openModal("search-results");
+            this.props.openModal("search-results", {users: this.state.users});
         }
     }
 
@@ -67,7 +66,7 @@ const msp = state => {
 const mdp = dispatch => {
     return {
         fetchSearchResults: (search) => dispatch(fetchSearchResults(search)),
-        openModal: (modal) => dispatch(openModal(modal)),
+        openModal: (modal, data) => dispatch(openModal(modal, data)),
         closeModal: () => dispatch(closeModal())
     }
 }

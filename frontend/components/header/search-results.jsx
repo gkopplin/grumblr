@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import ProfilePic from '../posts/profile_picture';
+import { connect } from 'react-redux';
 
-export default props => {
+const SearchResults = props => {
     const results = props.users.map(user => {
         return <Link to={props.page === 'dashboard' ? `users/${user.id}` : `${user.id}`} 
                      key={user.id}
@@ -19,5 +20,12 @@ export default props => {
             {results}
         </ul>
     );
-    
 }
+
+const msp = state => {
+    return {
+        users: state.ui.search.authors ? Object.values(state.ui.search.authors) : []
+    };
+};
+
+export default connect(msp)(SearchResults);
