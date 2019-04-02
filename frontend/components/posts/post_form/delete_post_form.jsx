@@ -30,7 +30,7 @@ const deletePostForm = props => {
 
 const msp = state => {
     return {
-        post: state.ui.modal.post,
+        post: state.ui.modal.data.post,
         errors: state.errors.posts
     }
 }

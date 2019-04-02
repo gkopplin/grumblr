@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {closeModal} from '../actions/modal_actions';
 import ProfileDropdown from './header/profile-dropdown';
-
+import SearchResults from './header/search-results';
 
 class Modal extends React.Component {
     constructor(props){
@@ -27,6 +27,8 @@ class Modal extends React.Component {
         switch (this.props.modal) {
             case "profile-dropdown":
                 return this.setState({ component: <ProfileDropdown /> });
+            case "search-results":
+                return this.setState({ component: <SearchResults /> });
             default:
                 return this.setState({ component: null });
         }
@@ -47,7 +49,7 @@ class Modal extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        modal: state.ui.modal.modal
+        modal: state.ui.modal.name
     };
 };
 

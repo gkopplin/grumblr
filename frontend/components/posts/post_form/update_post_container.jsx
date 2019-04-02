@@ -26,7 +26,7 @@ const msp = (state) => {
     return {
         author: state.entities.users[state.session.currentUser],
         formType: "update",
-        post: state.ui.modal.post,
+        post: state.ui.modal.data.post,
         errors: state.errors.posts
     };
 };

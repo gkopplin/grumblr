@@ -15,7 +15,7 @@ export default props => {
                 </div>
                 </Link>})
     return (
-        <ul className={props.showResults ? 'search-results' : 'hidden'}>
+        <ul className='search-results'>
             {results}
         </ul>
     );
