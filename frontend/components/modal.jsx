@@ -1,12 +1,10 @@
 import React from 'react';
-import UpdatePostForm from './post_form/update_post_container';
-import CreatePostForm from './post_form/create_post_container';
-import DeletePostForm from './post_form/delete_post_form';
 import {connect} from 'react-redux';
-import {closeModal} from '../../actions/modal_actions';
+import {closeModal} from '../actions/modal_actions';
+import ProfileDropdown from './header/profile-dropdown';
 
 
-class PostModal extends React.Component {
+class Modal extends React.Component {
     constructor(props){
         super(props);
         this.state = {component: null};
@@ -27,22 +25,17 @@ class PostModal extends React.Component {
             return this.setState({component: null});
         }
         switch (this.props.modal) {
-            case 'create':
-                return this.setState({ component: <CreatePostForm />});
-            case 'update':
-                return this.setState({ component: <UpdatePostForm/> });
-            case 'delete':
-                return this.setState({component: <DeletePostForm />});
+            case "profile-dropdown":
+                return this.setState({ component: <ProfileDropdown /> });
             default:
                 return this.setState({ component: null });
-
         }
     }
 
     render() {
         return (
-            <div className={`post-modal-background ${this.state.component ? "": "hidden"}`} onClick={this.props.closeModal}>
-                <div className="post-modal-child" onClick={e => e.stopPropagation()}>
+            <div className={`modal-background ${this.state.component ? "": "hidden"}`} onClick={this.props.closeModal}>
+                <div className="modal-child" onClick={e => e.stopPropagation()}>
                     {this.state.component}
                 </div>
             </div>
@@ -64,4 +57,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

@@ -5,10 +5,11 @@ import LikeIcon from './like-icon';
 import FollowingIcon from './following-icon';
 import {Link} from 'react-router-dom';
 import ProfilePic from '../posts/profile_picture';
+import {closeModal} from '../../actions/modal_actions';
 
 export const ProfileDropdown = (props) => {
     return (
-        <div className={`profile-dropdown ${props.showDropdown ? '' : 'hidden'}`}>
+        <div className='profile-dropdown'>
             <span>
                 Account
                 <button onClick={props.logout} id="logout-link">Log Out</button>
@@ -18,7 +19,7 @@ export const ProfileDropdown = (props) => {
             <span>Grumblrs</span>
                 <Link to={props.page === 'dashboard' ? `users/${props.currentUser.id}` : `${props.currentUser.id}`}
                      className="current-user"
-                     onClick={() => props.toggleDropdown()}>
+                     onClick={() => props.closeModal()}>
                     <ProfilePic username={props.currentUser.username} small={true}/>
                     <p className="dropdown-username">{props.currentUser.username}</p>
                 </Link>
@@ -37,7 +38,8 @@ const msp = state => {
 
 const mdp = dispatch => {
     return {
-        logout: () => dispatch(logout())
+        logout: () => dispatch(logout()),
+        closeModal: () => dispatch(closeModal())
     };
 };
 

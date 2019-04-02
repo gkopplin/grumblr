@@ -67,7 +67,7 @@
     color: black;
 }
 
-.modal-background {
+.post-modal-background {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -77,13 +77,22 @@
   z-index: 10;
 }
 
-.modal-child {
+.post-modal-child {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   border-radius: 5px;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
 }
 
 .post-form-container {

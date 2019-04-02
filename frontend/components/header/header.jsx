@@ -1,7 +1,6 @@
 import React from 'react';
 import HomeIcon from './home-icon';
 import ProfileIcon from './profile-icon';
-import ProfileDropdown from './profile-dropdown';
 import Search from './search';
 import {Link} from 'react-router-dom';
 
@@ -10,12 +9,12 @@ class Header extends React.Component {
     constructor(props){
         super(props);
         this.state = { showDropdown: this.props.showDropdown, loggedIn: this.props.loggedIn, formType: this.props.formType};
-        this.toggleDropdown = this.toggleDropdown.bind(this);
+        // this.toggleDropdown = this.toggleDropdown.bind(this);
     }
 
-    toggleDropdown () {
-        this.setState({showDropdown: this.state.showDropdown ? false : true});
-    }
+    // toggleDropdown () {
+    //     this.setState({showDropdown: this.state.showDropdown ? false : true});
+    // }
 
     componentDidUpdate () {
         document.addEventListener("click", (e) => {
@@ -40,11 +39,12 @@ class Header extends React.Component {
                         <Link to="/">
                             <HomeIcon />
                         </Link>
-                        <ProfileIcon toggleDropdown = {this.toggleDropdown}/>
+                        <ProfileIcon/>
                     </nav>
-                    <ProfileDropdown showDropdown = {this.state.showDropdown} 
+
+                    {/* <ProfileDropdown showDropdown = {this.state.showDropdown} 
                         page = {this.props.page} 
-                        toggleDropdown = {this.toggleDropdown}/>
+                        toggleDropdown = {this.toggleDropdown}/> */}
     
                 </header>
             );

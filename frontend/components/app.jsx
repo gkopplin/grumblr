@@ -6,12 +6,14 @@ import { Switch } from 'react-router-dom';
 import LogInFormContainer from './session_form/log_in_form_container';
 import SignUpFormContainer from './session_form/sign_up_form_container';
 import PostModal from './posts/post_modal';
+import Modal from './modal';
 import Profile from './profile';
 
 const App = () => {
     return (
         <div className="app">
             <PostModal />
+            <Modal />
             <Switch>
                 <AuthRoute exact path="/" component={Splash} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
