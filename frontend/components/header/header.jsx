@@ -2,6 +2,7 @@ import React from 'react';
 import HomeIcon from './home-icon';
 import ProfileIcon from './profile-icon';
 import ProfileDropdown from './profile-dropdown';
+import Search from './search';
 import {Link} from 'react-router-dom';
 
 class Header extends React.Component {
@@ -32,6 +33,7 @@ class Header extends React.Component {
                     <Link to="/">
                         <img src={window.smallLogo} className="small-logo" />
                     </Link>
+                    <Search/>
                     <nav className="main-nav">
                         <Link to="/">
                             <HomeIcon />
