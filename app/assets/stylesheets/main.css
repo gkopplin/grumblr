@@ -157,3 +157,8 @@ main {
     vertical-align: center;
     margin-left: 8px;
 }
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+}

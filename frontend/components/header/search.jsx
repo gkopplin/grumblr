@@ -13,6 +13,7 @@ class Search extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
+        this.clearSearch = this.clearSearch.bind(this);
     }
 
     handleSubmit (e) {
@@ -41,13 +42,20 @@ class Search extends React.Component {
 
     }
 
+    clearSearch () {
+        this.setState({search: ""});
+    }
+
     render () {
         return (
             <>
             <form onSubmit={this.handleSubmit} className="search-bar">
                 <input type="text" onChange={this.handleInput} value={this.state.search} placeholder="Search Grumblr"/>
             </form>
-            <SearchResults showResults = {this.state.showResults} users = {this.state.users} page = {this.props.page}/>
+            <SearchResults showResults = {this.state.showResults} 
+                           users = {this.state.users} 
+                           page = {this.props.page}
+                           clearSearch = {this.clearSearch}/>
             </>
         );
     }
