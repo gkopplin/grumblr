@@ -8,7 +8,7 @@ class SettingsContainer extends React.Component {
         const element = ReactDOM.findDOMNode(this);
         element.style.position = 'absolute';
         element.style.top = String(this.props.position+65)+'px';
-        element.style.left = "120px";
+        element.style.left = "32%";
 
     }
     
@@ -22,10 +22,16 @@ class SettingsContainer extends React.Component {
     }
 };
 
+const msp = state => {
+    return {
+        post: state.ui.modal.data.post
+    };
+};
+
 const mdp = dispatch => {
     return {
         openModal: (modal, post) => dispatch(openModal(modal, post))
     };
 };
 
-export default connect(null, mdp)(SettingsContainer);
+export default connect(msp, mdp)(SettingsContainer);

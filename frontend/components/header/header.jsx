@@ -16,14 +16,14 @@ class Header extends React.Component {
     //     this.setState({showDropdown: this.state.showDropdown ? false : true});
     // }
 
-    componentDidUpdate () {
-        document.addEventListener("click", (e) => {
-            if (e.target.id !== "profile" &&
-                e.target.className !== "profile") {
-                this.setState({ showDropdown: false });
-            }
-        });
-    }
+    // componentDidUpdate () {
+    //     document.addEventListener("click", (e) => {
+    //         if (e.target.id !== "profile" &&
+    //             e.target.className !== "profile") {
+    //             this.setState({ showDropdown: false });
+    //         }
+    //     });
+    // }
 
     render () {
         if (this.state.loggedIn) {
@@ -39,7 +39,7 @@ class Header extends React.Component {
                         <Link to="/">
                             <HomeIcon />
                         </Link>
-                        <ProfileIcon/>
+                        <ProfileIcon page = {this.props.page}/>
                     </nav>
 
                     {/* <ProfileDropdown showDropdown = {this.state.showDropdown} 

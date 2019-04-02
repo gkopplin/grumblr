@@ -32,7 +32,8 @@ export const ProfileDropdown = (props) => {
 
 const msp = state => {
     return {
-        currentUser: state.entities.users[state.session.currentUser]
+        currentUser: state.entities.users[state.session.currentUser],
+        page: state.ui.modal.data ? state.ui.modal.data.page : ""
     };
 };
 

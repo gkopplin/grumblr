@@ -18,17 +18,11 @@ class Search extends React.Component {
         this.setState({search: e.target.value});
         if (e.target.value) {
             this.props.fetchSearchResults(e.target.value);
-            this.props.openModal("search-results", {users: this.state.users});
+            this.props.openModal("search-results", {users: this.state.users, page: this.props.page, clearSearch: this.clearSearch});
         }
     }
 
     componentDidUpdate(prevProps) {
-        // document.addEventListener("click", e => {
-        //     if (e.target.className !== "search-bar") {
-        //         this.props.closeModal();
-        //     }
-        // });
-
         if (this.props.users !== prevProps.users &&
                 this.state.search !== "") {
             this.setState({users: this.props.users});
@@ -38,21 +32,18 @@ class Search extends React.Component {
 
     clearSearch () {
         this.setState({search: ""});
+        this.props.closeModal();
+
     }
 
     render () {
         return (
-            <>
             <form onSubmit={this.handleSubmit} className="search-form">
                 <input type="text" className="search-bar"
                                    onChange={this.handleInput} 
                                    value={this.state.search} 
                                    placeholder="Search Grumblr"/>
             </form>
-            {/* <SearchResults users = {this.state.users} 
-                           page = {this.props.page}
-                           clearSearch = {this.clearSearch}/> */}
-            </>
         );
     }
 }

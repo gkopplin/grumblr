@@ -24,8 +24,12 @@ const SearchResults = props => {
 
 const msp = state => {
     return {
-        users: state.ui.search.authors ? Object.values(state.ui.search.authors) : []
+        users: state.ui.search.authors ? Object.values(state.ui.search.authors) : [],
+        page: state.ui.modal.data.page,
+        clearSearch: state.ui.modal.data.clearSearch
     };
 };
+
+
 
 export default connect(msp)(SearchResults);

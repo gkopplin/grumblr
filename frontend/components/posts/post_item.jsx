@@ -52,10 +52,9 @@ class PostItem extends React.Component{
                             <LikeIcon liked={this.state.liked} ownPost={this.state.ownPost}/>
                         </div>
                         <div className={this.state.ownPost ? "settings-icon-container" : "hidden"}>
-                            <SettingsIcon ownPost = {this.state.ownPost} position={this.state.position}/>
+                            <SettingsIcon ownPost = {this.state.ownPost} position={this.state.position} post={this.props.post}/>
                         </div>
                     </div>
-                    {/* <SettingsContainer showSettings = {this.state.showSettings} post = {this.props.post}/> */}
                 </div>
             </div>
         );
