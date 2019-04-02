@@ -28,17 +28,16 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        @posts = Post.all
-        @users = User.all
-
         if params[:search]
             @users = User.where("username ILIKE ?", "%#{params[:search]}%")
             ids = @users.map {|user| user.id}
-            @posts = Post.where('author_id IN (?)', ids)
 
         elsif params[:page] == "profile" 
             @posts = Post.where(posts: {author_id: params[:userId]})
             @users = User.where(id: params[:userId])
+        else
+            @posts = Post.all
+            @users = User.all
         end
 
         render :index
