@@ -31,6 +31,7 @@ class Api::PostsController < ApplicationController
         if params[:search]
             @users = User.where("username ILIKE ?", "%#{params[:search]}%")
             ids = @users.map {|user| user.id}
+            @posts = Post.where('author_id IN (?)', ids)
 
         elsif params[:page] == "profile" 
             @posts = Post.where(posts: {author_id: params[:userId]})
@@ -39,8 +40,6 @@ class Api::PostsController < ApplicationController
             @posts = Post.all
             @users = User.all
         end
-
-        render :index
     end
 
     private

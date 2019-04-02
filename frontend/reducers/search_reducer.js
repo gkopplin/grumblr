@@ -1,4 +1,4 @@
-import { RECEIVE_SEARCH_RESULTS } from '../actions/session_actions';
+import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 import merge from 'lodash/merge';
 
 export default (state={}, action) => {

@@ -1,6 +1,6 @@
 import * as ApiPostUtil from '../util/api_post_util';
 
-export default RECEIVE_SEARCH_RESULTS = "RECEIVE_SEARCH_RESULTS";
+export const RECEIVE_SEARCH_RESULTS = "RECEIVE_SEARCH_RESULTS";
 
 export const fetchSearchResults = search => dispatch => {
     return ApiPostUtil.fetchPosts(null, null, search)

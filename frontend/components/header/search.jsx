@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SearchResults from './search-results';
+import {fetchSearchResults} from '../../actions/search_actions';
 
 class Search extends React.Component {
     constructor(props){
@@ -21,7 +22,7 @@ class Search extends React.Component {
     handleInput(e) {
         this.setState({search: e.target.value});
         if (e.target.value) {
-            this.props.fetchPosts(null, null, this.state.search);
+            this.props.fetchSearchResults(this.state.search);
             this.setState({showResults: true});
         }
     }
@@ -60,7 +61,7 @@ const msp = state => {
 
 const mdp = dispatch => {
     return {
-        fetchPosts: (page, userId, search) => dispatch(fetchPosts(page, userId, search))
+        fetchSearchResults: (search) => dispatch(fetchSearchResults(search))
     }
 }
 
