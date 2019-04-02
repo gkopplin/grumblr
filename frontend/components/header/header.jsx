@@ -30,10 +30,12 @@ class Header extends React.Component {
         if (this.state.loggedIn) {
             return (
                 <header>
-                    <Link to="/">
-                        <img src={window.smallLogo} className="small-logo" />
-                    </Link>
-                    <Search page = {this.props.page}/>
+                    <div className="header-left">
+                        <Link to="/">
+                            <img src={window.smallLogo} className="small-logo" />
+                        </Link>
+                        <Search page = {this.props.page}/>
+                    </div>
                     <nav className="main-nav">
                         <Link to="/">
                             <HomeIcon />

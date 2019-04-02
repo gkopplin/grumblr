@@ -41,8 +41,8 @@ ul {
 }
 
 .small-logo {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 
 svg {
@@ -145,7 +145,7 @@ main {
     justify-content: flex-end;
 }
 
-.dropdown-picture {
+.small-picture {
     width: 40px;
     height: 40px;
     border-radius: 5px;
@@ -161,4 +161,48 @@ main {
 .search-results {
     display: flex;
     flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    border-radius: 5px;
+    padding: 8px;
+    width: 223%;
+}
+
+.search-results > a {
+    color: black;
+    font-size: 80%;
+}
+
+.search-bar {
+    background: #21364F;
+    color: whitesmoke;
+    border: none;
+    padding: 12px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 80%;
+    width: 270%;
+}
+
+.search-bar::placeholder {
+    color: whitesmoke;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    position: relative;
+}
+
+.user-result {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+}
+
+.user-result > span {
+    line-height: 45px;
 }

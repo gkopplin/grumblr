@@ -19,7 +19,7 @@ export const ProfileDropdown = (props) => {
                 <Link to={props.page === 'dashboard' ? `users/${props.currentUser.id}` : `${props.currentUser.id}`}
                      className="current-user"
                      onClick={() => props.toggleDropdown()}>
-                    <ProfilePic username={props.currentUser.username} dropdown={true}/>
+                    <ProfilePic username={props.currentUser.username} small={true}/>
                     <p className="dropdown-username">{props.currentUser.username}</p>
                 </Link>
                 <a id="posts-link">Posts</a>
