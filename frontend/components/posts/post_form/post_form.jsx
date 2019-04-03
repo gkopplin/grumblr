@@ -1,4 +1,5 @@
 import React from 'react';
+import NewPhotoIcon from './new_photo_icon';
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -20,6 +21,17 @@ class PostForm extends React.Component {
             imageFile: null,
             imageUrl: null
         };
+    }
+
+    componentDidMount () {
+        if (this.props.post.post_type === "photo") {
+
+            const fileButton = document.getElementById('file-button');
+            const fileInput = document.getElementById('file-input');
+            fileButton.addEventListener('click', () => {
+                fileInput.click();
+            });
+        }
     }
 
     handleInput(field) {
@@ -89,7 +101,13 @@ class PostForm extends React.Component {
                     <div className="post-form-container">
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
-                            <input type="file" onChange={this.handleFile} />
+                            <div className="file-input-container">
+                                <div id="file-button">
+                                    <NewPhotoIcon />
+                                    <span>Upload photo</span>
+                                </div>
+                                <input type="file" onChange={this.handleFile} id="file-input"/>
+                            </div>
                             <img src={this.state.imageUrl} />
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
@@ -134,7 +152,13 @@ class PostForm extends React.Component {
                     <div className="post-form-container">
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
-                            <input type="file" onChange={this.handleFile}/>
+                            <div className="file-input-container">
+                                <div id="file-button">
+                                    <NewPhotoIcon />
+                                    <span>Upload photo</span>
+                                </div>
+                                <input type="file" onChange={this.handleFile} id="file-input" />
+                            </div>
                             <img src={this.state.imageUrl}/>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>

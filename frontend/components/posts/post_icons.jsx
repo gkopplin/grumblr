@@ -3,6 +3,7 @@ import {openModal} from '../../actions/modal_actions';
 import {connect} from 'react-redux';
 import ProfilePic from './profile_picture';
 import {Link} from 'react-router-dom';
+import PhotoIcon from './post_form/photo_icon';
 
 class PostIcons extends React.Component {
 
@@ -26,7 +27,7 @@ class PostIcons extends React.Component {
                         <span>Text</span>
                     </div>
                     <div onClick={() => this.props.openModal("create", { post: { post_type: "photo", author_id: this.props.currentUser.id } })}>
-                        <span className="text-icon">tbd</span>
+                        <PhotoIcon />
                         <span>Photo</span>
                     </div>
                     <div>
