@@ -14,9 +14,10 @@ class PostForm extends React.Component {
         // };
         this.state = {
             post_type: "text",
-            content: null,
+            content: "default",
             author_id: this.props.author.id,
-            imageFile: null
+            imageFile: null,
+            imageUrl: null
         };
     }
 
@@ -44,10 +45,15 @@ class PostForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-            formData.append('post[content]', "a");
-            formData.append('post[author_id]', this.state.author_id);
-            formData.append('post[post_type]', this.state.post_type);
+        formData.append('post[content]', this.state.content);
+        formData.append('post[author_id]', this.state.author_id);
+        formData.append('post[post_type]', this.state.post_type);
+
+        if (this.state.imageFile) {
             formData.append('post[photo]', this.state.imageFile);
+        }
+
+
         $.ajax({
             url: '/api/posts',
             method: 'POST',
@@ -61,12 +67,12 @@ class PostForm extends React.Component {
         const reader = new FileReader();
         const file = e.currentTarget.files[0];
         reader.onloadend = () =>
-            this.setState({ content: reader.result, imageFile: file });
+            this.setState({ imageUrl: reader.result, imageFile: file });
 
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            this.setState({ content: "", imageFile: null });
+            this.setState({ imageUrl: "", imageFile: null });
         }
         // why need imageFile?
     }
@@ -149,7 +155,7 @@ class PostForm extends React.Component {
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
                             <input type="file" onChange={this.handleFile}/>
-                            <img src={this.state.content}/>
+                            <img src={this.state.imageUrl}/>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
                                 <input type="submit" value="Post" onClick={this.handleSubmit} />
