@@ -3,7 +3,7 @@ import SettingsIcon from './post_form/settings_icon';
 import {Link} from 'react-router-dom';
 import ProfilePic from './profile_picture';
 import LikeIcon from '../header/like-icon';
-import ReactDOM from 'react-dom';
+import SettingsContainer from './post_form/settings_container';
 
 class PostItem extends React.Component{ 
     constructor(props) {
@@ -11,14 +11,23 @@ class PostItem extends React.Component{
         this.state = { 
             ownPost: this.props.currentUser === this.props.post.author_id,
             liked: false,
-            position: 0
+            showSettings: false
         };
         this.toggleLike = this.toggleLike.bind(this);
+        this.toggleSettings = this.toggleSettings.bind(this);
     }
 
-    componentDidMount () {
-        const element = ReactDOM.findDOMNode(this);
-        this.setState({position: element.offsetTop});
+    componentDidMount() {
+        document.addEventListener("click", (e) => {
+            if (e.target.className != "settings-icon" &&
+                       e.target.id != "settings-icon") {
+                this.setState({ showSettings: false });
+            }
+        });
+    }
+
+    toggleSettings() {
+        this.setState({ showSettings: this.state.showSettings ? false : true });
     }
 
     toggleLike () {
@@ -58,8 +67,9 @@ class PostItem extends React.Component{
                             <LikeIcon liked={this.state.liked} ownPost={this.state.ownPost}/>
                         </div>
                         <div className={this.state.ownPost ? "settings-icon-container" : "hidden"}>
-                            <SettingsIcon ownPost = {this.state.ownPost} position={this.state.position} post={this.props.post}/>
+                            <SettingsIcon ownPost = {this.state.ownPost} post={this.props.post} toggleSettings={this.toggleSettings}/>
                         </div>
+                        <SettingsContainer showSettings={this.state.showSettings} />
                     </div>
                 </div>
             </div>

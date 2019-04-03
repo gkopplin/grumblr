@@ -8,11 +8,16 @@ import ProfilePic from '../posts/profile_picture';
 import {closeModal} from '../../actions/modal_actions';
 
 export const ProfileDropdown = (props) => {
-    return (
-        <div className='profile-dropdown'>
+    if (props.currentUser) {
+
+        return (
+            <div className='profile-dropdown'>
             <span>
                 Account
-                <button onClick={props.logout} id="logout-link">Log Out</button>
+                <button onClick={() => {
+                    props.closeModal();
+                    props.logout(); } } 
+                    id="logout-link">Log Out</button>
             </span>
                 <a id="like-link"><LikeIcon ownPost={false}/> <p className="likes-text">Likes</p></a>
             <a id="following-link"><FollowingIcon /> <p className="following-text">Following</p></a>
@@ -25,9 +30,11 @@ export const ProfileDropdown = (props) => {
                 </Link>
                 <a id="posts-link">Posts</a>
                 <a id="followers-link">Followers</a>
-                
-        </div>
-    );
+                    
+            </div>
+        );
+    }
+    return null;
 };
 
 const msp = state => {
