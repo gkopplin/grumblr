@@ -44,8 +44,8 @@ export const fetchPost = (id) => dispatch => {
             );
 };
 
-export const updatePost = post => dispatch => {
-    return ApiPostUtil.updatePost(post)
+export const updatePost = (post, id) => dispatch => {
+    return ApiPostUtil.updatePost(post, id)
         .then(post => {
             dispatch(receivePost(post));
             dispatch(closeModal());

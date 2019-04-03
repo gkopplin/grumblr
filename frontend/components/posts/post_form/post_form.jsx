@@ -6,7 +6,14 @@ class PostForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
 
-        this.state = {
+        this.state = this.props.post ? {
+            id: this.props.post.id,
+            post_type: this.props.post.post_type,
+            content: this.props.post.content,
+            author_id: this.props.post.author_id,
+            imageFile: this.props.post.photo
+        } : {
+            id: null,
             post_type: "text",
             content: "default",
             author_id: this.props.author.id,
@@ -15,26 +22,11 @@ class PostForm extends React.Component {
         };
     }
 
-    componentDidMount () {
-        this.setState({
-            post_type: this.props.post.post_type,
-            content: this.props.post.content,
-            author_id: this.props.post.author_id,
-            imageFile: this.props.post.photo
-        });
-        
-    }
-
     handleInput(field) {
         return e => {
             this.setState({ [field]: e.target.value });
         };
     }
-
-    // handleSubmit(e) {
-    //     e.preventDefault();
-    //     this.props.processPost(this.state);
-    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -48,8 +40,7 @@ class PostForm extends React.Component {
             formData.append('post[photo]', this.state.imageFile);
         }
 
-        this.props.processPost(formData);
-        
+        this.props.processPost(formData, this.state.id);
     }
 
     handleFile(e) {
@@ -64,6 +55,7 @@ class PostForm extends React.Component {
             this.setState({ imageUrl: "", imageFile: null });
         }
         // why need imageFile?
+        
     }
 
     render () {
@@ -97,12 +89,11 @@ class PostForm extends React.Component {
                     <div className="post-form-container">
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
-                            <textarea type="text" value={this.state.content}
-                                onChange={this.handleInput("content")}
-                                className="text-box"></textarea>
+                            <input type="file" onChange={this.handleFile} />
+                            <img src={this.state.imageUrl} />
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
-                                <input type="submit" value="Save" onClick={this.handleSubmit} />
+                                <input type="submit" value="Post" onClick={this.handleSubmit} />
                             </div>
                         </form>
                         <ul className="errors">

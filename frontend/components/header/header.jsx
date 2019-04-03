@@ -10,7 +10,7 @@ class Header extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = { showDropdown: this.props.showDropdown, loggedIn: this.props.loggedIn, formType: this.props.formType};
+        this.state = { showDropdown: this.props.showDropdown, loggedIn: this.props.loggedIn, formType: this.props.formType, test: false};
     }
 
     componentDidMount () {

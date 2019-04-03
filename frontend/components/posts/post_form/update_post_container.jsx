@@ -33,7 +33,7 @@ const msp = (state) => {
 
 const mdp = dispatch => {
     return {
-        processPost: (post) => dispatch(updatePost(post)),
+        processPost: (post, id) => dispatch(updatePost(post, id)),
         closeModal: () => dispatch(closeModal())
     };
 };

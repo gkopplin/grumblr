@@ -9,12 +9,13 @@ export const createPost = formData => {
     });
 };
 
-export const updatePost = post => {
+export const updatePost = (formData, id) => {
     return $.ajax({
         method: 'patch',
-        url: `api/posts/${post.id}`,
-        data: {post,
-            page: "dashboard"}
+        url: `api/posts/${id}`,
+        data: formData,
+        contentType: false,
+        processData: false
     });
 };
 
