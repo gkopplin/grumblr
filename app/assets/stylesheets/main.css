@@ -134,6 +134,10 @@ main {
     justify-content: center;
 }
 
+.main-nav {
+    display: flex;
+}
+
 .hidden {
     display: none;
     z-index: -1;
@@ -205,4 +209,25 @@ main {
 
 .user-result > span {
     line-height: 45px;
+}
+
+.follow, .unfollow {
+    color: #444444;
+    background: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    font-size: 90%;
+    padding: 8px 12px 8px 12px;
+    cursor: pointer;
+}
+
+.follow:hover, .unfollow:hover {
+    color: grey;
+}
+
+.follow-container {
+    padding-top: 8px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
