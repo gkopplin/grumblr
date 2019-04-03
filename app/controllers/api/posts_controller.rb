@@ -36,6 +36,12 @@ class Api::PostsController < ApplicationController
         elsif params[:page] == "profile" 
             @posts = Post.with_attached_photo.where(posts: {author_id: params[:userId]})
             @users = User.where(id: params[:userId])
+        elsif params[:page] == "likes"  
+            likes = Like.where("user_id = ?", current_user.id)
+            post_ids = likes.map {|like| like.post_id}
+            @posts = Post.with_attached_photo.where('id IN (?)', post_ids)
+            user_ids = @posts.map {|post| post.author_id}
+            @users = User.where('id IN (?)', user_ids)
         else
             @posts = Post.with_attached_photo.all
             @users = User.all

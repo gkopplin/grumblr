@@ -24,4 +24,5 @@ Follow.create!([{follower_id: user_one.id, followed_id: user_two.id},
                 {follower_id: user_three.id, followed_id: user_two.id}])
 
 Like.create!({user_id: user_two.id, post_id: post_two.id})
+Like.create!({user_id: user_one.id, post_id: post_two.id})
     

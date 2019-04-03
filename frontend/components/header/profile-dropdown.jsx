@@ -19,7 +19,7 @@ export const ProfileDropdown = (props) => {
                     props.logout(); } } 
                     id="logout-link">Log Out</button>
             </span>
-                <Link to='/likes' id="like-link"><LikeIcon ownPost={false}/> <p className="likes-text">Likes</p></Link>
+                <Link to='/likes' id="like-link" onClick={() => props.closeModal()}><LikeIcon ownPost={false}/> <p className="likes-text">Likes</p></Link>
                 <a id="following-link"><FollowingIcon /> <p className="following-text">Following</p></a>
             <span>Grumblrs</span>
                 <Link to={props.page === 'dashboard' ? `users/${props.currentUser.id}` : `${props.currentUser.id}`}

@@ -6,7 +6,7 @@ export default (props) => {
     return (
         <>
             <Header page="likes" loggedIn={true}/>
-            <PostIndex page="likes"/>
+            <PostIndex page="likes" userId={null}/>
         </>
     );
 };
