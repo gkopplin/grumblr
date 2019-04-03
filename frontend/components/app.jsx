@@ -8,6 +8,7 @@ import SignUpFormContainer from './session_form/sign_up_form_container';
 import PostModal from './posts/post_modal';
 import Modal from './modal';
 import Profile from './profile';
+import Likes from './likes';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
             <Switch>
                 <AuthRoute exact path="/" component={Splash} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
+                <ProtectedRoute path="/likes" component={Likes} />
                 <AuthRoute exact path="/login" component={LogInFormContainer} />
                 <AuthRoute exact path="/signup" component={SignUpFormContainer} />
                 <ProtectedRoute exact path="/users/:userId" component={Profile} />
