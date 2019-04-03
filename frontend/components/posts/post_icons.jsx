@@ -21,11 +21,11 @@ class PostIcons extends React.Component {
                     </Link>
                 </div>
                 <div className="post-icons">
-                    <div onClick={() => this.props.openModal("create")}>
+                    <div onClick={() => this.props.openModal("create", {post: {post_type: "text", author_id: this.props.currentUser.id}})}>
                         <span className="text-icon">Aa</span>
                         <span>Text</span>
                     </div>
-                    <div>
+                    <div onClick={() => this.props.openModal("create", { post: { post_type: "photo", author_id: this.props.currentUser.id } })}>
                         <span className="text-icon">tbd</span>
                         <span>Photo</span>
                     </div>
@@ -57,7 +57,7 @@ class PostIcons extends React.Component {
 
 const mdp = dispatch => {
     return {
-        openModal: (modal) => dispatch(openModal(modal))
+        openModal: (modal, data) => dispatch(openModal(modal, data))
     }
 }
 

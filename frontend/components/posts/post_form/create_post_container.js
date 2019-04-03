@@ -8,6 +8,7 @@ const msp = state => {
     return {
         author: state.entities.users[state.session.currentUser],
         formType: "create",
+        post: state.ui.modal.data ? state.ui.modal.data.post: null,
         errors: state.errors.posts
     };
 };
