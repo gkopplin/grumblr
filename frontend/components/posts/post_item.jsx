@@ -44,7 +44,12 @@ class PostItem extends React.Component{
                     <Link to={this.props.page === 'dashboard' ? `users/${this.props.author.id}` : `${this.props.author.id}`}>
                         <span className="post-author">{this.props.author.username}</span>
                     </Link>
-                    <div className="post-content">{this.props.post.content}</div>
+                    <div className="post-content">
+                        {this.props.post.imageUrl &&
+                            <img src={this.props.post.imageUrl}></img>
+                        }
+                        {this.props.post.content}
+                    </div>
 
                     <div className="post-footer">
                         <span className="likes-count">{`${this.props.likes.length} likes`}</span>
