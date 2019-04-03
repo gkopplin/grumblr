@@ -8,4 +8,6 @@ class Post < ApplicationRecord
     has_many :likes,
         class_name: :Like,
         foreign_key: :post_id
+
+    has_one_attached :photo
 end

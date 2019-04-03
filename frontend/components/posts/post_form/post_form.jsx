@@ -25,7 +25,7 @@ class PostForm extends React.Component {
             post_type: this.props.post.post_type,
             content: this.props.post.content,
             author_id: this.props.post.author_id,
-            imageFile: null
+            imageFile: this.props.post.photo
         });
         
     }
@@ -36,9 +36,25 @@ class PostForm extends React.Component {
         };
     }
 
+    // handleSubmit(e) {
+    //     e.preventDefault();
+    //     this.props.processPost(this.state);
+    // }
+
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processPost(this.state);
+        const formData = new FormData();
+            formData.append('post[content]', "a");
+            formData.append('post[author_id]', this.state.author_id);
+            formData.append('post[post_type]', this.state.post_type);
+            formData.append('post[photo]', this.state.imageFile);
+        $.ajax({
+            url: '/api/posts',
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false
+        });
     }
 
     handleFile(e) {
@@ -133,6 +149,7 @@ class PostForm extends React.Component {
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
                             <input type="file" onChange={this.handleFile}/>
+                            <img src={this.state.content}/>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
                                 <input type="submit" value="Post" onClick={this.handleSubmit} />
