@@ -6,12 +6,6 @@ class PostForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
 
-        // this.state = this.props.post ? this.props.post : {
-        //     post_type: "text",
-        //     content: null,
-        //     author_id: this.props.author.id,
-        //     imageFile: null
-        // };
         this.state = {
             post_type: "text",
             content: "default",
@@ -48,19 +42,14 @@ class PostForm extends React.Component {
         formData.append('post[content]', this.state.content);
         formData.append('post[author_id]', this.state.author_id);
         formData.append('post[post_type]', this.state.post_type);
+        formData.append('page', "dashboard");
 
         if (this.state.imageFile) {
             formData.append('post[photo]', this.state.imageFile);
         }
 
-
-        $.ajax({
-            url: '/api/posts',
-            method: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false
-        });
+        this.props.processPost(formData);
+        
     }
 
     handleFile(e) {

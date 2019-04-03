@@ -1,10 +1,11 @@
 
-export const createPost = post => {
+export const createPost = formData => {
     return $.ajax({
         method: 'post',
         url: 'api/posts',
-        data: {post,
-            page: "dashboard"}
+        data: formData,
+        contentType: false,
+        processData: false
     });
 };
 
