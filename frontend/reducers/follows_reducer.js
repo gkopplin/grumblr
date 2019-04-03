@@ -7,7 +7,7 @@ export default (state={}, action) => {
 
     switch(action.type) {
         case RECEIVE_FOLLOWERS:
-            newState = merge({}, oldState, {[action.followedId]: action.followers});
+            newState = Object.assign({}, oldState, {[action.followedId]: action.followers});
             return newState;
         default:
             return oldState;

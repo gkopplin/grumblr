@@ -3,27 +3,19 @@ import HomeIcon from './home-icon';
 import ProfileIcon from './profile-icon';
 import Search from './search';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {requestFollowers, deleteFollow, createFollow} from '../../actions/follow_actions';
 
 class Header extends React.Component {
 
     constructor(props){
         super(props);
         this.state = { showDropdown: this.props.showDropdown, loggedIn: this.props.loggedIn, formType: this.props.formType};
-        // this.toggleDropdown = this.toggleDropdown.bind(this);
     }
 
-    // toggleDropdown () {
-    //     this.setState({showDropdown: this.state.showDropdown ? false : true});
-    // }
-
-    // componentDidUpdate () {
-    //     document.addEventListener("click", (e) => {
-    //         if (e.target.id !== "profile" &&
-    //             e.target.className !== "profile") {
-    //             this.setState({ showDropdown: false });
-    //         }
-    //     });
-    // }
+    componentDidMount () {
+        this.props.requestFollowers(this.props.userId);
+    }
 
     render () {
         if (this.state.loggedIn) {
@@ -40,11 +32,16 @@ class Header extends React.Component {
                             <HomeIcon />
                         </Link>
                         <ProfileIcon page = {this.props.page}/>
+                        <div className={ (this.props.page === "profile" && this.props.currentUser !== this.props.userId) ? 'follow-container' : 'hidden'}>
+                            {this.props.followers.includes(this.props.currentUser) ?
+                                <button className="unfollow" onClick={() => {
+                                    this.props.deleteFollow(this.props.userId);
+                                    }
+                                }>Unfollow</button>:
+                                <button className="follow" onClick={() => this.props.createFollow({followed_id: this.props.userId, follower_id: this.props.currentUser})}>Follow</button>
+                            }
+                        </div>
                     </nav>
-
-                    {/* <ProfileDropdown showDropdown = {this.state.showDropdown} 
-                        page = {this.props.page} 
-                        toggleDropdown = {this.toggleDropdown}/> */}
     
                 </header>
             );
@@ -71,4 +68,20 @@ class Header extends React.Component {
 
 }
 
-export default Header;
+const msp = state => {
+    return {
+        currentUser: state.session.currentUser,
+        followers: Object.keys(state.entities.follows).length === 0 ? [] : Object.values(state.entities.follows)[0]
+    };
+};
+
+const mdp = dispatch => {
+    return {
+        requestFollowers: id => dispatch(requestFollowers(id)),
+        deleteFollow: id => dispatch(deleteFollow(id)),
+        createFollow: follow => dispatch(createFollow(follow))
+    };
+};
+
+
+export default connect(msp, mdp)(Header);

@@ -17,10 +17,22 @@ class Api::FollowsController < ApplicationController
             end
 
             render 'api/follows/index'
-            # redirect_to :index
         else
             render json: @follow.errors.full_messages, status: 422
         end
+    end
+
+    def destroy
+        @follow = Follow.where('follower_id = :current_user AND followed_id = :followed', current_user: current_user.id, followed: params[:followed_id])[0]
+        @follow.destroy
+
+        follows = Follow.where(followed_id: params[:followed_id])
+        @followers = []
+        follows.each do |follow|
+            @followers << follow.follower_id
+        end
+
+        render 'api/follows/index'
     end
 
     private

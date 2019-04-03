@@ -19,3 +19,8 @@ export const createFollow = follow => dispatch => {
     return ApiFollowUtil.createFollow(follow)
         .then(followers => dispatch(receiveFollowers(followers, follow.followed_id)));
 };
+
+export const deleteFollow = followedId => dispatch => {
+    return ApiFollowUtil.deleteFollow(followedId)
+        .then(followers => dispatch(receiveFollowers(followers, followedId)));
+}

@@ -13,3 +13,11 @@ export const createFollow = follow => {
         data: {follow}
     });
 };
+
+export const deleteFollow = followedId => {
+    return $.ajax({
+        method: 'delete',
+        url: `api/follows/${followedId}`,
+        data: { followed_id: followedId }
+    });
+};

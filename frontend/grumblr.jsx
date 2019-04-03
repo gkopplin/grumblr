@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
-import {fetchPosts} from './actions/post_actions';
+import * as ApiFollowUtil from './util/api_follow_util';
 
  
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.fetchPosts = fetchPosts;
+    window.ApiFollowUtil = ApiFollowUtil;
 
     const profilePics = document.getElementsByClassName("profile-container");
     window.onscroll = () => stickyPics(profilePics);
