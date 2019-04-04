@@ -30,6 +30,11 @@ class PostIcons extends React.Component {
                         <PhotoIcon />
                         <span>Photo</span>
                     </div>
+                    <div onClick={() => this.props.openModal("create", { post: { post_type: "video", author_id: this.props.currentUser.id } })}>
+                        {/* <VideoIcon /> */}
+                        <span className="text-icon">tbd</span>
+                        <span>Video</span>
+                    </div>
                     <div>
                         <span className="text-icon">tbd</span>
                         <span>Quote</span>
@@ -45,10 +50,6 @@ class PostIcons extends React.Component {
                     <div>
                         <span className="text-icon">tbd</span>
                         <span>Audio</span>
-                    </div>
-                    <div>
-                        <span className="text-icon">tbd</span>
-                        <span>Video</span>
                     </div>
                 </div>
             </div>

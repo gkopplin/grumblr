@@ -9,5 +9,5 @@ class Post < ApplicationRecord
         class_name: :Like,
         foreign_key: :post_id
 
-    has_one_attached :photo
+    has_one_attached :media
 end

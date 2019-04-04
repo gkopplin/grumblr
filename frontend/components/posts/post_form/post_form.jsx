@@ -1,5 +1,6 @@
 import React from 'react';
 import NewPhotoIcon from './new_photo_icon';
+import NewVideoIcon from './new_video_icon';
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class PostForm extends React.Component {
             post_type: this.props.post.post_type,
             content: this.props.post.content,
             author_id: this.props.post.author_id,
-            imageFile: this.props.post.photo
+            imageFile: this.props.post.media
         } : {
             id: null,
             post_type: "text",
@@ -24,7 +25,7 @@ class PostForm extends React.Component {
     }
 
     componentDidMount () {
-        if (this.props.post.post_type === "photo") {
+        if (this.props.post.post_type !== "text") {
 
             const fileButton = document.getElementById('file-button');
             const fileInput = document.getElementById('file-input');
@@ -49,7 +50,7 @@ class PostForm extends React.Component {
         formData.append('page', "dashboard");
 
         if (this.state.imageFile) {
-            formData.append('post[photo]', this.state.imageFile);
+            formData.append('post[media]', this.state.imageFile);
         }
 
         this.props.processPost(formData, this.state.id);
@@ -123,6 +124,33 @@ class PostForm extends React.Component {
                         </ul>
                     </div>
                 );
+            } else if (this.state.post_type === "video") {
+                return (
+                    <div className="post-form-container">
+                        <span className="post-author">{this.props.author.username}</span>
+                        <form className="post-form">
+                            <div className="file-input-container">
+                                <div id="file-button">
+                                    <NewVideoIcon />
+                                    <span>Upload video</span>
+                                </div>
+                                <input type="file" onChange={this.handleFile} id="file-input" />
+                            </div>
+                            <video src={this.state.mediaUrl}></video>
+                            <div className="post-form-buttons">
+                                <button onClick={() => this.props.closeModal()}>Close</button>
+                                <input type="submit" value="Post" onClick={this.handleSubmit} />
+                            </div>
+                        </form>
+                        <ul className="errors">
+                            {this.props.errors.map((error, i) => (
+                                <li key={`error-${i}`}>
+                                    {error}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                );
             }
         } else {
             if (this.state.post_type === "text") {
@@ -174,8 +202,35 @@ class PostForm extends React.Component {
                         </ul>
                     </div>
                 );
+            } else if (this.state.post_type === "video") {
+                return (
+                    <div className="post-form-container">
+                        <span className="post-author">{this.props.author.username}</span>
+                        <form className="post-form">
+                            <div className="file-input-container">
+                                <div id="file-button">
+                                    <NewVideoIcon />
+                                    <span>Upload video</span>
+                                </div>
+                                <input type="file" onChange={this.handleFile} id="file-input" />
+                            </div>
+                            <video src={this.state.mediaUrl}></video>
+                            <div className="post-form-buttons">
+                                <button onClick={() => this.props.closeModal()}>Close</button>
+                                <input type="submit" value="Post" onClick={this.handleSubmit} />
+                            </div>
+                        </form>
+                        <ul className="errors">
+                            {this.props.errors.map((error, i) => (
+                                <li key={`error-${i}`}>
+                                    {error}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                );
             }
-        }
+        } 
 
 
 
