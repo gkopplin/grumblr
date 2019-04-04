@@ -24,6 +24,11 @@ class PostItem extends React.Component{
                 this.setState({ showSettings: false });
             }
         });
+
+        this.setState({ liked: this.props.likes.some(like => {
+            return like.user_id === this.props.currentUser &&
+                like.post_id === this.props.post.id
+        })});
     }
 
     toggleSettings() {
@@ -32,7 +37,10 @@ class PostItem extends React.Component{
 
     toggleLike () {
         if (this.state.liked) {
-            const like = this.props.likes.filter(like => like.user_id === this.props.currentUser)[0];
+            const like = this.props.likes.filter(like => {
+                return like.user_id === this.props.currentUser &&
+                    like.post_id === this.props.post.id
+            })[0];
             this.props.deleteLike(like.id);
             this.setState({liked: false});
         } else {
