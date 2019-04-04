@@ -136,7 +136,9 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
-                            <video src={this.state.mediaUrl}></video>
+                            <video loop controls>
+                                <source src={this.state.mediaUrl}/>
+                            </video>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
                                 <input type="submit" value="Post" onClick={this.handleSubmit} />
@@ -214,7 +216,9 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
-                            <video src={this.state.mediaUrl}></video>
+                            <video loop controls>
+                                <source src={this.state.mediaUrl} />
+                            </video>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
                                 <input type="submit" value="Post" onClick={this.handleSubmit} />

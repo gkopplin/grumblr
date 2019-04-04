@@ -35,7 +35,7 @@ ul {
 }
 
 .errors {
-    margin-top: 5px;
+    margin-top: 10px;
     background: rgba(192,192,192,0.6);
     border-radius: 5px;
 }
