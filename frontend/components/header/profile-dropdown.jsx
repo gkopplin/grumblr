@@ -28,7 +28,7 @@ export const ProfileDropdown = (props) => {
                     <ProfilePic username={props.currentUser.username} small={true}/>
                     <p className="dropdown-username">{props.currentUser.username}</p>
                 </Link>
-                <Link to={`users/${props.currentUser}`} id="posts-link" onClick={() => props.closeModal()}>Posts</Link>
+                <Link to={props.page === 'profile' ? `${props.currentUser.id}` : `users/${props.currentUser.id}`} id="posts-link" onClick={() => props.closeModal()}>Posts</Link>
                 <Link to="/followers" id="followers-link" onClick={() => props.closeModal()}>Followers</Link>
                     
             </div>
