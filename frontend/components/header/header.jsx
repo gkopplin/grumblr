@@ -20,6 +20,8 @@ class Header extends React.Component {
     render () {
         if (this.state.loggedIn) {
             return (
+                <>
+                <div className="unfixed-header"></div>
                 <header>
                     <div className="header-left">
                         <Link to="/">
@@ -42,8 +44,8 @@ class Header extends React.Component {
                             }
                         </div>
                     </nav>
-    
                 </header>
+                </>
             );
         } else if (!this.state.formType) {
             return (

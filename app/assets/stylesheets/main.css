@@ -14,12 +14,15 @@ h1, h3 {
 }
 
 header {
+    background-color: #001835;
     border-bottom: #21364F solid 1px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
     z-index: 2;
 }
 
@@ -230,4 +233,8 @@ main {
     padding-top: 8px;
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.unfixed-header {
+    height: 64px;
 }

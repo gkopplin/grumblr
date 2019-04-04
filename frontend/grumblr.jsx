@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const stickyPics = profilePics => {
     for (let i = 0; i < profilePics.length; i++){
-        if (window.scrollY >= profilePics[i].offsetTop) {
+        if (window.scrollY >= profilePics[i].offsetTop -72) {
             profilePics[i].classList.remove("sticky-bottom");
             profilePics[i].firstElementChild.classList.add("sticky");
 
             if (i < profilePics.length - 1 &&
-                window.scrollY > profilePics[i + 1].offsetTop -90) {
+                window.scrollY > profilePics[i + 1].offsetTop -162) {
                 profilePics[i].firstElementChild.classList.remove("sticky");
                 profilePics[i].classList.add("sticky-bottom");
             }
