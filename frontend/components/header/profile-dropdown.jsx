@@ -22,14 +22,14 @@ export const ProfileDropdown = (props) => {
                 <Link to='/likes' id="like-link" onClick={() => props.closeModal()}><LikeIcon ownPost={false}/> <p className="likes-text">Likes</p></Link>
                 <Link to='/following' id="following-link" onClick={() => props.closeModal()}><FollowingIcon /> <p className="following-text">Following</p></Link>
             <span>Grumblrs</span>
-                <Link to={props.page === 'dashboard' ? `users/${props.currentUser.id}` : `${props.currentUser.id}`}
+                <Link to={props.page === 'profile' ? `${props.currentUser.id}` : `users/${props.currentUser.id}`}
                      className="current-user"
                      onClick={() => props.closeModal()}>
                     <ProfilePic username={props.currentUser.username} small={true}/>
                     <p className="dropdown-username">{props.currentUser.username}</p>
                 </Link>
-                <a id="posts-link">Posts</a>
-                <a id="followers-link">Followers</a>
+                <Link to={`users/${props.currentUser}`} id="posts-link" onClick={() => props.closeModal()}>Posts</Link>
+                <Link to="/followers" id="followers-link" onClick={() => props.closeModal()}>Followers</Link>
                     
             </div>
         );

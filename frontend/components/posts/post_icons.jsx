@@ -16,7 +16,7 @@ class PostIcons extends React.Component {
         return (
             <div className="post-container">
                 <div className="profile-container">
-                    <Link to={this.props.page === 'dashboard' ? `users/${this.props.currentUser.id}` : `${this.props.currentUser.id}`}>
+                    <Link to={this.props.page === 'profile' ? `${this.props.currentUser.id}` : `users/${this.props.currentUser.id}`}>
 
                         <ProfilePic username={this.props.currentUser.username} />
                     </Link>

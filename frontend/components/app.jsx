@@ -10,6 +10,7 @@ import Modal from './modal';
 import Profile from './profile';
 import Likes from './likes';
 import Following from './following';
+import Followers from './followers';
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
                 <ProtectedRoute path="/likes" component={Likes} />
                 <ProtectedRoute path="/following" component={Following} />
+                <ProtectedRoute path="/followers" component={Followers} />
                 <AuthRoute exact path="/login" component={LogInFormContainer} />
                 <AuthRoute exact path="/signup" component={SignUpFormContainer} />
                 <ProtectedRoute exact path="/users/:userId" component={Profile} />

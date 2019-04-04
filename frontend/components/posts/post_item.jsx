@@ -45,12 +45,12 @@ class PostItem extends React.Component{
         return (
             <div className="post-container">
                 <div className="profile-container">
-                    <Link to={this.props.page === 'dashboard' ? `users/${this.props.author.id}` : `${this.props.author.id}`}>
+                    <Link to={this.props.page === 'profile' ? `${this.props.author.id}` : `users/${this.props.author.id}`}>
                         <ProfilePic username = {this.props.author.username}/>
                     </Link>
                 </div>
                 <div className="post-item">
-                    <Link to={this.props.page === 'dashboard' ? `users/${this.props.author.id}` : `${this.props.author.id}`}>
+                    <Link to={this.props.page === 'profile' ? `${this.props.author.id}` : `users/${this.props.author.id}`}>
                         <span className="post-author">{this.props.author.username}</span>
                     </Link>
                     <div className="post-content">

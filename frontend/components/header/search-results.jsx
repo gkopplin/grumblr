@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const SearchResults = props => {
     const results = props.users.map(user => {
-        return <Link to={props.page === 'dashboard' ? `users/${user.id}` : `${user.id}`} 
+        return <Link to={props.page === 'profile' ? `${user.id}` : `users/${user.id}`} 
                      key={user.id}
                      onClick={() => props.clearSearch()}>
                 <div className="user-result">
