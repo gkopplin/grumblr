@@ -30,7 +30,8 @@ class PostForm extends React.Component {
     }
 
     componentDidMount () {
-        if (this.props.post.post_type !== "text") {
+        if (this.props.post &&
+            this.props.post.post_type !== "text") {
 
             const fileButton = document.getElementById('file-button');
             const fileInput = document.getElementById('file-input');

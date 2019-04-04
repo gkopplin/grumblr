@@ -83,7 +83,7 @@ class PostItem extends React.Component{
                         <div className={this.state.ownPost ? "settings-icon-container" : "hidden"}>
                             <SettingsIcon ownPost = {this.state.ownPost} post={this.props.post} toggleSettings={this.toggleSettings}/>
                         </div>
-                        <SettingsContainer showSettings={this.state.showSettings} />
+                        <SettingsContainer showSettings={this.state.showSettings} post={this.props.post} />
                     </div>
                 </div>
             </div>
