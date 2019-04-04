@@ -13,14 +13,14 @@ class PostForm extends React.Component {
             post_type: this.props.post.post_type,
             content: this.props.post.content,
             author_id: this.props.post.author_id,
-            imageFile: this.props.post.media
+            mediaFile: this.props.post.media
         } : {
             id: null,
             post_type: "text",
             content: "default",
             author_id: this.props.author.id,
-            imageFile: null,
-            imageUrl: null
+            mediaFile: null,
+            mediaUrl: null
         };
     }
 
@@ -49,8 +49,8 @@ class PostForm extends React.Component {
         formData.append('post[post_type]', this.state.post_type);
         formData.append('page', "dashboard");
 
-        if (this.state.imageFile) {
-            formData.append('post[media]', this.state.imageFile);
+        if (this.state.mediaFile) {
+            formData.append('post[media]', this.state.mediaFile);
         }
 
         this.props.processPost(formData, this.state.id);
@@ -60,14 +60,14 @@ class PostForm extends React.Component {
         const reader = new FileReader();
         const file = e.currentTarget.files[0];
         reader.onloadend = () =>
-            this.setState({ imageUrl: reader.result, imageFile: file });
+            this.setState({ mediaUrl: reader.result, mediaFile: file });
 
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            this.setState({ imageUrl: "", imageFile: null });
+            this.setState({ mediaUrl: "", mediaFile: null });
         }
-        // why need imageFile?
+        // why need mediaFile?
         
     }
 
@@ -109,7 +109,7 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input"/>
                             </div>
-                            <img src={this.state.imageUrl} />
+                            <img src={this.state.mediaUrl} />
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
                                 <input type="submit" value="Post" onClick={this.handleSubmit} />
@@ -187,7 +187,7 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
-                            <img src={this.state.imageUrl}/>
+                            <img src={this.state.mediaUrl}/>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
                                 <input type="submit" value="Post" onClick={this.handleSubmit} />

@@ -54,10 +54,16 @@ class PostItem extends React.Component{
                         <span className="post-author">{this.props.author.username}</span>
                     </Link>
                     <div className="post-content">
-                        {this.props.post.post_type === "photo" ? (
-                            <img src={this.props.post.content}></img>
-                        ) : (
+                        {this.props.post.post_type === "text" ? (
                             this.props.post.content
+                        ) : (
+                            this.props.post_type === "photo" ? (
+                                <img src={this.props.post.content}></img>
+                            ) : (
+                                <video controls loop>
+                                    <source src={this.props.post.content}/>
+                                </video>
+                            )
                         )}
                     </div>
 
