@@ -3,10 +3,24 @@ import { connect } from 'react-redux';
 import {fetchUsers} from '../actions/user_actions';
 import {deleteFollow} from '../actions/follow_actions';
 import ProfilePic from './posts/profile_picture';
+import {Link} from 'react-router-dom';
 
 class UsersIndex extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {users: this.props.users};
+    }
+
     componentDidMount () {
         this.props.fetchUsers(this.props.followers);
+    }
+
+    componentDidUpdate(prevProps){
+        // debugger
+        // if (this.props.users != prevProps.users) {
+        //     this.props.fetchUsers(this.props.followers);
+        //     this.setState({users: this.props.users});
+        // }
     }
     
     render() {
@@ -14,10 +28,10 @@ class UsersIndex extends React.Component {
 
         users = users.map(user => {
             return (<div className="user" key={user.id}>
-                        <div>
+                        <Link to={`users/${user.id}`}>
                             <ProfilePic username={user.username} small={true} />
                             <span>{user.username}</span>
-                        </div>
+                        </Link>
                         {this.props.followers === false &&
                         <button className="unfollow-border" onClick={() => {
                             this.props.deleteFollow(user.id);}}>Unfollow</button>}

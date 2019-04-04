@@ -1,5 +1,4 @@
 import { RECEIVE_FOLLOWERS } from '../actions/follow_actions';
-import merge from 'lodash/merge';
 
 export default (state={}, action) => {
     const oldState = Object.freeze(state);

@@ -139,6 +139,7 @@ main {
 
 .main-nav {
     display: flex;
+    margin-right: 10px;
 }
 
 .hidden {

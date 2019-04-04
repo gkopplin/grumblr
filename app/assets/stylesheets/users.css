@@ -12,9 +12,15 @@
     justify-content: space-between;
 }
 
-.user > div {
+.user > a {
     display: flex;
     align-items: center;
+}
+
+.user span {
+    font-weight: bold;
+    color: black;
+    font-size: 80%;
 }
 
 .unfollow-border {

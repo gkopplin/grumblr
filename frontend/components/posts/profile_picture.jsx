@@ -6,7 +6,7 @@ export default props => {
             return(
                 <img src="https://s3.amazonaws.com/grumblr-seeds/monkey.jpg" className={props.small ? "small-picture" : "profile-pic"}/>
             );
-        case 'meh':
+        case 'everything-is-lame':
             return (
                 <img src="https://s3.amazonaws.com/grumblr-seeds/Grumpy_Hot-Dog_Batman.jpg" className={props.small ? "small-picture" : "profile-pic"}/>
             );
