@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import ProfilePic from './profile_picture';
 import {Link} from 'react-router-dom';
 import PhotoIcon from './post_form/photo_icon';
+import VideoIcon from './post_form/video_icon';
 
 class PostIcons extends React.Component {
 
@@ -31,8 +32,7 @@ class PostIcons extends React.Component {
                         <span>Photo</span>
                     </div>
                     <div onClick={() => this.props.openModal("create", { post: { post_type: "video", author_id: this.props.currentUser.id } })}>
-                        {/* <VideoIcon /> */}
-                        <span className="text-icon">tbd</span>
+                        <VideoIcon />
                         <span>Video</span>
                     </div>
                     <div>
