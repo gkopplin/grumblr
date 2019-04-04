@@ -20,7 +20,6 @@ body {
     background-repeat: no-repeat;
     position: relative;
     z-index: -1;
-    top: -64px;
     width: 100%;
     height: 100%;
 }
@@ -37,7 +36,8 @@ body {
 }
 
 .splash-header {
-    border: none
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .session-container {

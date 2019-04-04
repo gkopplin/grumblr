@@ -22,7 +22,7 @@ class Header extends React.Component {
             return (
                 <>
                 <div className="unfixed-header"></div>
-                <header>
+                <header className="main-header">
                     <div className="header-left">
                         <Link to="/">
                             <img src={window.smallLogo} className="small-logo" />

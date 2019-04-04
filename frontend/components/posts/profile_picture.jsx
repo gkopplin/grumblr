@@ -6,13 +6,13 @@ export default props => {
             return(
                 <img src="https://s3.amazonaws.com/grumblr-seeds/monkey.jpg" className={props.small ? "small-picture" : "profile-pic"}/>
             );
-        case 'Seed Data User':
+        case 'meh':
             return (
                 <img src="https://s3.amazonaws.com/grumblr-seeds/Grumpy_Hot-Dog_Batman.jpg" className={props.small ? "small-picture" : "profile-pic"}/>
             );
-        case 'Seed Data User Two':
+        case 'grumpy_gramps':
             return (
-                <img src="https://s3.amazonaws.com/grumblr-seeds/grandpa.jpg" className={props.small ? "small-picture" : "profile-pic"}/>
+                <img src="https://s3.amazonaws.com/grumblr-seeds/grandpa.png" className={props.small ? "small-picture" : "profile-pic"}/>
             );
         default:
             return (
