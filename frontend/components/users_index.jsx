@@ -10,7 +10,9 @@ class UsersIndex extends React.Component {
     }
     
     render() {
-        const users = this.props.users.map(user => {
+        let users = this.props.users.filter(user => user.id !== this.props.currentUser);
+
+        users = users.map(user => {
             return (<div className="user" key={user.id}>
                         <div>
                             <ProfilePic username={user.username} small={true} />
@@ -19,8 +21,8 @@ class UsersIndex extends React.Component {
                         {this.props.followers === false &&
                         <button className="unfollow-border" onClick={() => {
                             this.props.deleteFollow(user.id);}}>Unfollow</button>}
-                    </div>);
-        });
+                    </div>)
+        })
 
         return (
             <ul className="following">
@@ -32,7 +34,8 @@ class UsersIndex extends React.Component {
 
 const msp = (state) => {
     return {
-        users: Object.values(state.entities.users)
+        users: Object.values(state.entities.users),
+        currentUser: state.session.currentUser
     };
 };
 
