@@ -9,20 +9,23 @@ class PostForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.resetMedia = this.resetMedia.bind(this);
+        this.hideDelete = this.hideDelete.bind(this);
 
         this.state = this.props.post ? {
             id: this.props.post.id,
             post_type: this.props.post.post_type,
             content: this.props.post.content,
             author_id: this.props.post.author_id,
-            mediaFile: this.props.post.media
+            mediaFile: this.props.post.media,
+            showDelete: false
         } : {
             id: null,
             post_type: "text",
             content: "default",
             author_id: this.props.author.id,
             mediaFile: null,
-            mediaUrl: null
+            mediaUrl: null,
+            showDelete: false
         };
     }
 
@@ -59,7 +62,14 @@ class PostForm extends React.Component {
     }
 
     resetMedia () {
-        this.setState({ mediaUrl: "", mediaFile: null });
+        this.setState({ mediaUrl: "", mediaFile: null, showDelete: false });
+    }
+
+    hideDelete () {
+        const hover = $(".delete-icon").is(":hover");
+        if (!hover) {
+            this.setState({showDelete: false});
+        }
     }
 
     handleFile(e) {
@@ -114,8 +124,8 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input"/>
                             </div>
-                            <DeleteIcon show = {this.state.mediaUrl ? true : false} resetMedia = {this.resetMedia}/>
-                            <img src={this.state.mediaUrl} />
+                            <DeleteIcon show = {this.state.showDelete} resetMedia = {this.resetMedia}/>
+                            <img src={this.state.mediaUrl} onMouseEnter={() => this.setState({showDelete: true})} onMouseLeave={() => this.hideDelete()}/>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
                                 <input type="submit" value="Post" onClick={this.handleSubmit} />
@@ -142,8 +152,8 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
-                            <DeleteIcon show={this.state.mediaUrl ? true : false} resetMedia={this.resetMedia}/>
-                            <video loop controls>
+                            <DeleteIcon show={this.state.showDelete} resetMedia={this.resetMedia}/>
+                            <video loop controls onMouseEnter={() => this.setState({ showDelete: true })} onMouseLeave={() => this.hideDelete()}>
                                 <source src={this.state.mediaUrl}/>
                             </video>
                             <div className="post-form-buttons">
@@ -196,8 +206,8 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
-                            <DeleteIcon show={this.state.mediaUrl ? true : false} resetMedia={this.resetMedia}/>
-                            <img src={this.state.mediaUrl}/>
+                            <DeleteIcon show={this.state.showDelete} resetMedia={this.resetMedia}/>
+                            <img src={this.state.mediaUrl} onMouseEnter={() => this.setState({ showDelete: true })} onMouseLeave={() => this.hideDelete()}/>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
                                 <input type="submit" value="Post" onClick={this.handleSubmit} />
@@ -224,8 +234,8 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
-                            <DeleteIcon show={this.state.mediaUrl ? true : false} resetMedia={this.resetMedia}/>
-                            <video loop controls className={this.state.mediaUrl ? "video" : "hidden"}>
+                            <DeleteIcon show={this.state.showDelete} resetMedia={this.resetMedia}/>
+                            <video loop controls className={this.state.mediaUrl ? "video" : "hidden"} onMouseEnter={() => this.setState({ showDelete: true })} onMouseLeave={() => this.hideDelete()}>
                                 <source src={this.state.mediaUrl} />
                             </video>
                             <div className="post-form-buttons">
