@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {fetchUsers} from '../actions/user_actions';
 import {deleteFollow} from '../actions/follow_actions';
+import ProfilePic from './posts/profile_picture';
 
 class UsersIndex extends React.Component {
     componentDidMount () {
@@ -11,15 +12,18 @@ class UsersIndex extends React.Component {
     render() {
         const users = this.props.users.map(user => {
             return (<div className="user" key={user.id}>
-                        <span>{user.username}</span>
+                        <div>
+                            <ProfilePic username={user.username} small={true} />
+                            <span>{user.username}</span>
+                        </div>
                         {this.props.followers === false &&
-                        <button className="unfollow" onClick={() => {
+                        <button className="unfollow-border" onClick={() => {
                             this.props.deleteFollow(user.id);}}>Unfollow</button>}
                     </div>);
         });
 
         return (
-            <ul>
+            <ul className="following">
                 {users}
             </ul>
         );

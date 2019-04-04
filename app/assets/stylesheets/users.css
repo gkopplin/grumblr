@@ -1,0 +1,30 @@
+.following {
+    background: white;
+    border-radius: 5px;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.user {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user > div {
+    display: flex;
+    align-items: center;
+}
+
+.unfollow-border {
+    color: #444444;
+    background: white;
+    font-weight: bold;
+    border: 1px solid #444444;
+    border-radius: 3px;
+    font-size: 90%;
+    padding: 0px 10px 0px 10px;
+    cursor: pointer;
+    margin: 12px;
+}
