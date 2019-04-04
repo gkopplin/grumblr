@@ -216,7 +216,7 @@ class PostForm extends React.Component {
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
-                            <video loop controls>
+                            <video loop controls className={this.state.mediaUrl ? "video" : "hidden"}>
                                 <source src={this.state.mediaUrl} />
                             </video>
                             <div className="post-form-buttons">
