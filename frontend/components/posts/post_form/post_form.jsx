@@ -38,6 +38,7 @@ class PostForm extends React.Component {
             fileButton.addEventListener('click', () => {
                 fileInput.click();
             });
+            this.setState({mediaUrl: this.props.post.content});
         }
     }
 
