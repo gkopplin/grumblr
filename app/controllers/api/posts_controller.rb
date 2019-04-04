@@ -45,6 +45,7 @@ class Api::PostsController < ApplicationController
             user_ids = @posts.map {|post| post.author_id}
             @users = User.where('id IN (?)', user_ids)
         else
+            # follows = Follow.where("follower_id = ?",)
             @posts = Post.with_attached_media.all
             @users = User.all
         end

@@ -17,15 +17,15 @@ user_one = User.create!({username: 'Demo User', email: 'demo_user@demo_email.com
 user_two = User.create!({username: 'everything_is_lame', email: 'seed@seed_email.com', password: 'seed_password'})
 user_three = User.create!({username: 'grumpy_gramps', email: 'seed2@seed_email.com', password: 'seed_password2'})
 
-Post.create!({post_type: 'text', content: 'bah humbug', author_id: user_two.id})
-post_two = Post.create!({post_type: 'text', content: 'meh', author_id: user_one.id})
 Post.create!({post_type: 'text', content: 'kids these days', author_id: user_three.id})
-# post_four = Post.create!({post_type: 'photo', content: 'default', author_id: user_two.id})
-# photo = File.open("/Users/grantkopplin/Documents/Pictures/dog.jpg")
-# post_four.media.attach(io: photo, filename: 'dog.jpg')
-# video = File.open("/Users/grantkopplin/Downloads/Video.MOV")
-# post_five = Post.create!({post_type: 'video', content: 'default', author_id: user_one.id})
-# post_five.media.attach(io: video, filename: 'video.mov')
+post_two = Post.create!({post_type: 'text', content: 'meh', author_id: user_one.id})
+post_three = Post.create!({post_type: 'photo', content: 'default', author_id: user_two.id})
+photo = open("https://s3.amazonaws.com/grumblr-seeds/dog.jpg")
+post_three.media.attach(io: photo, filename: 'dog.jpg')
+Post.create!({post_type: 'text', content: 'bah humbug', author_id: user_two.id})
+video = open("https://s3.amazonaws.com/grumblr-seeds/Video.MOV")
+post_five = Post.create!({post_type: 'video', content: 'default', author_id: user_one.id})
+post_five.media.attach(io: video, filename: 'video.mov')
 
 
 Follow.create!([{follower_id: user_one.id, followed_id: user_two.id},
