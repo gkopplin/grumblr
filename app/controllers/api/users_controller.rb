@@ -1,7 +1,15 @@
 class Api::UsersController < ApplicationController
 
     def index
-        @users = User.all 
+        if params[:followers] == true
+            follows = Follow.where('followed_id = ?', current_user.id)
+            ids = follows.map{|follow| follow.follower_id}
+            @users = User.where('id IN (?)', ids)
+        else
+            follows = Follow.where('follower_id = ?', current_user.id)
+            ids = follows.map{|follow| follow.followed_id}
+            @users = User.where('id IN (?)', ids)
+        end
     end
 
     def show

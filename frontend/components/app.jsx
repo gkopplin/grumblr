@@ -9,6 +9,7 @@ import PostModal from './posts/post_modal';
 import Modal from './modal';
 import Profile from './profile';
 import Likes from './likes';
+import Following from './following';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <AuthRoute exact path="/" component={Splash} />
                 <ProtectedRoute path="/dashboard" component={Dashboard} />
                 <ProtectedRoute path="/likes" component={Likes} />
+                <ProtectedRoute path="/following" component={Following} />
                 <AuthRoute exact path="/login" component={LogInFormContainer} />
                 <AuthRoute exact path="/signup" component={SignUpFormContainer} />
                 <ProtectedRoute exact path="/users/:userId" component={Profile} />
