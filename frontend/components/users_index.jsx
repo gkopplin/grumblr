@@ -15,13 +15,12 @@ class UsersIndex extends React.Component {
         this.props.fetchUsers(this.props.followers);
     }
 
-    componentDidUpdate(prevProps){
-        // debugger
-        // if (this.props.users != prevProps.users) {
-        //     this.props.fetchUsers(this.props.followers);
-        //     this.setState({users: this.props.users});
-        // }
-    }
+    // componentDidUpdate(prevProps){
+    //     if (this.props.follows !== prevProps.users.follows) {
+    //         this.props.fetchUsers(this.props.followers);
+    //         this.setState({users: this.props.users});
+    //     }
+    // }
     
     render() {
         let users = this.props.users.filter(user => user.id !== this.props.currentUser);
@@ -48,6 +47,7 @@ class UsersIndex extends React.Component {
 
 const msp = (state) => {
     return {
+        follows: state.entities.follows,
         users: Object.values(state.entities.users),
         currentUser: state.session.currentUser
     };

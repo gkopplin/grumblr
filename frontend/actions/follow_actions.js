@@ -1,6 +1,7 @@
 import * as ApiFollowUtil from '../util/api_follow_util';
 
 export const RECEIVE_FOLLOWERS = "RECEIVE_FOLLOWERS";
+export const REMOVE_FOLLOWER = "REMOVE_FOLLOWER";
 
 export const requestFollowers = userId => dispatch => {
     return ApiFollowUtil.fetchFollowers(userId)
@@ -22,5 +23,14 @@ export const createFollow = follow => dispatch => {
 
 export const deleteFollow = followedId => dispatch => {
     return ApiFollowUtil.deleteFollow(followedId)
-        .then(followers => dispatch(receiveFollowers(followers, followedId)));
-}
+        .then(followerId => dispatch(removeFollower(followerId, followedId)));
+};
+
+const removeFollower = (followerId, followedId) => {
+    return {
+        type: REMOVE_FOLLOWER,
+        followerId,
+        followedId
+    };
+};
+

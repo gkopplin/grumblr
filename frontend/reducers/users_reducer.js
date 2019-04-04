@@ -1,6 +1,8 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_POSTS } from '../actions/post_actions';
 import { RECEIVE_USERS } from '../actions/user_actions';
+import { REMOVE_FOLLOWER } from '../actions/follow_actions';
+
 import merge from 'lodash/merge';
 
 export default (state = {}, action) => {
@@ -16,6 +18,10 @@ export default (state = {}, action) => {
             return newState;
         case RECEIVE_USERS:
             newState = merge({}, oldState, action.users);
+            return newState;
+        case REMOVE_FOLLOWER:
+            newState = merge({}, oldState);
+            delete newState[action.followedId];
             return newState;
         default:
             return oldState;

@@ -25,14 +25,15 @@ class Api::FollowsController < ApplicationController
     def destroy
         @follow = Follow.where('follower_id = :current_user AND followed_id = :followed', current_user: current_user.id, followed: params[:followed_id])[0]
         @follow.destroy
+        render json: current_user.id
 
-        follows = Follow.where(followed_id: params[:followed_id])
-        @followers = []
-        follows.each do |follow|
-            @followers << follow.follower_id
-        end
+        # follows = Follow.where(followed_id: params[:followed_id])
+        # @followers = []
+        # follows.each do |follow|
+        #     @followers << follow.follower_id
+        # end
 
-        render 'api/follows/index'
+        # render 'api/follows/index'
     end
 
     private
