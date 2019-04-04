@@ -1,12 +1,14 @@
 import React from 'react';
 import NewPhotoIcon from './new_photo_icon';
 import NewVideoIcon from './new_video_icon';
+import DeleteIcon from './delete_icon';
 
 class PostForm extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
+        this.resetMedia = this.resetMedia.bind(this);
 
         this.state = this.props.post ? {
             id: this.props.post.id,
@@ -56,6 +58,10 @@ class PostForm extends React.Component {
         this.props.processPost(formData, this.state.id);
     }
 
+    resetMedia () {
+        this.setState({ mediaUrl: "", mediaFile: null });
+    }
+
     handleFile(e) {
         const reader = new FileReader();
         const file = e.currentTarget.files[0];
@@ -67,7 +73,6 @@ class PostForm extends React.Component {
         } else {
             this.setState({ mediaUrl: "", mediaFile: null });
         }
-        // why need mediaFile?
         
     }
 
@@ -102,13 +107,14 @@ class PostForm extends React.Component {
                     <div className="post-form-container">
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
-                            <div className="file-input-container">
+                            <div className={this.state.mediaUrl ? "hidden" : "file-input-container"}>
                                 <div id="file-button">
                                     <NewPhotoIcon />
                                     <span>Upload photo</span>
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input"/>
                             </div>
+                            <DeleteIcon show = {this.state.mediaUrl ? true : false} resetMedia = {this.resetMedia}/>
                             <img src={this.state.mediaUrl} />
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
@@ -129,13 +135,14 @@ class PostForm extends React.Component {
                     <div className="post-form-container">
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
-                            <div className="file-input-container">
+                            <div className={this.state.mediaUrl ? "hidden" : "file-input-container"}>
                                 <div id="file-button">
                                     <NewVideoIcon />
                                     <span>Upload video</span>
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
+                            <DeleteIcon show={this.state.mediaUrl ? true : false} resetMedia={this.resetMedia}/>
                             <video loop controls>
                                 <source src={this.state.mediaUrl}/>
                             </video>
@@ -182,13 +189,14 @@ class PostForm extends React.Component {
                     <div className="post-form-container">
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
-                            <div className="file-input-container">
+                            <div className={this.state.mediaUrl ? "hidden" : "file-input-container"}>
                                 <div id="file-button">
                                     <NewPhotoIcon />
                                     <span>Upload photo</span>
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
+                            <DeleteIcon show={this.state.mediaUrl ? true : false} resetMedia={this.resetMedia}/>
                             <img src={this.state.mediaUrl}/>
                             <div className="post-form-buttons">
                                 <button onClick={() => this.props.closeModal()}>Close</button>
@@ -209,13 +217,14 @@ class PostForm extends React.Component {
                     <div className="post-form-container">
                         <span className="post-author">{this.props.author.username}</span>
                         <form className="post-form">
-                            <div className="file-input-container">
+                            <div className={this.state.mediaUrl ? "hidden" : "file-input-container"}>
                                 <div id="file-button">
                                     <NewVideoIcon />
                                     <span>Upload video</span>
                                 </div>
                                 <input type="file" onChange={this.handleFile} id="file-input" />
                             </div>
+                            <DeleteIcon show={this.state.mediaUrl ? true : false} resetMedia={this.resetMedia}/>
                             <video loop controls className={this.state.mediaUrl ? "video" : "hidden"}>
                                 <source src={this.state.mediaUrl} />
                             </video>
