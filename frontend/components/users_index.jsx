@@ -23,11 +23,13 @@ class UsersIndex extends React.Component {
     // }
     
     render() {
-        let users = this.props.users.filter(user => {
-            return user.id !== this.props.currentUser &&
-            (this.props.follows[user.id] === undefined || 
-             this.props.follows[user.id].includes(this.props.currentUser));
-        });
+        let users = this.props.users.filter(user => user.id !== this.props.currentUser);
+        if (this.props.followers === false) {
+            users = users.filter(user => {
+                return (this.props.follows[user.id] === undefined ||
+                    this.props.follows[user.id].includes(this.props.currentUser));
+                });
+        }
 
         users = users.map(user => {
             return (<div className="user" key={user.id}>
