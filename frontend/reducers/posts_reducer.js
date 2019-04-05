@@ -10,7 +10,10 @@ export default (state = {}, action) => {
             newState = merge({}, oldState, {[action.post.id]: action.post});
             return newState;
         case RECEIVE_POSTS:
-            return action.postsResponse.posts;
+            if (action.postsResponse.posts) {
+                return action.postsResponse.posts;
+            }
+            return null;
         case REMOVE_POST:
             newState = merge({}, oldState);
             delete newState[action.postId];

@@ -24,6 +24,15 @@ class PostIndex extends React.Component {
     }
     
     render () { 
+        if (this.props.posts === []) {
+            return (
+                <>
+                <PostIcons currentUser={this.props.currentUser} page={this.props.page} />
+                <p className="no-following">Follow a user to see their posts here!</p>
+                </>
+            );
+        }
+
     const posts = this.props.posts.map(post => {
         return <PostItem key={post.id} post={post} 
                  author={this.props.users[post.author_id]}
@@ -54,7 +63,7 @@ class PostIndex extends React.Component {
 
 const msp = (state) => {
     return {
-        posts: Object.values(state.entities.posts).sort((post1, post2) => new Date(post2.updated_at) - new Date(post1.updated_at)),
+        posts: state.entities.posts ? Object.values(state.entities.posts).sort((post1, post2) => new Date(post2.updated_at) - new Date(post1.updated_at)) : [],
         users: state.entities.users,
         currentUserId: state.session.currentUser,
         currentUser: state.entities.users[state.session.currentUser],
