@@ -16,6 +16,8 @@ Like.destroy_all
 user_one = User.create!({username: 'Demo User', email: 'demo_user@demo_email.com', password: 'demo_password'})
 user_two = User.create!({username: 'everything_is_lame', email: 'seed@seed_email.com', password: 'seed_password'})
 user_three = User.create!({username: 'grumpy_gramps', email: 'seed2@seed_email.com', password: 'seed_password2'})
+user_four= User.create!({username: 'get_off_my_lawn', email: 'seed3@seed_email.com', password: 'seed_password3'})
+user_five = User.create!({username: 'clint_eastwood_fan419', email: 'seed4@seed_email.com', password: 'seed_password4'})
 
 Post.create!({post_type: 'text', content: 'kids these days', author_id: user_three.id})
 post_two = Post.create!({post_type: 'text', content: 'meh', author_id: user_two.id})
@@ -30,11 +32,15 @@ Post.create!({post_type: 'text', content: 'bah humbug', author_id: user_two.id})
 video = open("https://s3.amazonaws.com/grumblr-seeds/Video.MOV")
 post_five = Post.create!({post_type: 'video', content: 'default', author_id: user_one.id})
 post_five.media.attach(io: video, filename: 'video.mov')
+Post.create!({post_type: 'text', content: 'cell phone bad', author_id: user_four.id})
+Post.create!({post_type: 'text', content: 'maybe if the youths turned down their music, they could think more clearly', author_id: user_five.id})
+
 
 
 Follow.create!([{follower_id: user_one.id, followed_id: user_two.id},
                 {follower_id: user_three.id, followed_id: user_two.id},
-                {follower_id: user_three.id, followed_id: user_one.id}])
+                {follower_id: user_three.id, followed_id: user_one.id},
+                {follower_id: user_one.id, followed_id: user_four.id}])
 
 Like.create!({user_id: user_two.id, post_id: post_two.id})
 Like.create!({user_id: user_one.id, post_id: post_two.id})
