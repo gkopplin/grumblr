@@ -5,6 +5,8 @@ import ProfilePic from './profile_picture';
 import {Link} from 'react-router-dom';
 import PhotoIcon from './post_form/photo_icon';
 import VideoIcon from './post_form/video_icon';
+import LinkedInIcon from './post_form/linked_in_icon';
+import GithubIcon from './post_form/github_icon';
 
 class PostIcons extends React.Component {
 
@@ -35,19 +37,23 @@ class PostIcons extends React.Component {
                         <VideoIcon />
                         <span>Video</span>
                     </div>
-                    <div>
-                        <span className="text-icon">tbd</span>
-                        <span>Quote</span>
+                    <div id="linkedin">
+                        <a href="https://www.linkedin.com/in/grant-kopplin/">
+                            <LinkedInIcon/>
+                        </a>
+                        <span>LinkedIn</span>
                     </div>
                     <div>
-                        <span className="text-icon">tbd</span>
-                        <span>Link</span>
+                        <a href="https://github.com/gkopplin">
+                            <GithubIcon />
+                        </a>
+                        <span>Github</span>
                     </div>
-                    <div>
+                    <div className="tbd">
                         <span className="text-icon">tbd</span>
                         <span>Chat</span>
                     </div>
-                    <div>
+                    <div className="tbd">
                         <span className="text-icon">tbd</span>
                         <span>Audio</span>
                     </div>
