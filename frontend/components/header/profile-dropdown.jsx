@@ -17,7 +17,7 @@ export const ProfileDropdown = (props) => {
                 <button onClick={() => {
                     props.closeModal();
                     props.logout(); } } 
-                    id="logout-link">Log Out</button>
+                        id="logout-link">Log Out</button>
             </span>
                 <Link to='/likes' id="like-link" onClick={() => props.closeModal()}><LikeIcon ownPost={false}/> <p className="likes-text">Likes</p></Link>
                 <Link to='/following' id="following-link" onClick={() => props.closeModal()}><FollowingIcon /> <p className="following-text">Following</p></Link>

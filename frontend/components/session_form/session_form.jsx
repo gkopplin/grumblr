@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from '../header/header';
+import {connect} from 'react-redux';
+import {removeUsers} from '../../actions/user_actions';
 
 
 class sessionForm extends React.Component {
@@ -12,6 +14,10 @@ class sessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    // componentDidMount(){
+    //     this.props.removeUsers();
+    // }
 
     handleInput (field) {
         return e => {
@@ -73,4 +79,11 @@ class sessionForm extends React.Component {
     }
 }
 
-export default sessionForm;
+const mdp = dispatch => {
+    return {
+        removeUsers: () => dispatch(removeUsers())
+    }
+}
+
+
+export default connect(null, mdp)(sessionForm);

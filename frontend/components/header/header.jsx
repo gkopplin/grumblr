@@ -26,7 +26,6 @@ class Header extends React.Component {
     }
     
     componentDidUpdate(prevProps) {
-        // debugger
         if (prevProps.userId !== this.props.userId &&
              this.props.loggedIn &&
              !(isNaN(prevProps.userId) && isNaN(this.props.userId) ) ) {
