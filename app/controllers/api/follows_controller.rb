@@ -1,20 +1,26 @@
 class Api::FollowsController < ApplicationController
     def index
-        follows = Follow.where(followed_id: params[:userId])
-        @followers = []
-        follows.each do |follow|
-            @followers << follow.follower_id
+        if params[:followers] == "true"
+            @users = [User.includes(:followers).find(params[:userId])]
+            # follows = Follow.where(followed_id: params[:userId])
+            # @followers = []
+            # follows.each do |follow|
+            #     @followers << follow.follower_id
+            # end
+        else
+            @users = User.includes(:followed_users).find(params[:userId]).followed_users
         end
     end
 
     def create
         @follow = Follow.new(follow_params)
         if @follow.save
-            follows = Follow.where(followed_id: params[:follow][:followed_id])
-            @followers = []
-            follows.each do |follow|
-                @followers << follow.follower_id
-            end
+            @users = [User.includes(:followers).find(params[:follow][:followed_id])]
+            # follows = Follow.where(followed_id: params[:follow][:followed_id])
+            # @followers = []
+            # follows.each do |follow|
+            #     @followers << follow.follower_id
+            # end
 
             render 'api/follows/index'
         else

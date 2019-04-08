@@ -2,7 +2,15 @@ export const fetchFollowers = userId => {
     return $.ajax({
         method: 'get',
         url: 'api/follows',
-        data: {userId}
+        data: {userId, followers: true}
+    });
+};
+
+export const fetchFollowing = userId => {
+    return $.ajax({
+        method: 'get',
+        url: 'api/follows',
+        data: {userId, followers: false}
     });
 };
 

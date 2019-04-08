@@ -10,11 +10,32 @@ class Header extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = { showDropdown: this.props.showDropdown, loggedIn: this.props.loggedIn, formType: this.props.formType, test: false};
+        this.state = { showDropdown: this.props.showDropdown, 
+                       loggedIn: this.props.loggedIn, 
+                       formType: this.props.formType, 
+                       test: false,
+                       followers: this.props.followers
+                    };
     }
 
-    componentDidMount () {
-        this.props.requestFollowers(this.props.userId);
+    componentDidMount() {
+        if (this.props.loggedIn) {
+            this.props.requestFollowers(this.props.userId ? this.props.userId : this.props.currentUser);
+            this.setState({ followers: this.props.followers });
+        }
+    }
+    
+    componentDidUpdate(prevProps) {
+        // debugger
+        if (prevProps.userId !== this.props.userId &&
+             this.props.loggedIn &&
+             !(isNaN(prevProps.userId) && isNaN(this.props.userId) ) ) {
+            this.props.requestFollowers(this.props.userId ? this.props.userId : this.props.currentUser);
+            this.setState({followers: this.props.followers});
+        }
+        if (prevProps.followers !== this.props.followers) {
+            this.setState({ followers: this.props.followers });
+        }
     }
 
     render () {
@@ -35,7 +56,7 @@ class Header extends React.Component {
                         </Link>
                         <ProfileIcon page = {this.props.page}/>
                         <div className={ (this.props.page === "profile" && this.props.currentUser !== this.props.userId) ? 'follow-container' : 'hidden'}>
-                            {this.props.followers.includes(this.props.currentUser) ?
+                            {this.state.followers.includes(this.props.currentUser) ?
                                 <button className="unfollow" onClick={() => {
                                     this.props.deleteFollow(this.props.userId);
                                     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {fetchUsers} from '../actions/user_actions';
+import {requestFollowing} from '../actions/follow_actions';
 import {deleteFollow} from '../actions/follow_actions';
 import ProfilePic from './posts/profile_picture';
 import {Link} from 'react-router-dom';
@@ -13,6 +14,9 @@ class UsersIndex extends React.Component {
 
     componentDidMount () {
         this.props.fetchUsers(this.props.followers);
+        if (this.props.followers === false) {
+            this.props.requestFollowing(this.props.currentUser);
+        }
     }
 
     // componentDidUpdate(prevProps){
@@ -62,7 +66,8 @@ const msp = (state) => {
 const mdp = dispatch => {
     return {
         fetchUsers: followers => dispatch(fetchUsers(followers)),
-        deleteFollow: id => dispatch(deleteFollow(id))
+        deleteFollow: id => dispatch(deleteFollow(id)),
+        requestFollowing: id => dispatch(requestFollowing(id))
     };
 };
 

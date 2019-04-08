@@ -6,12 +6,21 @@ class User < ApplicationRecord
         class_name: "Post",
         foreign_key: "author_id"
 
-    has_many :followed_users,
-        class_name: :Follows,
+    has_many :follower_joins,
+        class_name: :Follow,
         foreign_key: :followed_id
 
+    has_many :followed_joins,
+        class_name: :Follow,
+        foreign_key: :follower_id
+
     has_many :followers,
-        through: :followed_users
+        through: :follower_joins,
+        source: :followers
+
+    has_many :followed_users,
+        through: :followed_joins,
+        source: :followed_users
 
     has_many :likes,
         class_name: :Like,
