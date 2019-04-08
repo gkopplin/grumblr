@@ -7,9 +7,11 @@ export default (state={}, action) => {
 
     switch(action.type) {
         case RECEIVE_FOLLOWERS:
-            newState = merge({}, oldState, {[action.followedId]: action.followers});
+            // debugger
+            newState = merge({}, oldState, action.followers);
             return newState;
         case REMOVE_FOLLOWER:
+            // debugger
             newState = merge({}, oldState);
             const followers = newState[action.followedId].filter(id => id !== action.followerId);
             newState[action.followedId] = followers;

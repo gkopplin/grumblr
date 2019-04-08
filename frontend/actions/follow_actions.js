@@ -5,15 +5,19 @@ export const REMOVE_FOLLOWER = "REMOVE_FOLLOWER";
 
 export const requestFollowers = userId => dispatch => {
     return ApiFollowUtil.fetchFollowers(userId)
-        .then(followers => dispatch(receiveFollowers(followers, userId)));  
+        .then(followers => dispatch(receiveFollowers(followers)));  
 };
 
-const receiveFollowers = (followers, followedId) => {
+const receiveFollowers = (followers) => {
     return {
         type: RECEIVE_FOLLOWERS,
-        followers,
-        followedId
+        followers
     };
+};
+
+export const requestFollowing = userId => dispatch => {
+    return ApiFollowUtil.fetchFollowing(userId)
+        .then(followers => dispatch(receiveFollowers(followers)));
 };
 
 export const createFollow = follow => dispatch => {
