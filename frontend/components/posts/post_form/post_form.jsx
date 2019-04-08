@@ -13,18 +13,16 @@ class PostForm extends React.Component {
         this.hideDelete = this.hideDelete.bind(this);
         this.revealDelete = this.revealDelete.bind(this);
 
-        this.state = this.props.post ? {
-            id: this.props.post.id,
-            post_type: this.props.post.post_type,
-            content: this.props.post.content,
-            author_id: this.props.post.author_id,
-            mediaFile: this.props.post.media,
-            showDelete: false
-        } : {
-            id: null,
-            post_type: "text",
-            content: "default",
-            author_id: this.props.author.id,
+        // this.state = this.props.post ? {
+        //     id: this.props.post.id,
+        //     post_type: this.props.post.post_type,
+        //     content: this.props.post.content,
+        //     author_id: this.props.post.author_id,
+        //     mediaFile: this.props.post.media,
+        //     showDelete: false
+        // } :
+        
+        this.state = {
             mediaFile: null,
             mediaUrl: null,
             showDelete: false
@@ -53,16 +51,16 @@ class PostForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('post[content]', this.state.content);
-        formData.append('post[author_id]', this.state.author_id);
-        formData.append('post[post_type]', this.state.post_type);
+        formData.append('post[content]', this.props.post.content);
+        formData.append('post[author_id]', this.props.post.author_id);
+        formData.append('post[post_type]', this.props.post.post_type);
         formData.append('page', "dashboard");
 
         if (this.state.mediaFile) {
             formData.append('post[media]', this.state.mediaFile);
         }
 
-        this.props.processPost(formData, this.state.id);
+        this.props.processPost(formData, this.props.post.id);
     }
 
     resetMedia () {
@@ -95,17 +93,19 @@ class PostForm extends React.Component {
     }
 
     render () {
-            if (this.state.post_type === "text") {
+            if (this.props.post === null) {
+                return null;
+            } else if (this.props.post.post_type === "text") {
                 return (
                     <TextForm author = {this.props.author}
-                                content = {this.state.content}
+                                content = {this.props.post.content}
                                 handleInput = {this.handleInput}
                                 closeModal = {this.props.closeModal}
                                 handleSubmit = {this.handleSubmit}
                                 errors = {this.props.errors}
                                 formType = {this.props.formType}/>
                 );
-            } else if (this.state.post_type === "photo") {
+            } else if (this.props.post.post_type === "photo") {
                 return (
                     <PhotoForm author={this.props.author}
                         closeModal={this.props.closeModal}
@@ -119,7 +119,7 @@ class PostForm extends React.Component {
                         revealDelete = {this.revealDelete}
                         resetMedia = {this.resetMedia}/>
                 );
-            } else if (this.state.post_type === "video") {
+            } else if (this.props.post.post_type === "video") {
                 return (
                     <VideoForm author={this.props.author}
                         closeModal={this.props.closeModal}

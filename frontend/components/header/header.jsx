@@ -12,8 +12,7 @@ class Header extends React.Component {
         super(props);
         this.state = { showDropdown: false, 
                        formType: null, 
-                       test: false,
-                       followers: this.props.followers
+                       test: false
                     };
     }
 
