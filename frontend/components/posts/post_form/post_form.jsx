@@ -1,15 +1,17 @@
 import React from 'react';
-import NewPhotoIcon from '../post_icons/new_photo_icon';
-import NewVideoIcon from '../post_icons/new_video_icon';
-import DeleteIcon from '../post_icons/delete_icon';
+import TextForm from './text_form';
+import PhotoForm from './photo_form';
+import VideoForm from './video_form';
 
 class PostForm extends React.Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.resetMedia = this.resetMedia.bind(this);
         this.hideDelete = this.hideDelete.bind(this);
+        this.revealDelete = this.revealDelete.bind(this);
 
         this.state = this.props.post ? {
             id: this.props.post.id,
@@ -67,6 +69,10 @@ class PostForm extends React.Component {
         this.setState({ mediaUrl: "", mediaFile: null, showDelete: false });
     }
 
+    revealDelete () {
+        this.setState({ showDelete: true });
+    }
+
     hideDelete () {
         const hover = $(".delete-icon").is(":hover");
         if (!hover) {
@@ -89,177 +95,49 @@ class PostForm extends React.Component {
     }
 
     render () {
-        // refactor this
-        if (this.props.formType === "update") {
             if (this.state.post_type === "text") {
+                return (
+                    <TextForm author = {this.props.author}
+                                content = {this.state.content}
+                                handleInput = {this.handleInput}
+                                closeModal = {this.props.closeModal}
+                                handleSubmit = {this.handleSubmit}
+                                errors = {this.props.errors}
+                                formType = {this.props.formType}/>
+                );
+            } else if (this.state.post_type === "photo") {
+                return (
+                    <PhotoForm author={this.props.author}
+                        closeModal={this.props.closeModal}
+                        handleSubmit={this.handleSubmit}
+                        handleFile={this.handleFile}
+                        errors={this.props.errors}
+                        formType={this.props.formType} 
+                        mediaUrl = {this.state.mediaUrl}
+                        showDelete = {this.state.showDelete}
+                        hideDelete = {this.hideDelete}
+                        revealDelete = {this.revealDelete}
+                        resetMedia = {this.resetMedia}/>
+                );
+            } else if (this.state.post_type === "video") {
+                return (
+                    <VideoForm author={this.props.author}
+                        closeModal={this.props.closeModal}
+                        handleSubmit={this.handleSubmit}
+                        handleFile={this.handleFile}
+                        errors={this.props.errors}
+                        formType={this.props.formType}
+                        mediaUrl={this.state.mediaUrl}
+                        showDelete={this.state.showDelete}
+                        hideDelete={this.hideDelete}
+                        revealDelete={this.revealDelete}
+                        resetMedia={this.resetMedia} />
+                );
+            }
 
-                return (
-                    <div className="post-form-container">
-                        <span className="post-author">{this.props.author.username}</span>
-                        <form className="post-form">
-                            <textarea type="text" value={this.state.content}
-                                onChange={this.handleInput("content")} 
-                                className="text-box"></textarea>
-                            <div className="post-form-buttons">
-                                <button onClick= {() => this.props.closeModal()}>Close</button>
-                                <input type="submit" value="Save" onClick={this.handleSubmit} />
-                            </div>
-                        </form>
-                        <ul className="errors">
-                            {this.props.errors.map((error, i) => (
-                                <li key={`error-${i}`}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                );
-            } else if (this.state.post_type === "photo") {
-                return (
-                    <div className="post-form-container">
-                        <span className="post-author">{this.props.author.username}</span>
-                        <form className="post-form">
-                            <div className={this.state.mediaUrl ? "hidden" : "file-input-container"}>
-                                <div id="file-button">
-                                    <NewPhotoIcon />
-                                    <span>Upload photo</span>
-                                </div>
-                                <input type="file" onChange={this.handleFile} id="file-input"/>
-                            </div>
-                            <DeleteIcon show = {this.state.showDelete} resetMedia = {this.resetMedia}/>
-                            <img src={this.state.mediaUrl} onMouseEnter={() => this.setState({showDelete: true})} onMouseLeave={() => this.hideDelete()}/>
-                            <div className="post-form-buttons">
-                                <button onClick={() => this.props.closeModal()}>Close</button>
-                                <input type="submit" value="Post" onClick={this.handleSubmit} />
-                            </div>
-                        </form>
-                        <ul className="errors">
-                            {this.props.errors.map((error, i) => (
-                                <li key={`error-${i}`}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                );
-            } else if (this.state.post_type === "video") {
-                return (
-                    <div className="post-form-container">
-                        <span className="post-author">{this.props.author.username}</span>
-                        <form className="post-form">
-                            <div className={this.state.mediaUrl ? "hidden" : "file-input-container"}>
-                                <div id="file-button">
-                                    <NewVideoIcon />
-                                    <span>Upload video</span>
-                                </div>
-                                <input type="file" onChange={this.handleFile} id="file-input" />
-                            </div>
-                            <DeleteIcon show={this.state.showDelete} resetMedia={this.resetMedia}/>
-                            <video loop controls onMouseEnter={() => this.setState({ showDelete: true })} onMouseLeave={() => this.hideDelete()}>
-                                <source src={this.state.mediaUrl}/>
-                            </video>
-                            <div className="post-form-buttons">
-                                <button onClick={() => this.props.closeModal()}>Close</button>
-                                <input type="submit" value="Post" onClick={this.handleSubmit} />
-                            </div>
-                        </form>
-                        <ul className="errors">
-                            {this.props.errors.map((error, i) => (
-                                <li key={`error-${i}`}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                );
-            }
-        } else {
-            if (this.state.post_type === "text") {
-                return (
-                    <div className="post-form-container">
-                        <span className="post-author">{this.props.author.username}</span>
-                        <form className="post-form">
-                            <textarea type="text" placeholder="Your text here"
-                                onChange={this.handleInput("content")} 
-                                className="text-box"></textarea>
-                            <div className="post-form-buttons">
-                                <button onClick={() => this.props.closeModal()}>Close</button>
-                                <input type="submit" value="Post" onClick={this.handleSubmit} />
-                            </div>
-                        </form>
-                        <ul className="errors">
-                            {this.props.errors.map((error, i) => (
-                                <li key={`error-${i}`}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                );
-            } else if (this.state.post_type === "photo") {
-                return (
-                    <div className="post-form-container">
-                        <span className="post-author">{this.props.author.username}</span>
-                        <form className="post-form">
-                            <div className={this.state.mediaUrl ? "hidden" : "file-input-container"}>
-                                <div id="file-button">
-                                    <NewPhotoIcon />
-                                    <span>Upload photo</span>
-                                </div>
-                                <input type="file" onChange={this.handleFile} id="file-input" />
-                            </div>
-                            <DeleteIcon show={this.state.showDelete} resetMedia={this.resetMedia}/>
-                            <img src={this.state.mediaUrl} onMouseEnter={() => this.setState({ showDelete: true })} onMouseLeave={() => this.hideDelete()}/>
-                            <div className="post-form-buttons">
-                                <button onClick={() => this.props.closeModal()}>Close</button>
-                                <input type="submit" value="Post" onClick={this.handleSubmit} />
-                            </div>
-                        </form>
-                        <ul className="errors">
-                            {this.props.errors.map((error, i) => (
-                                <li key={`error-${i}`}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                );
-            } else if (this.state.post_type === "video") {
-                return (
-                    <div className="post-form-container">
-                        <span className="post-author">{this.props.author.username}</span>
-                        <form className="post-form">
-                            <div className={this.state.mediaUrl ? "hidden" : "file-input-container"}>
-                                <div id="file-button">
-                                    <NewVideoIcon />
-                                    <span>Upload video</span>
-                                </div>
-                                <input type="file" onChange={this.handleFile} id="file-input" />
-                            </div>
-                            <DeleteIcon show={this.state.showDelete} resetMedia={this.resetMedia}/>
-                            <video loop controls className={this.state.mediaUrl ? "video" : "hidden"} onMouseEnter={() => this.setState({ showDelete: true })} onMouseLeave={() => this.hideDelete()}>
-                                <source src={this.state.mediaUrl} />
-                            </video>
-                            <div className="post-form-buttons">
-                                <button onClick={() => this.props.closeModal()}>Close</button>
-                                <input type="submit" value="Post" onClick={this.handleSubmit} />
-                            </div>
-                        </form>
-                        <ul className="errors">
-                            {this.props.errors.map((error, i) => (
-                                <li key={`error-${i}`}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                );
-            }
+            
         } 
 
-
-
-    }
 }
 
 export default PostForm;
