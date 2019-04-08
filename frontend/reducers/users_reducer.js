@@ -20,10 +20,6 @@ export default (state = {}, action) => {
             return newState;
         case REMOVE_USERS:
             return {};
-        // case REMOVE_FOLLOWER:
-        //     newState = merge({}, oldState);
-        //     delete newState[action.followedId];
-        //     return newState;
         default:
             return oldState;
     }
