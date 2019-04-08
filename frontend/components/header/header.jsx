@@ -55,7 +55,7 @@ class Header extends React.Component {
                         </Link>
                         <ProfileIcon page = {this.props.page}/>
                         <div className={ (this.props.page === "profile" && this.props.currentUser !== this.props.userId) ? 'follow-container' : 'hidden'}>
-                            {this.state.followers.includes(this.props.currentUser) ?
+                            {this.state.followers[this.props.userId] && this.state.followers[this.props.userId].includes(this.props.currentUser) ?
                                 <button className="unfollow" onClick={() => {
                                     this.props.deleteFollow(this.props.userId);
                                     }
@@ -93,7 +93,7 @@ class Header extends React.Component {
 const msp = state => {
     return {
         currentUser: state.session.currentUser,
-        followers: Object.keys(state.entities.follows).length === 0 ? [] : Object.values(state.entities.follows)[0]
+        followers: Object.keys(state.entities.follows).length === 0 ? [] : state.entities.follows
     };
 };
 
