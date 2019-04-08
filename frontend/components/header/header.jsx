@@ -10,9 +10,8 @@ class Header extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = { showDropdown: this.props.showDropdown, 
-                       loggedIn: this.props.loggedIn, 
-                       formType: this.props.formType, 
+        this.state = { showDropdown: false, 
+                       formType: null, 
                        test: false,
                        followers: this.props.followers
                     };
@@ -21,7 +20,6 @@ class Header extends React.Component {
     componentDidMount() {
         if (this.props.loggedIn) {
             this.props.requestFollowers(this.props.userId ? this.props.userId : this.props.currentUser);
-            this.setState({ followers: this.props.followers });
         }
     }
     
@@ -30,15 +28,11 @@ class Header extends React.Component {
              this.props.loggedIn &&
              !(isNaN(prevProps.userId) && isNaN(this.props.userId) ) ) {
             this.props.requestFollowers(this.props.userId ? this.props.userId : this.props.currentUser);
-            this.setState({followers: this.props.followers});
-        }
-        if (prevProps.followers !== this.props.followers) {
-            this.setState({ followers: this.props.followers });
         }
     }
 
     render () {
-        if (this.state.loggedIn) {
+        if (this.props.loggedIn) {
             return (
                 <>
                 <div className="unfixed-header"></div>
