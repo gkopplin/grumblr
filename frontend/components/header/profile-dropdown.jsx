@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
-import LikeIcon from './like-icon';
-import FollowingIcon from './following-icon';
+import LikeIcon from './header-icons/like-icon';
+import FollowingIcon from './header-icons/following-icon';
 import {Link} from 'react-router-dom';
 import ProfilePic from '../posts/profile_picture';
 import {closeModal} from '../../actions/modal_actions';

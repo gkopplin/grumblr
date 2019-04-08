@@ -1,7 +1,7 @@
 import React from 'react';
-import NewPhotoIcon from './new_photo_icon';
-import NewVideoIcon from './new_video_icon';
-import DeleteIcon from './delete_icon';
+import NewPhotoIcon from '../post_icons/new_photo_icon';
+import NewVideoIcon from '../post_icons/new_video_icon';
+import DeleteIcon from '../post_icons/delete_icon';
 
 class PostForm extends React.Component {
     constructor(props) {

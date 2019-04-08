@@ -1,8 +1,8 @@
 import React from 'react';
-import SettingsIcon from './post_form/settings_icon';
+import SettingsIcon from './post_icons/settings_icon';
 import {Link} from 'react-router-dom';
 import ProfilePic from './profile_picture';
-import LikeIcon from '../header/like-icon';
+import LikeIcon from '../header/header-icons/like-icon';
 import SettingsContainer from './post_form/settings_container';
 
 class PostItem extends React.Component{ 
