@@ -19,6 +19,17 @@ user_three = User.create!({username: 'grumpy_gramps', email: 'seed2@seed_email.c
 user_four= User.create!({username: 'get_off_my_lawn', email: 'seed3@seed_email.com', password: 'seed_password3'})
 user_five = User.create!({username: 'clint_eastwood_fan419', email: 'seed4@seed_email.com', password: 'seed_password4'})
 
+profile_pic_one = open("https://s3.amazonaws.com/grumblr-seeds/monkey.jpg")
+profile_pic_two = open("https://s3.amazonaws.com/grumblr-seeds/Grumpy_Hot-Dog_Batman.jpg")
+profile_pic_three = open("https://s3.amazonaws.com/grumblr-seeds/grandpa.png")
+profile_pic_four = open("https://s3.amazonaws.com/grumblr-seeds/owl.jpg")
+
+user_one.profile_pic.attach(io: profile_pic_one, filename: 'monkey.jpg')
+user_two.profile_pic.attach(io: profile_pic_two, filename: 'hotdog.jpg')
+user_three.profile_pic.attach(io: profile_pic_three, filename: 'grandpa.jpg')
+user_four.profile_pic.attach(io: profile_pic_four, filename: 'owl.jpg')
+
+
 Post.create!({post_type: 'text', content: 'kids these days', author_id: user_three.id})
 post_two = Post.create!({post_type: 'text', content: 'meh', author_id: user_two.id})
 post_three = Post.create!({post_type: 'photo', content: 'default', author_id: user_two.id})

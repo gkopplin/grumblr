@@ -54,7 +54,7 @@ class PostItem extends React.Component{
             <div className="post-container">
                 <div className="profile-container">
                     <Link to={this.props.page === 'profile' ? `${this.props.author.id}` : `users/${this.props.author.id}`}>
-                        <ProfilePic username = {this.props.author.username}/>
+                        <ProfilePic user = {this.props.author}/>
                     </Link>
                 </div>
                 <div className="post-item">

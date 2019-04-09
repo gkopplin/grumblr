@@ -12,7 +12,7 @@ const SearchResults = props => {
                     <span>
                         {user.username}
                     </span>
-                    <ProfilePic username={user.username} small={true}/>
+                    <ProfilePic user={user} small={true}/>
                 </div>
                 </Link>})
     return (

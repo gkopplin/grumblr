@@ -33,7 +33,7 @@ class UsersIndex extends React.Component {
         users = users.map(user => {
             return (<div className="user" key={user.id}>
                         <Link to={`users/${user.id}`}>
-                            <ProfilePic username={user.username} small={true} />
+                            <ProfilePic user={user} small={true} />
                             <span>{user.username}</span>
                         </Link>
                         {this.props.followers === false &&
