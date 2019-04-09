@@ -9,10 +9,10 @@ class PostItem extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
-            ownPost: this.props.currentUser === this.props.post.author_id,
             liked: false,
             showSettings: false
         };
+        this.ownPost = this.props.currentUser === this.props.post.author_id;
         this.toggleLike = this.toggleLike.bind(this);
         this.toggleSettings = this.toggleSettings.bind(this);
     }
@@ -78,10 +78,10 @@ class PostItem extends React.Component{
                     <div className="post-footer">
                         <span className="likes-count">{`${this.props.likes.length} likes`}</span>
                         <div className="likes-container" onClick={this.toggleLike}>
-                            <LikeIcon liked={this.state.liked} ownPost={this.state.ownPost}/>
+                            <LikeIcon liked={this.state.liked} ownPost={this.ownPost}/>
                         </div>
-                        <div className={this.state.ownPost ? "settings-icon-container" : "hidden"}>
-                            <SettingsIcon ownPost = {this.state.ownPost} post={this.props.post} toggleSettings={this.toggleSettings}/>
+                        <div className={this.ownPost ? "settings-icon-container" : "hidden"}>
+                            <SettingsIcon ownPost = {this.ownPost} post={this.props.post} toggleSettings={this.toggleSettings}/>
                         </div>
                         <SettingsContainer showSettings={this.state.showSettings} post={this.props.post} />
                     </div>

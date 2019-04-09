@@ -7,10 +7,6 @@ import ProfilePic from './posts/profile_picture';
 import {Link} from 'react-router-dom';
 
 class UsersIndex extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {users: this.props.users};
-    }
 
     componentDidMount () {
         this.props.fetchUsers(this.props.followers);
@@ -18,13 +14,6 @@ class UsersIndex extends React.Component {
             this.props.requestFollowing(this.props.currentUser);
         }
     }
-
-    // componentDidUpdate(prevProps){
-    //     if (this.props.follows !== prevProps.users.follows) {
-    //         this.props.fetchUsers(this.props.followers);
-    //         this.setState({users: this.props.users});
-    //     }
-    // }
     
     render() {
         let users = this.props.users.filter(user => user.id !== this.props.currentUser);

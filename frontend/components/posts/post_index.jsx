@@ -7,18 +7,13 @@ import PostIcons from './post_icons';
 import {createLike, deleteLike} from '../../actions/like_actions';
 
 class PostIndex extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = { userId: this.props.userId};
-    }
-
+    
     componentDidMount () {
         this.props.fetchPosts(this.props.page, this.props.userId);
     }  
 
     componentDidUpdate(prevProps) {
         if (this.props.userId != prevProps.userId) {
-            this.setState({ userId: this.props.userId });
             this.props.fetchPosts(this.props.page, this.props.userId);
         }
     }
