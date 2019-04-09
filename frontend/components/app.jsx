@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import Splash from './splash';
+import Splash from './splash/splash';
 import Dashboard from './dashboard';
 import { Switch } from 'react-router-dom';
 import LogInFormContainer from './session_form/log_in_form_container';
