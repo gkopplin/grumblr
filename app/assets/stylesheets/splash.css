@@ -143,5 +143,26 @@ input[class^='button-'] {
     justify-content: center;
 }
 
-  
+.sample-post {
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    overflow: hidden;
+}
+
+.sample-post-container {
+    width: 200%;
+}
+
+.sample-post .post-author {
+    margin-bottom: 20px;
+}
+
+.sample-post .post-content {
+    margin: auto;
+} 
+
+.sample-text {
+    margin-right: 20px;
+}
 

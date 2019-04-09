@@ -35,6 +35,8 @@ class Splash extends React.Component{
         return (
             <>
             <Header loggedIn={false}/>
+
+            
             <div className={this.state.animate ? "splash-animate" : "splash-container"}>
 
                 <div className="splash-bg" style={{backgroundImage: `url(${window.splashBG})`}}></div>
@@ -60,12 +62,15 @@ class Splash extends React.Component{
             <div className={this.state.animate ? "splash-animate" : "splash-container"}>
                 <div className="splash-bg" style={{ backgroundColor: "#001835"}}></div>
                 <div className="splash-2">
-                    <div className="sample-post">
-                        <NoLinkIcons />
-                        {this.props.firstPost &&
-                            <NoLinkPost post={this.props.firstPost}
-                            author={this.props.users[this.props.firstPost.author_id]}/>
-                        }
+                    <div className ="sample-post-container">
+
+                        <div className="sample-post">
+                            <NoLinkIcons />
+                            {this.props.firstPost &&
+                                <NoLinkPost post={this.props.firstPost}
+                                author={this.props.users[this.props.firstPost.author_id]}/>
+                            }
+                        </div>
                     </div>
                     <div className="splash-text">
                         <h1>You already know how this works.</h1>
