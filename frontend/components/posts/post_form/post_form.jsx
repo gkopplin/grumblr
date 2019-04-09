@@ -2,6 +2,8 @@ import React from 'react';
 import TextForm from './text_form';
 import PhotoForm from './photo_form';
 import VideoForm from './video_form';
+import AudioForm from './audio_form';
+import LinkForm from './link_form';
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -12,17 +14,9 @@ class PostForm extends React.Component {
         this.resetMedia = this.resetMedia.bind(this);
         this.hideDelete = this.hideDelete.bind(this);
         this.revealDelete = this.revealDelete.bind(this);
-
-        // this.state = this.props.post ? {
-        //     id: this.props.post.id,
-        //     post_type: this.props.post.post_type,
-        //     content: this.props.post.content,
-        //     author_id: this.props.post.author_id,
-        //     mediaFile: this.props.post.media,
-        //     showDelete: false
-        // } :
         
         this.state = {
+            content: "",
             mediaFile: null,
             mediaUrl: null,
             showDelete: false
@@ -31,7 +25,8 @@ class PostForm extends React.Component {
 
     componentDidMount () {
         if (this.props.post &&
-            this.props.post.post_type !== "text") {
+            this.props.post.post_type !== "text" &&
+            this.props.post.post_type !== "link") {
 
             const fileButton = document.getElementById('file-button');
             const fileInput = document.getElementById('file-input');
@@ -51,7 +46,7 @@ class PostForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('post[content]', this.props.post.content);
+        formData.append('post[content]', this.state.content);
         formData.append('post[author_id]', this.props.post.author_id);
         formData.append('post[post_type]', this.props.post.post_type);
         formData.append('page', "dashboard");
@@ -132,6 +127,30 @@ class PostForm extends React.Component {
                         hideDelete={this.hideDelete}
                         revealDelete={this.revealDelete}
                         resetMedia={this.resetMedia} />
+                );
+            } else if (this.props.post.post_type === "audio") {
+                return (
+                    <AudioForm author={this.props.author}
+                        closeModal={this.props.closeModal}
+                        handleSubmit={this.handleSubmit}
+                        handleFile={this.handleFile}
+                        errors={this.props.errors}
+                        formType={this.props.formType}
+                        mediaUrl={this.state.mediaUrl}
+                        showDelete={this.state.showDelete}
+                        hideDelete={this.hideDelete}
+                        revealDelete={this.revealDelete}
+                        resetMedia={this.resetMedia} />
+                );
+            } else if (this.props.post.post_type === "link") {
+                return (
+                    <LinkForm author={this.props.author}
+                        content={this.props.post.content}
+                        handleInput={this.handleInput}
+                        closeModal={this.props.closeModal}
+                        handleSubmit={this.handleSubmit}
+                        errors={this.props.errors}
+                        formType={this.props.formType} />
                 );
             }
 

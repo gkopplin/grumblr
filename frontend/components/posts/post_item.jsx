@@ -73,6 +73,14 @@ class PostItem extends React.Component{
                                 <video controls loop>
                                     <source src={this.props.post.content}/>
                                 </video>}
+
+                        {this.props.post.post_type === "audio" &&  
+                                <audio controls loop>
+                                    <source src={this.props.post.content}/>
+                                </audio>}
+
+                        {this.props.post.post_type === "link" &&  
+                            <a href={this.props.post.content}>{this.props.post.content}</a>}
                     </div>
 
                     <div className="post-footer">

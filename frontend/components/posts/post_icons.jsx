@@ -7,6 +7,8 @@ import PhotoIcon from './post_icons/photo_icon';
 import VideoIcon from './post_icons/video_icon';
 import LinkedInIcon from './post_icons/linked_in_icon';
 import GithubIcon from './post_icons/github_icon';
+import AudioIcon from './post_icons/audio_icon';
+import LinkIcon from './post_icons/link_icon';
 
 class PostIcons extends React.Component {
 
@@ -48,12 +50,12 @@ class PostIcons extends React.Component {
                         </a>
                         <span>Github</span>
                     </div>
-                    <div className="tbd">
-                        <span className="text-icon">tbd</span>
-                        <span>Chat</span>
+                    <div onClick={() => this.props.openModal("create", { post: { post_type: "link", author_id: this.props.currentUser.id } })}>
+                        <LinkIcon />
+                        <span>Link</span>
                     </div>
-                    <div className="tbd">
-                        <span className="text-icon">tbd</span>
+                    <div onClick={() => this.props.openModal("create", { post: { post_type: "audio", author_id: this.props.currentUser.id } })}>
+                        <AudioIcon />
                         <span>Audio</span>
                     </div>
                 </div>

@@ -1,7 +1,8 @@
 class Api::PostsController < ApplicationController
     def create
         @post = Post.new(post_params)
-        if @post.post_type != "text" && @post.media.attached? == false
+        if @post.post_type != "text" && @post.post_type != "link" &&
+             @post.media.attached? == false
             render json: ["No photo/video selected"], status: 422
         elsif @post.save
             render 'api/posts/show'
