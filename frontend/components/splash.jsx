@@ -11,8 +11,8 @@ class Splash extends React.Component{
     constructor(props) {
         super(props);
         this.demoLogin = this.demoLogin.bind(this);
-        this.animate = this.animate.bind(this);
-        this.state = {animate: false};
+        this.scrollDown = this.scrollDown.bind(this);
+        this.state = {animate: null};
     }
 
     componentDidMount () {
@@ -27,8 +27,8 @@ class Splash extends React.Component{
         });
     }
 
-    animate () {
-        this.setState({animate: true});
+    scrollDown () {
+        this.setState({animate: "down"});
     }
 
     render () {
@@ -36,8 +36,8 @@ class Splash extends React.Component{
             <>
             <Header loggedIn={false}/>
 
-            
-            <div className={this.state.animate ? "splash-animate" : "splash-container"}>
+
+            <div className={this.state.animate ? `splash-${this.state.animate}` : "splash-container"}>
 
                 <div className="splash-bg" style={{backgroundImage: `url(${window.splashBG})`}}></div>
                 <div className="splash">
@@ -53,13 +53,14 @@ class Splash extends React.Component{
                         <div className="button-demo" id="button-demo">
                             <a onClick={this.demoLogin}>Demo Login</a>
                         </div>
-                        <button onClick={() => this.animate()}>animate</button>
+                        <button onClick={() => this.scrollDown()}>down</button>
                     </div>
                 </div>
 
             </div>
 
-            <div className={this.state.animate ? "splash-animate" : "splash-container"}>
+            <div className={this.state.animate ? `splash-${this.state.animate}` : "splash-container"}>
+
                 <div className="splash-bg" style={{ backgroundColor: "#001835"}}></div>
                 <div className="splash-2">
                     <div className ="sample-post-container">

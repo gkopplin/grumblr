@@ -114,14 +114,28 @@ input[class^='button-'] {
     cursor: pointer;
 }
 
-@keyframes carousel {
+@keyframes down {
     100% {
         transform: translateY(-100%);
     }
 }
 
-.splash-animate {
-    animation: carousel 1s;
+.splash-down {
+    animation: down 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes up {
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+.splash-up {
+    animation: up 1s;
     animation-iteration-count: 1;
     animation-fill-mode:forwards;
     width: 100%;
@@ -162,7 +176,7 @@ input[class^='button-'] {
     margin: auto;
 } 
 
-.sample-text {
+.splash-text {
     margin-right: 20px;
 }
 
