@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default props => {
     return (
-        <div className={props.animate ? `splash-${props.animate}` : "splash-container"}>
+        <div className={props.direction ? `splash-${props.direction}` : "splash-container"}>
 
             <div className="splash-bg" style={{ backgroundImage: `url(${window.splashBG})` }}></div>
             <div className="splash">

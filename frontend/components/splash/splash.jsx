@@ -12,8 +12,11 @@ class Splash extends React.Component{
     constructor(props) {
         super(props);
         this.demoLogin = this.demoLogin.bind(this);
-        this.scrollDown = this.scrollDown.bind(this);
-        this.state = {animate: null};
+        this.scroll = this.scroll.bind(this);
+        this.state = {
+            currentSplash: 1,
+            direction: null
+        };
     }
 
     componentDidMount () {
@@ -28,8 +31,13 @@ class Splash extends React.Component{
         });
     }
 
-    scrollDown () {
-        this.setState({animate: "down"});
+    scroll (e, currentSplash) {
+        if (Number(e.target.id) < this.state.currentSplash) {
+            this.setState({direction: "up" });
+        } else {
+            this.setState({direction: "down"});
+        }
+        this.setState({currentSplash});
     }
 
     render () {
@@ -38,17 +46,36 @@ class Splash extends React.Component{
             <Header loggedIn={false}/>
 
             <div className="splash-icons">
-                <ScrollIconFilled />
-                <div onClick={() => this.scrollDown()}>
-                    <ScrollIcon />
-                </div>
+
+                {this.state.currentSplash === 1 ? (
+                    <ScrollIconFilled />
+                ) : (
+                    <div onClick={e => this.scroll(e, 1)}>
+                        <ScrollIcon id = {1} />
+                    </div>
+                )}
+                {this.state.currentSplash === 2 ? (
+                    <ScrollIconFilled id = {2} />
+                ) : (
+                    <div onClick={e => this.scroll(e, 2)}>
+                        <ScrollIcon />
+                    </div>
+                )}
+                {this.state.currentSplash === 3 ? (
+                    <ScrollIconFilled />
+                ) : (
+                    <div onClick={e => this.scroll(e, 3)}>
+                        <ScrollIcon id = {3} />
+                    </div>
+                )}
+
             </div>
 
-            <SplashOne animate = {this.state.animate} 
+            <SplashOne direction = {this.state.direction} 
                         demoLogin = {this.demoLogin}/>
 
             {this.props.firstPost &&
-            <SplashTwo animate = {this.state.animate} 
+            <SplashTwo direction = {this.state.direction} 
                         demoLogin = {this.demoLogin}
                         firstPost = {this.props.firstPost}
                         author= {this.props.users[this.props.firstPost.author_id]}/>}
