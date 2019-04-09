@@ -16,7 +16,7 @@ class Splash extends React.Component{
     }
 
     componentDidMount () {
-        this.props.fetchFirstPost();
+        this.props.fetchFirstPost(true);
     }
     
     demoLogin () {
@@ -59,7 +59,7 @@ class Splash extends React.Component{
 
             <div className={this.state.animate ? "splash-animate" : "splash-container"}>
                 <div className="splash-bg" style={{ backgroundColor: "#001835"}}></div>
-                <div className="splash">
+                <div className="splash-2">
                     <div className="sample-post">
                         <NoLinkIcons />
                         {this.props.firstPost &&
@@ -93,7 +93,7 @@ const msp = state => {
 
 const mdp = dispatch => {
     return {
-        fetchFirstPost: () => dispatch(fetchFirstPost()),
+        fetchFirstPost: (splash) => dispatch(fetchFirstPost(splash)),
         demoLogin: user => dispatch(login(user))
     };
 };
