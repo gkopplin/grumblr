@@ -126,7 +126,6 @@ input[class^='button-'] {
 }
 
 @keyframes carousel {
-
     100% {
         transform: translateY(-100%);
     }
