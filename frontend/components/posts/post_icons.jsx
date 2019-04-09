@@ -38,6 +38,14 @@ class PostIcons extends React.Component {
                         <VideoIcon />
                         <span>Video</span>
                     </div>
+                    <div onClick={() => this.props.openModal("create", { post: { post_type: "link", author_id: this.props.currentUser.id } })}>
+                        <LinkIcon />
+                        <span>Link</span>
+                    </div>
+                    <div onClick={() => this.props.openModal("create", { post: { post_type: "audio", author_id: this.props.currentUser.id } })}>
+                        <AudioIcon />
+                        <span>Audio</span>
+                    </div>
                     <div id="linkedin">
                         <a href="https://www.linkedin.com/in/grant-kopplin/">
                             <LinkedInIcon/>
@@ -49,14 +57,6 @@ class PostIcons extends React.Component {
                             <GithubIcon />
                         </a>
                         <span>Github</span>
-                    </div>
-                    <div onClick={() => this.props.openModal("create", { post: { post_type: "link", author_id: this.props.currentUser.id } })}>
-                        <LinkIcon />
-                        <span>Link</span>
-                    </div>
-                    <div onClick={() => this.props.openModal("create", { post: { post_type: "audio", author_id: this.props.currentUser.id } })}>
-                        <AudioIcon />
-                        <span>Audio</span>
                     </div>
                 </div>
             </div>
