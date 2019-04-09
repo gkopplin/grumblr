@@ -9,6 +9,8 @@ class Splash extends React.Component{
     constructor(props) {
         super(props);
         this.demoLogin = this.demoLogin.bind(this);
+        this.animate = this.animate.bind(this);
+        this.state = {animate: false};
     }
     
     demoLogin () {
@@ -19,10 +21,16 @@ class Splash extends React.Component{
         });
     }
 
+    animate () {
+        this.setState({animate: true});
+    }
+
     render () {
         return (
             <>
             <Header loggedIn={false}/>
+            <div className={this.state.animate ? "splash-animate" : "splash-container"}>
+
             <div className="splash-bg" style={{backgroundImage: `url(${window.splashBG})`}}></div>
             <div className="splash">
                 <div className="session-container">
@@ -37,7 +45,14 @@ class Splash extends React.Component{
                     <div className="button-demo" id="button-demo">
                         <a onClick={this.demoLogin}>Demo Login</a>
                     </div>
+                    <button onClick={() => this.animate()}>animate</button>
                 </div>
+            </div>
+
+            </div>
+
+            <div className={this.state.animate ? "splash-animate" : "splash-container"}>
+            <div className="splash-bg" style={{ backgroundColor: "#8A6DFF"}}></div>
             </div>
             </>
         );
