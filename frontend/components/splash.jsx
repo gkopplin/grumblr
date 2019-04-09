@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/session_actions';
 import {fetchFirstPost} from '../actions/post_actions';
 import NoLinkIcons from './posts/post_icons/no_link_icons';
-
+import NoLinkPost from './posts/no_link_post';
 
 class Splash extends React.Component{
     constructor(props) {
@@ -62,6 +62,11 @@ class Splash extends React.Component{
                 <div className="splash">
                     <h1>You already know how this works.</h1>
                     <NoLinkIcons />
+                    {this.props.firstPost &&
+                        <NoLinkPost post={this.props.firstPost}
+                           author={this.props.users[this.props.firstPost.author_id]}/>
+                    }
+                    
                 </div>
             </div>
             </>
@@ -71,7 +76,8 @@ class Splash extends React.Component{
 
 const msp = state => {
     return {
-        firstPost: state.entities.post
+        firstPost: Object.values(state.entities.posts)[0],
+        users: state.entities.users 
     };
 };
 
