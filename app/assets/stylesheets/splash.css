@@ -180,3 +180,17 @@ input[class^='button-'] {
     margin-right: 20px;
 }
 
+.splash-icons {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-left: 10px;
+    z-index: 2;
+}
+
+.scroll-icon {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}

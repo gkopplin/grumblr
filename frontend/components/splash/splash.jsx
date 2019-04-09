@@ -5,6 +5,8 @@ import { login } from '../../actions/session_actions';
 import {fetchFirstPost} from '../../actions/post_actions';
 import SplashOne from './splash_one';
 import SplashTwo from './splash_two';
+import ScrollIcon from './scroll_icon';
+import ScrollIconFilled from './scroll_icon_filled';
 
 class Splash extends React.Component{
     constructor(props) {
@@ -35,14 +37,19 @@ class Splash extends React.Component{
             <>
             <Header loggedIn={false}/>
 
+            <div className="splash-icons">
+                <ScrollIconFilled />
+                <div onClick={() => this.scrollDown()}>
+                    <ScrollIcon />
+                </div>
+            </div>
+
             <SplashOne animate = {this.state.animate} 
-                        demoLogin = {this.demoLogin}
-                        scrollDown = {this.scrollDown} />
+                        demoLogin = {this.demoLogin}/>
 
             {this.props.firstPost &&
             <SplashTwo animate = {this.state.animate} 
                         demoLogin = {this.demoLogin}
-                        scrollDown = {this.scrollDown} 
                         firstPost = {this.props.firstPost}
                         author= {this.props.users[this.props.firstPost.author_id]}/>}
             

@@ -19,7 +19,6 @@ export default props => {
                     <div className="button-demo" id="button-demo">
                         <a onClick={props.demoLogin}>Demo Login</a>
                     </div>
-                    <button onClick={() => props.scrollDown()}>down</button>
                 </div>
             </div>
 
