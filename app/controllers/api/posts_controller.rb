@@ -31,10 +31,14 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        if params[:search]
+        if params[:search] != ""
             @users = User.where("username ILIKE ?", "%#{params[:search]}%")
             ids = @users.map {|user| user.id}
             @posts = Post.with_attached_media.where('author_id IN (?)', ids)
+
+        elsif params[:splash] != ""
+            @posts = [Post.with_attached_media.first]
+            @users = User.where("id = ?", @posts[0].author_id)
 
         elsif params[:page] == "profile" 
             @posts = Post.with_attached_media.where(posts: {author_id: params[:userId]})

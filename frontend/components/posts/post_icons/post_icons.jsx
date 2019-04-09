@@ -1,14 +1,14 @@
 import React from 'react';
-import {openModal} from '../../actions/modal_actions';
+import {openModal} from '../../../actions/modal_actions';
 import {connect} from 'react-redux';
-import ProfilePic from './profile_picture';
+import ProfilePic from '../profile_picture';
 import {Link} from 'react-router-dom';
-import PhotoIcon from './post_icons/photo_icon';
-import VideoIcon from './post_icons/video_icon';
-import LinkedInIcon from './post_icons/linked_in_icon';
-import GithubIcon from './post_icons/github_icon';
-import AudioIcon from './post_icons/audio_icon';
-import LinkIcon from './post_icons/link_icon';
+import PhotoIcon from './photo_icon';
+import VideoIcon from './video_icon';
+import LinkedInIcon from './linked_in_icon';
+import GithubIcon from './github_icon';
+import AudioIcon from './audio_icon';
+import LinkIcon from './link_icon';
 
 class PostIcons extends React.Component {
 

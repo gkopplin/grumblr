@@ -30,6 +30,13 @@ const receivePosts = postsResponse => {
     };
 };
 
+export const fetchFirstPost = () => dispatch => {
+    return ApiPostUtil.fetchPosts(null, null, null, true)
+        .then(posts => dispatch(receivePosts(posts)),
+            errors => dispatch(receivePostErrors(errors.responseJSON))
+        );
+};
+
 export const fetchPosts = (page, userId) => dispatch => {
     return ApiPostUtil.fetchPosts(page, userId)
         .then(posts => dispatch(receivePosts(posts)),

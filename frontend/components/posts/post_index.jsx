@@ -3,7 +3,7 @@ import PostItem from './post_item';
 import {connect} from 'react-redux';
 import {fetchPosts} from '../../actions/post_actions';
 import {openModal} from '../../actions/modal_actions';
-import PostIcons from './post_icons';
+import PostIcons from './post_icons/post_icons';
 import {createLike, deleteLike} from '../../actions/like_actions';
 
 class PostIndex extends React.Component {

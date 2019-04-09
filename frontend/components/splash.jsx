@@ -3,6 +3,8 @@ import Header from './header/header';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actions/session_actions';
+import {fetchFirstPost} from '../actions/post_actions';
+import NoLinkIcons from './posts/post_icons/no_link_icons';
 
 
 class Splash extends React.Component{
@@ -11,6 +13,10 @@ class Splash extends React.Component{
         this.demoLogin = this.demoLogin.bind(this);
         this.animate = this.animate.bind(this);
         this.state = {animate: false};
+    }
+
+    componentDidMount () {
+        this.props.fetchFirstPost();
     }
     
     demoLogin () {
@@ -45,27 +51,35 @@ class Splash extends React.Component{
                         <div className="button-demo" id="button-demo">
                             <a onClick={this.demoLogin}>Demo Login</a>
                         </div>
-                        {/* <button onClick={() => this.animate()}>animate</button> */}
+                        <button onClick={() => this.animate()}>animate</button>
                     </div>
                 </div>
 
             </div>
 
-            {/* <div className={this.state.animate ? "splash-animate" : "splash-container"}>
-                <div className="splash-bg" style={{ backgroundColor: "#8A6DFF"}}></div>
+            <div className={this.state.animate ? "splash-animate" : "splash-container"}>
+                <div className="splash-bg" style={{ backgroundColor: "#001835"}}></div>
                 <div className="splash">
-                    <h1>Grumblr is for grumpy people</h1>
+                    <h1>You already know how this works.</h1>
+                    <NoLinkIcons />
                 </div>
-            </div> */}
+            </div>
             </>
         );
     }
 };
 
+const msp = state => {
+    return {
+        firstPost: state.entities.post
+    };
+};
+
 const mdp = dispatch => {
     return {
+        fetchFirstPost: () => dispatch(fetchFirstPost()),
         demoLogin: user => dispatch(login(user))
     };
 };
 
-export default connect(null, mdp)(Splash);
+export default connect(msp, mdp)(Splash);
