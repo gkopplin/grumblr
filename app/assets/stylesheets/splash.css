@@ -80,6 +80,7 @@ body {
     font-size: 80%;
     border-radius: 4px;
     margin-right: 20px;
+    opacity: 0.8;
 }
 
 .header-link:hover {
@@ -96,7 +97,16 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 100%;
     color: grey;
-    border-radius: 3px;
+}
+
+.session-form label:first-child input{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.session-form label:last-of-type input{
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 #input-username, #input-email{

@@ -10,10 +10,7 @@ class Header extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = { showDropdown: false, 
-                       formType: null, 
-                       test: false
-                    };
+        this.state = { showDropdown: false };
     }
 
     componentDidMount() {
@@ -60,7 +57,7 @@ class Header extends React.Component {
                 </header>
                 </>
             );
-        } else if (!this.state.formType) {
+        } else if (!this.props.formType) {
             return (
                 <header className="splash-header">
                     <Link to="/">
@@ -74,8 +71,8 @@ class Header extends React.Component {
                 <Link to="/">
                     <img src={window.smallLogo} className="small-logo" />
                 </Link>
-                <Link to={this.state.formType === "Log In" ? "/signup" : "/login"}>
-                    <span className="header-link">{this.state.formType === "Log In" ? "Get Started" : "Log In"}</span>
+                <Link to={this.props.formType === "Log In" ? "/signup" : "/login"}>
+                    <span className="header-link">{this.props.formType === "Log In" ? "Get Started" : "Log In"}</span>
                 </Link>
             </header>
         );
