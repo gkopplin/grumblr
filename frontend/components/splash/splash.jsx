@@ -36,12 +36,16 @@ class Splash extends React.Component{
         if (Number(e.target.id) < this.state.currentSplash) {
             if (this.state.currentSplash === 2) {
                 this.setState({direction: "up2-1" });
+            } else if (e.target.id === "1") {
+                this.setState({direction: "up3-1" });
             } else {
                 this.setState({direction: "up3-2" });
             }
         } else {
             if (this.state.currentSplash === 2) {
                 this.setState({direction: "down2-3" });
+            } else if (e.target.id === "3") {
+                this.setState({ direction: "down1-3" });
             } else {
                 this.setState({direction: "down1-2" });
             }

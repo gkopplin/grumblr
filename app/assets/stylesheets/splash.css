@@ -178,6 +178,40 @@ input[class^='button-'] {
     height: 100%;
 }
 
+@keyframes down1-3 {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-200%);
+    }
+}
+
+.splash-down1-3 {
+    animation: down1-3 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes up3-1 {
+    0% {
+        transform: translateY(-200%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.splash-up3-1 {
+    animation: up3-1 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+    width: 100%;
+    height: 100%;
+}
+
 .splash-container {
     width: 100%;
     height: 100%;
