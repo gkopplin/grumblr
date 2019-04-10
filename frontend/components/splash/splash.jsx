@@ -53,6 +53,9 @@ class Splash extends React.Component{
     }
 
     render () {
+        if (!this.props.firstPost) {
+            return null;
+        }
         return (
             <div className="full-splash">
             <Header loggedIn={false} formType={this.props.formType}/>

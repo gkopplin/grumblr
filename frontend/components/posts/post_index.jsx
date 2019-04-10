@@ -19,12 +19,12 @@ class PostIndex extends React.Component {
     }
     
     render () { 
-        if (this.props.posts === []) {
+        if (this.props.posts.length === 0) {
             return (
-                <>
-                <PostIcons currentUser={this.props.currentUser} page={this.props.page} />
-                <p className="no-following">Follow a user to see their posts here!</p>
-                </>
+                <div className="post-index">
+                    <PostIcons currentUser={this.props.currentUser} page={this.props.page} />
+                    <h2 className="no-following">Follow a user to see their posts here!</h2>
+                </div>
             );
         }
 

@@ -320,3 +320,7 @@ input[type='file'] {
     width: 280px;
     height: 20px;
 }
+
+.no-following {
+    text-align: center;
+}
