@@ -6,8 +6,7 @@ import {fetchFirstPost} from '../../actions/post_actions';
 import SplashOne from './splash_one';
 import SplashTwo from './splash_two';
 import SplashThree from './splash_three';
-import ScrollIcon from './scroll_icon';
-import ScrollIconFilled from './scroll_icon_filled';
+import ScrollIconContainer from './scroll_icon_container';
 
 class Splash extends React.Component{
     constructor(props) {
@@ -59,29 +58,17 @@ class Splash extends React.Component{
             <Header loggedIn={false}/>
 
             <div className="splash-icons">
+                <ScrollIconContainer currentSplash = {this.state.currentSplash}
+                                        number = {1}
+                                        scroll = {this.scroll}/>
 
-                {this.state.currentSplash === 1 ? (
-                    <ScrollIconFilled />
-                ) : (
-                    <div onClick={e => this.scroll(e, 1)}>
-                        <ScrollIcon id = "1" />
-                    </div>
-                )}
-                {this.state.currentSplash === 2 ? (
-                    <ScrollIconFilled />
-                ) : (
-                    <div onClick={e => this.scroll(e, 2)}>
-                        <ScrollIcon id = "2"/>
-                    </div>
-                )}
-                {this.state.currentSplash === 3 ? (
-                    <ScrollIconFilled />
-                ) : (
-                    <div onClick={e => this.scroll(e, 3)}>
-                        <ScrollIcon id = "3" />
-                    </div>
-                )}
+                <ScrollIconContainer currentSplash = {this.state.currentSplash}
+                                        number = {2}
+                                        scroll = {this.scroll}/>
 
+                <ScrollIconContainer currentSplash = {this.state.currentSplash}
+                                        number = {3}
+                                        scroll = {this.scroll}/>
             </div>
 
             <SplashOne direction = {this.state.direction} 

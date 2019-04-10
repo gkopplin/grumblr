@@ -10,7 +10,9 @@ export default props => {
 
             <div className="splash-bg" style={{ backgroundColor: "#FF9632" }}></div>
             <div className="splash-3">
-                <div className="sample-icons">
+                <div className={(props.direction === "down1-3" ||
+                                    props.direction === "down2-3") ? 
+                                    "fadeIn sample-icons" : "sample-icons"}>
                     <div className="icons-row">
                         <div>
                             <span className="text-icon" id= "splash-text-icon">Aa</span>

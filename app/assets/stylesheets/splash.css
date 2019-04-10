@@ -289,6 +289,24 @@ input[class^='button-'] {
     padding: 15px;
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode:forwards;
+}
+
 .icons-row > div {
     display: flex;
     flex-direction: column;
@@ -298,8 +316,8 @@ input[class^='button-'] {
 }
 
 .icons-row > div > svg {
-    width: 150%;
-    height: 150%;
+    width: 130%;
+    height: 130%;
 }
 
 .icons-row > div > span {
@@ -312,7 +330,7 @@ input[class^='button-'] {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .full-splash {
