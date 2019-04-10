@@ -5,6 +5,7 @@ import { login } from '../../actions/session_actions';
 import {fetchFirstPost} from '../../actions/post_actions';
 import SplashOne from './splash_one';
 import SplashTwo from './splash_two';
+import SplashThree from './splash_three';
 import ScrollIcon from './scroll_icon';
 import ScrollIconFilled from './scroll_icon_filled';
 
@@ -33,9 +34,17 @@ class Splash extends React.Component{
 
     scroll (e, currentSplash) {
         if (Number(e.target.id) < this.state.currentSplash) {
-            this.setState({direction: "up" });
+            if (this.state.currentSplash === 2) {
+                this.setState({direction: "up2-1" });
+            } else {
+                this.setState({direction: "up3-2" });
+            }
         } else {
-            this.setState({direction: "down"});
+            if (this.state.currentSplash === 2) {
+                this.setState({direction: "down2-3" });
+            } else {
+                this.setState({direction: "down1-2" });
+            }
         }
         this.setState({currentSplash});
     }
@@ -51,21 +60,21 @@ class Splash extends React.Component{
                     <ScrollIconFilled />
                 ) : (
                     <div onClick={e => this.scroll(e, 1)}>
-                        <ScrollIcon id = {1} />
+                        <ScrollIcon id = "1" />
                     </div>
                 )}
                 {this.state.currentSplash === 2 ? (
-                    <ScrollIconFilled id = {2} />
+                    <ScrollIconFilled />
                 ) : (
                     <div onClick={e => this.scroll(e, 2)}>
-                        <ScrollIcon />
+                        <ScrollIcon id = "2"/>
                     </div>
                 )}
                 {this.state.currentSplash === 3 ? (
                     <ScrollIconFilled />
                 ) : (
                     <div onClick={e => this.scroll(e, 3)}>
-                        <ScrollIcon id = {3} />
+                        <ScrollIcon id = "3" />
                     </div>
                 )}
 
@@ -80,6 +89,7 @@ class Splash extends React.Component{
                         firstPost = {this.props.firstPost}
                         author= {this.props.users[this.props.firstPost.author_id]}/>}
             
+            <SplashThree direction={this.state.direction}/>
             </>
         );
     }
