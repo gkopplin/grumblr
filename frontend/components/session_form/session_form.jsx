@@ -28,64 +28,56 @@ class sessionForm extends React.Component {
 
     render () {
         return (
-            <>
-            <Header loggedIn={false} formType={this.props.formType}/>
-            <div className="splash-bg" style={{ backgroundImage: `url(${window.splashBG})` }}></div>
-            <div className="splash">
-                <div className = "session-container">
-                    <h1 className="main-logo">grumblr</h1>
-                    <p className="tag-line">For everything you love to hate</p>
-                    <form className="session-form" onSubmit={this.handleSubmit}>
-                        <label>
-                            {this.state.username ? (
-                                <input type="text" value = {this.state.username} 
-                                    onChange={this.handleInput("username")} 
-                                    onClick={() => this.setState({username: ""})}
-                                    id="input-username"/>
-                            ) : (
-                                <input type="text"
-                                    onChange={this.handleInput("username")}
-                                    onClick={() => this.setState({ username: "" })}
-                                    placeholder="Username" id="input-username" />
-                            )}
-                        </label><br/>
+            <div className = "session-container">
+                <form className="session-form" onSubmit={this.handleSubmit}>
+                    <label>
+                        {this.state.username ? (
+                            <input type="text" value = {this.state.username} 
+                                onChange={this.handleInput("username")} 
+                                onClick={() => this.setState({username: ""})}
+                                id="input-username"/>
+                        ) : (
+                            <input type="text"
+                                onChange={this.handleInput("username")}
+                                onClick={() => this.setState({ username: "" })}
+                                placeholder="Username" id="input-username" />
+                        )}
+                    </label><br/>
 
-                        <label>
-                            {this.state.email ? (
-                                <input type="text" value={this.state.email}
-                                    onChange={this.handleInput("email")}
-                                    onClick={() => this.setState({ email: "" })}
-                                    id="input-email" />
-                            ) : (
-                                <input type="text" 
-                                    onChange={this.handleInput("email")}
-                                    onClick={() => this.setState({ email: "" })}
-                                    placeholder="Email" id="input-email" />
-                            )}
-                            
-                        </label><br/>
+                    <label>
+                        {this.state.email ? (
+                            <input type="text" value={this.state.email}
+                                onChange={this.handleInput("email")}
+                                onClick={() => this.setState({ email: "" })}
+                                id="input-email" />
+                        ) : (
+                            <input type="text" 
+                                onChange={this.handleInput("email")}
+                                onClick={() => this.setState({ email: "" })}
+                                placeholder="Email" id="input-email" />
+                        )}
+                        
+                    </label><br/>
 
-                        <label>
-                            <input type="password" 
-                                onChange={this.handleInput("password")} 
-                                onClick={() => this.setState({ password: "" })}
-                                placeholder="Password"/>
-                        </label><br/>
+                    <label>
+                        <input type="password" 
+                            onChange={this.handleInput("password")} 
+                            onClick={() => this.setState({ password: "" })}
+                            placeholder="Password"/>
+                    </label><br/>
 
-                        <ul className="errors">
-                            {this.props.errors.map((error, i) => (
-                                <li key={`error-${i}`}>
-                                    {error}
-                                </li>
-                            ))}
-                        </ul>
+                    <ul className="errors">
+                        {this.props.errors.map((error, i) => (
+                            <li key={`error-${i}`}>
+                                {error}
+                            </li>
+                        ))}
+                    </ul>
 
-                        <input type="submit" value={this.props.formType} 
-                            className={`button-${this.props.formType}`}/>
-                    </form>
-                </div>
+                    <input type="submit" value={this.props.formType} 
+                        className={`button-${this.props.formType}`}/>
+                </form>
             </div>
-            </>
         );
     }
 }

@@ -3,8 +3,6 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Splash from './splash/splash';
 import Dashboard from './dashboard';
 import { Switch } from 'react-router-dom';
-import LogInFormContainer from './session_form/log_in_form_container';
-import SignUpFormContainer from './session_form/sign_up_form_container';
 import PostModal from './posts/post_modal';
 import Modal from './modal';
 import Profile from './profile';
@@ -23,8 +21,8 @@ const App = () => {
                 <ProtectedRoute path="/likes" component={Likes} />
                 <ProtectedRoute path="/following" component={Following} />
                 <ProtectedRoute path="/followers" component={Followers} />
-                <AuthRoute exact path="/login" component={LogInFormContainer} />
-                <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+                <AuthRoute exact path="/login" component={Splash} formType = {"Log In"}/>
+                <AuthRoute exact path="/signup" component={Splash} formType={"Get Started"}/>
                 <ProtectedRoute exact path="/users/:userId" component={Profile} />
             </Switch>
         </div>

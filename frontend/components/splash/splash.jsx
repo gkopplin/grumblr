@@ -55,7 +55,7 @@ class Splash extends React.Component{
     render () {
         return (
             <div className="full-splash">
-            <Header loggedIn={false}/>
+            <Header loggedIn={false} formType={this.props.formType}/>
 
             <div className="splash-icons">
                 <ScrollIconContainer currentSplash = {this.state.currentSplash}
@@ -72,7 +72,8 @@ class Splash extends React.Component{
             </div>
 
             <SplashOne direction = {this.state.direction} 
-                        demoLogin = {this.demoLogin}/>
+                        demoLogin = {this.demoLogin}
+                        formType = {this.props.formType}/>
 
             {this.props.firstPost &&
             <SplashTwo direction = {this.state.direction} 
