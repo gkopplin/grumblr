@@ -35,6 +35,7 @@ class PostForm extends React.Component {
             });
             this.setState({mediaUrl: this.props.post.content});
         }
+        this.setState({content: this.props.post.content});
     }
 
     handleInput(field) {
@@ -93,7 +94,7 @@ class PostForm extends React.Component {
             } else if (this.props.post.post_type === "text") {
                 return (
                     <TextForm author = {this.props.author}
-                                content = {this.props.post.content}
+                                content = {this.state.content}
                                 handleInput = {this.handleInput}
                                 closeModal = {this.props.closeModal}
                                 handleSubmit = {this.handleSubmit}
