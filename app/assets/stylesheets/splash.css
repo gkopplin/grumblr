@@ -280,3 +280,8 @@ input[class^='button-'] {
     text-align: center;
     margin-top: 10px;
 }
+
+.full-splash {
+    overflow: hidden;
+    height: 100vh;
+}

@@ -51,7 +51,7 @@ class Splash extends React.Component{
 
     render () {
         return (
-            <>
+            <div className="full-splash">
             <Header loggedIn={false}/>
 
             <div className="splash-icons">
@@ -90,7 +90,7 @@ class Splash extends React.Component{
                         author= {this.props.users[this.props.firstPost.author_id]}/>}
             
             <SplashThree direction={this.state.direction}/>
-            </>
+            </div>
         );
     }
 };
