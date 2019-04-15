@@ -5,7 +5,7 @@ import logger from 'redux-logger';
 import rootReducer from '../reducers/root_reducer';
 
 const configureStore = (preloadedState = {}) => {
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV === 'production') {
         return createStore(
             rootReducer,
             preloadedState,
