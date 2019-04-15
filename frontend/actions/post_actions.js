@@ -31,7 +31,7 @@ const receivePosts = postsResponse => {
 };
 
 export const fetchFirstPost = (splash) => dispatch => {
-    return ApiPostUtil.fetchPosts(null, null, null, splash)
+    return ApiPostUtil.fetchPosts(null, null, splash)
         .then(posts => dispatch(receivePosts(posts)),
             errors => dispatch(receivePostErrors(errors.responseJSON))
         );

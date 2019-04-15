@@ -34,11 +34,11 @@ export const fetchPost = postId => {
     });
 };
 
-export const fetchPosts = (page, userId, search, splash) => {
+export const fetchPosts = (page, userId, splash) => {
     return $.ajax({
         method: 'get',
         url: 'api/posts',
-        data: {page, userId, search, splash}
+        data: {page, userId, splash}
     });
 };
 
