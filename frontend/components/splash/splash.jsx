@@ -17,10 +17,17 @@ class Splash extends React.Component{
             currentSplash: 1,
             direction: null
         };
+        this.scrollStop = true;
     }
 
     componentDidMount () {
         this.props.fetchFirstPost(true);
+        document.addEventListener("scroll", this.scroll);
+        this.scrollY = window.scrollY;
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("scroll", this.scroll);
     }
     
     demoLogin () {
@@ -31,25 +38,53 @@ class Splash extends React.Component{
         });
     }
 
-    scroll (e, currentSplash) {
-        if (Number(e.target.id) < this.state.currentSplash) {
+    scroll (e) {
+        e.preventDefault();
+        let newPos;
+        const splash = document.getElementsByClassName("full-splash")[0];
+
+        if (e.type === "scroll") {
+            if (window.scrollY > this.scrollY){
+                newPos = this.state.currentSplash + 1;
+            }
+            splash.classList.add("overflow");
+        } else {
+            newPos = Number(e.target.id);
+        }
+
+        if (this.scrollStop){
+            this.scrollHelper(e, newPos);
+            setTimeout(this.setScrollStop, 10000);
+        }
+
+        this.scrollStop = false;
+    }
+
+    setScrollStop() {
+        this.scrollStop = true;
+        const splash = document.getElementsByClassName("full-splash")[0];
+        splash.classList.remove("overflow");
+    }
+
+    scrollHelper(e, newPos){
+        if (newPos < this.state.currentSplash) {
             if (this.state.currentSplash === 2) {
-                this.setState({direction: "up2-1" });
+                this.setState({ direction: "up2-1" });
             } else if (e.target.id === "1") {
-                this.setState({direction: "up3-1" });
+                this.setState({ direction: "up3-1" });
             } else {
-                this.setState({direction: "up3-2" });
+                this.setState({ direction: "up3-2" });
             }
         } else {
             if (this.state.currentSplash === 2) {
-                this.setState({direction: "down2-3" });
+                this.setState({ direction: "down2-3" });
             } else if (e.target.id === "3") {
                 this.setState({ direction: "down1-3" });
             } else {
-                this.setState({direction: "down1-2" });
+                this.setState({ direction: "down1-2" });
             }
         }
-        this.setState({currentSplash});
+        this.setState({ currentSplash: newPos });
     }
 
     render () {

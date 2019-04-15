@@ -8,7 +8,7 @@ export default props => {
         {props.currentSplash === props.number ? (
                 <ScrollIconFilled />
             ) : (
-                <div onClick={e => props.scroll(e, props.number)}>
+                <div onClick={props.scroll}>
                     <ScrollIcon id={`${props.number}`} />
                 </div>
                 )

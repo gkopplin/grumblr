@@ -339,7 +339,10 @@ input[class^='button-'] {
     margin-top: 30px;
 }
 
-.full-splash {
-    overflow: hidden;
+.full-splash { 
     height: 100vh;
+}
+
+.overflow {
+    overflow: hidden;
 }
