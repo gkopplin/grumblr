@@ -42,11 +42,19 @@ class UsersIndex extends React.Component {
                     </div>)
         })
 
-        return (
-            <ul className="following">
-                {users}
-            </ul>
-        );
+        if (users.length > 0) {
+            return (
+                <ul className="following">
+                    {users}
+                </ul>
+            );
+        } else {
+            return (
+                <h2 className="no-following">No users here yet! <br></br> Use the search bar to search for users</h2>
+            );
+        }
+
+        
     }
 }
 
