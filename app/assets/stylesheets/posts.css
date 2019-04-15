@@ -45,8 +45,12 @@
     justify-content: center;
     margin-right: 5px;
     border-right: solid lightgrey 1px;
-    padding: 9px 11px 9px 11px;
+    padding: 8px 13px 8px 13px;
     cursor: pointer;
+}
+
+.post-icons > div:first-child {
+    padding: 8px 13px 8px 10px;
 }
 
 .post-icons > div:last-child {
@@ -303,7 +307,7 @@ input[type='file'] {
 }
 
 #linkedin {
-    padding: 9px;
+    padding: 7px;
 }
 
 .link-box {
