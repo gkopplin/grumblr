@@ -28,15 +28,15 @@ class PostIndex extends React.Component {
             );
         }
 
-    const posts = this.props.posts.map(post => {
-        return <PostItem key={post.id} post={post} 
-                 author={this.props.users[post.author_id]}
-                 currentUser = {this.props.currentUserId}
-                 openModal = {this.props.openModal}
-                 page = {this.props.page}
-                 createLike = {this.props.createLike}
-                 deleteLike = {this.props.deleteLike}
-                 likes = {this.props.likes.filter( like => like.post_id === post.id)}/> 
+        const posts = this.props.posts.map(post => {
+            return <PostItem key={post.id} post={post} 
+                    author={this.props.users[post.author_id]}
+                    currentUser = {this.props.currentUserId}
+                    openModal = {this.props.openModal}
+                    page = {this.props.page}
+                    createLike = {this.props.createLike}
+                    deleteLike = {this.props.deleteLike}
+                    likes = {this.props.likes.filter( like => like.post_id === post.id)}/> 
         });
         if (this.props.page === "dashboard") {
             return (
