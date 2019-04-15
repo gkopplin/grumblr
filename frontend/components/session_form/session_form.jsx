@@ -31,32 +31,17 @@ class sessionForm extends React.Component {
             <div className = "session-container">
                 <form className="session-form" onSubmit={this.handleSubmit}>
                     <label>
-                        {this.state.username ? (
-                            <input type="text" value = {this.state.username} 
-                                onChange={this.handleInput("username")} 
-                                onClick={() => this.setState({username: ""})}
-                                id="input-username"/>
-                        ) : (
-                            <input type="text"
-                                onChange={this.handleInput("username")}
-                                onClick={() => this.setState({ username: "" })}
-                                placeholder="Username" id="input-username" />
-                        )}
+                        <input type="text" value={this.state.username ? this.state.username : ""}
+                            onChange={this.handleInput("username")}
+                            onClick={() => this.setState({ username: "" })}
+                            id="input-username" placeholder="Username" />
                     </label><br/>
 
                     <label>
-                        {this.state.email ? (
-                            <input type="text" value={this.state.email}
-                                onChange={this.handleInput("email")}
-                                onClick={() => this.setState({ email: "" })}
-                                id="input-email" />
-                        ) : (
-                            <input type="text" 
-                                onChange={this.handleInput("email")}
-                                onClick={() => this.setState({ email: "" })}
-                                placeholder="Email" id="input-email" />
-                        )}
-                        
+                        <input type="text" value={this.state.email ? this.state.email : ""}
+                            onChange={this.handleInput("email")}
+                            onClick={() => this.setState({ email: "" })}
+                            id="input-email" placeholder="Email"/>                        
                     </label><br/>
 
                     <label>
