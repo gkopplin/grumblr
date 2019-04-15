@@ -92,7 +92,7 @@ class Splash extends React.Component{
 
 const msp = state => {
     return {
-        firstPost: state.entities.posts ? Object.values(state.entities.posts)[0] : {},
+        firstPost: state.entities.posts ? Object.values(state.entities.posts)[0] : null,
         users: state.entities.users 
     };
 };
