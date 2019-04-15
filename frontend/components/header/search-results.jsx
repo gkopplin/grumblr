@@ -24,7 +24,7 @@ const SearchResults = props => {
 
 const msp = state => {
     return {
-        users: state.ui.search.authors ? Object.values(state.ui.search.authors) : [],
+        users: state.ui.search ? Object.values(state.ui.search) : [],
         page: state.ui.modal.data.page,
         clearSearch: state.ui.modal.data.clearSearch
     };

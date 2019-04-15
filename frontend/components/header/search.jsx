@@ -50,7 +50,7 @@ class Search extends React.Component {
 
 const msp = state => {
     return {
-        users: state.ui.search.authors ? Object.values(state.ui.search.authors) : []
+        users: state.ui.search ? Object.values(state.ui.search) : []
     }
 }
 
