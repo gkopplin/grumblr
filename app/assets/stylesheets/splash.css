@@ -340,6 +340,7 @@ input[class^='button-'] {
 }
 
 .full-splash { 
+    transform: translateY(1px);
     height: 100vh;
 }
 

@@ -18,6 +18,7 @@ class Splash extends React.Component{
             direction: null
         };
         this.scrollStop = true;
+        this.setScrollStop = this.setScrollStop.bind(this);
     }
 
     componentDidMount () {
@@ -40,12 +41,15 @@ class Splash extends React.Component{
 
     scroll (e) {
         e.preventDefault();
+        debugger
         let newPos;
         const splash = document.getElementsByClassName("full-splash")[0];
 
         if (e.type === "scroll") {
             if (window.scrollY > this.scrollY){
                 newPos = this.state.currentSplash + 1;
+            } else {
+                newPos = this.state.currentSplash - 1;
             }
             splash.classList.add("overflow");
         } else {
@@ -54,10 +58,11 @@ class Splash extends React.Component{
 
         if (this.scrollStop){
             this.scrollHelper(e, newPos);
-            setTimeout(this.setScrollStop, 10000);
+            setTimeout(this.setScrollStop, 1500);
         }
 
         this.scrollStop = false;
+        window.scrollTo(0,1);
     }
 
     setScrollStop() {
