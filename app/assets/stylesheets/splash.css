@@ -340,7 +340,7 @@ input[class^='button-'] {
 }
 
 .full-splash { 
-    transform: translateY(1px);
+    overflow-y: scroll;
     height: 100vh;
 }
 

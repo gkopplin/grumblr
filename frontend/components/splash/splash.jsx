@@ -17,18 +17,25 @@ class Splash extends React.Component{
             currentSplash: 1,
             direction: null
         };
-        this.scrollStop = true;
         this.setScrollStop = this.setScrollStop.bind(this);
+        this.scrollStop = true;
+        // this.currentScrollTop = 0;
     }
 
     componentDidMount () {
         this.props.fetchFirstPost(true);
-        document.addEventListener("scroll", this.scroll);
-        this.scrollY = window.scrollY;
+    }
+
+    componentDidUpdate(prevProps){
+        this.fullSplash = document.getElementsByClassName("full-splash")[0];
+        if(prevProps.firstPost != this.props.firstPost){
+            this.fullSplash.removeEventListener("scroll", this.scroll);
+            this.fullSplash.addEventListener("scroll", this.scroll);
+        }
     }
 
     componentWillUnmount() {
-        document.removeEventListener("scroll", this.scroll);
+        this.fullSplash.removeEventListener("scroll", this.scroll);
     }
     
     demoLogin () {
@@ -41,28 +48,40 @@ class Splash extends React.Component{
 
     scroll (e) {
         e.preventDefault();
-        debugger
         let newPos;
-        const splash = document.getElementsByClassName("full-splash")[0];
 
         if (e.type === "scroll") {
-            if (window.scrollY > this.scrollY){
+            if ((this.fullSplash.scrollTop > 0 &&
+                this.state.currentSplash === 3) ||
+                (this.fullSplash.scrollTop === 0 &&
+                this.state.currentSplash === 1) ) {
+                    this.fullSplash.classList.add("overflow");
+                    this.fullSplash.scrollTop = 1;
+                    setTimeout(this.setScrollStop, 1000);
+                    return null;
+            }
+            else if (this.fullSplash.scrollTop > 0){
                 newPos = this.state.currentSplash + 1;
-            } else {
+            } else if (this.fullSplash.scrollTop === 0) {
+                this.fullSplash.scrollTop = this.state.currentSplash - 2;
                 newPos = this.state.currentSplash - 1;
             }
-            splash.classList.add("overflow");
+            this.fullSplash.classList.add("overflow");
+            // if (this.currentScrollTop === 2 && this.fullSplash.scrollTop === 0) {
+            //     this.currentScrollTop = 1;
+            // } else {
+            //     this.currentScrollTop += 1;
+            // }
         } else {
             newPos = Number(e.target.id);
         }
 
-        if (this.scrollStop){
+        if (this.scrollStop === true){
             this.scrollHelper(e, newPos);
-            setTimeout(this.setScrollStop, 1500);
+            setTimeout(this.setScrollStop, 1000);
         }
 
         this.scrollStop = false;
-        window.scrollTo(0,1);
     }
 
     setScrollStop() {
