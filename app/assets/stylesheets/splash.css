@@ -347,3 +347,7 @@ input[class^='button-'] {
 .overflow {
     overflow: hidden;
 }
+
+.filler {
+    height:2px;
+}

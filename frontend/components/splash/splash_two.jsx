@@ -4,6 +4,7 @@ import NoLinkPost from '../posts/no_link_post';
 
 export default props => {
     return (
+        <>
         <div className={props.direction ? `splash-${props.direction}` : "splash-container"}>
 
             <div className="splash-bg" style={{ backgroundColor: "#001835" }}></div>
@@ -30,5 +31,7 @@ export default props => {
 
             </div>
         </div>
+        <div className="filler"></div>
+        </>
     );
 };

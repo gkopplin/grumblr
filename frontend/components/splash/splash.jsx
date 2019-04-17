@@ -51,27 +51,22 @@ class Splash extends React.Component{
         let newPos;
 
         if (e.type === "scroll") {
-            if ((this.fullSplash.scrollTop > 0 &&
+            if ((this.fullSplash.scrollTop >= this.state.currentSplash - 1 &&
                 this.state.currentSplash === 3) ||
                 (this.fullSplash.scrollTop === 0 &&
                 this.state.currentSplash === 1) ) {
                     this.fullSplash.classList.add("overflow");
-                    this.fullSplash.scrollTop = 1;
+                    this.fullSplash.scrollTop = 2;
                     setTimeout(this.setScrollStop, 1000);
                     return null;
-            }
-            else if (this.fullSplash.scrollTop > 0){
+            } else if (this.fullSplash.scrollTop > this.state.currentSplash - 1){
+                this.fullSplash.scrollTop = this.state.currentSplash;
                 newPos = this.state.currentSplash + 1;
-            } else if (this.fullSplash.scrollTop === 0) {
+            } else if (this.fullSplash.scrollTop < this.state.currentSplash - 1) {
                 this.fullSplash.scrollTop = this.state.currentSplash - 2;
                 newPos = this.state.currentSplash - 1;
             }
             this.fullSplash.classList.add("overflow");
-            // if (this.currentScrollTop === 2 && this.fullSplash.scrollTop === 0) {
-            //     this.currentScrollTop = 1;
-            // } else {
-            //     this.currentScrollTop += 1;
-            // }
         } else {
             newPos = Number(e.target.id);
         }
@@ -144,6 +139,7 @@ class Splash extends React.Component{
                         author= {this.props.users[this.props.firstPost.author_id]}/>}
             
             <SplashThree direction={this.state.direction}/>
+
             </div>
         );
     }
