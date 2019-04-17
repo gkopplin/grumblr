@@ -11,7 +11,9 @@ export default props => {
             <div className="splash-2">
                 <div className="sample-post-container">
 
-                    <div className="sample-post">
+                        <div className={props.direction === "down1-2" ||
+                                        props.direction === "up3-2" ?
+                                        "slideUp sample-post" : "sample-post"}>
                         <NoLinkIcons />
                         
                         <NoLinkPost post={props.firstPost}
