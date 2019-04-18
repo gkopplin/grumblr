@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
     def index
         if params[:search] != "" && params[:search].nil? == false
             @users = User.where("username ILIKE ?", "%#{params[:search]}%")
-        elsif params[:followers] == true
+        elsif params[:followers] == "true"
             follows = Follow.where('followed_id = ?', current_user.id)
             ids = follows.map{|follow| follow.follower_id}
             @users = User.where('id IN (?)', ids)
