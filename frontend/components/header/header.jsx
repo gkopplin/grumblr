@@ -37,7 +37,7 @@ class Header extends React.Component {
                         <Link to="/">
                             <img src={window.smallLogo} className="small-logo" />
                         </Link>
-                        <Search page = {this.props.page}/>
+                        <Search page = {this.props.page} history = {this.props.history}/>
                     </div>
                     <nav className="main-nav">
                         <Link to="/">

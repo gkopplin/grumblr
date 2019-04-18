@@ -5,7 +5,7 @@ import UsersIndex from './users_index';
 export default (props) => {
     return (
         <>
-            <Header page="following" loggedIn={true} />
+            <Header page="following" loggedIn={true} history={props.history} />
             <UsersIndex followers={true} />
         </>
     );

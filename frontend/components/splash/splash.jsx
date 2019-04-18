@@ -112,7 +112,7 @@ class Splash extends React.Component{
         }
         return (
             <div className="full-splash">
-            <Header loggedIn={false} formType={this.props.formType}/>
+            <Header loggedIn={false} formType={this.props.formType} history={null}/>
 
             <div className="splash-icons">
                 <ScrollIconContainer currentSplash = {this.state.currentSplash}

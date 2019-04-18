@@ -11,7 +11,16 @@ class Search extends React.Component {
             users: []
         };
         this.handleInput = this.handleInput.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.clearSearch = this.clearSearch.bind(this);
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const user = this.props.users[0];
+        this.clearSearch();
+        return this.props.page === 'profile' ? this.props.history.push(`${user.id}`) :
+                                               this.props.history.push(`users/${user.id}`);
     }
 
     handleInput(e) {
