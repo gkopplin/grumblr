@@ -1,6 +1,6 @@
 # Grumblr
 
-![screen_shot](https://github.com/gkopplin/grumblr/tree/master/app/assets/images/screenshot.png)
+![screen_shot](https://github.com/gkopplin/grumblr/blob/master/app/assets/images/screenshot.png)
 
 ### Table of Contents
 [Backgound](#background)
