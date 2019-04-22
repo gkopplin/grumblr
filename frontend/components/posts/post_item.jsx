@@ -74,7 +74,7 @@ class PostItem extends React.Component{
                                 {this.props.post.content}
                             </p> }
                         {this.props.post.post_type === "photo" &&
-                                <img src={this.props.post.content}></img>}
+                                <img src={this.props.post.content} className="post-img"></img>}
 
                         {this.props.post.post_type === "video" &&  
                                 <video controls loop>
