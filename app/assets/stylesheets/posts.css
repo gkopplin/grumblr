@@ -328,3 +328,8 @@ input[type='file'] {
 .no-following {
     text-align: center;
 }
+
+.post-img {
+    max-width: 540px;
+    max-height: 600px;
+}

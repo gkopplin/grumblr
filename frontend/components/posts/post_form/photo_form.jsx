@@ -15,7 +15,8 @@ export default props => {
                     <input type="file" onChange={props.handleFile} id="file-input" />
                 </div>
                 <DeleteIcon show={props.showDelete} resetMedia={props.resetMedia} />
-                <img src={props.mediaUrl} onMouseEnter={() => props.revealDelete()} onMouseLeave={() => props.hideDelete()} />
+                <img src={props.mediaUrl} onMouseEnter={() => props.revealDelete()} 
+                     onMouseLeave={() => props.hideDelete()} className="post-img"/>
                 <div className="post-form-buttons">
                     <button onClick={() => props.closeModal()}>Close</button>
                     <input type="submit" value="Post" onClick={props.handleSubmit} />
