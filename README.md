@@ -5,7 +5,9 @@
 ### Table of Contents
 [Backgound](#background)
 
-[Functionality and MVPs](#functionality)
+[Features](#featuers)
+
+[MVPs](#mvps)
 
 [Architecture and Technologies](#architecture)
 
@@ -14,7 +16,19 @@
 ### <a name="background"></a> Background
 Grumbler is a full-stack clone of Tumbler for grumpy people. It features user authentication (built using only using the BCrypt gem), posts, likes, and follows. There are pages for profiles with all of a user's posts, a dashboard with posts from followed users ordered by recency, a page listing other users who follow the current user and a page listing users that the current user follows. On each page, users can search for other users using the search bar in the header.
 
-### <a name="functionality"></a> Functionality and MVPs
+### <a name="features"></a> Features
+The following are notable features of Grumbler. A more comprehensive description of the functionality of the application is below. 
+
+## 1. Splash Page
+The welcome page of Grumblr features a sliding carousel of pages, which rotates as the user scrolls or clicks the scroll icons. DOM event listeners change the classes of HTML elements when the user scrolls or clicks an icon. Different classes contain keyframes animations which cause certain elements to slide or fade. 
+
+## 2. Search
+In the header of each page (except the splash page), there is a search bar which users can use to find users. When the user types into the search bar and adds characters to the search form element, a modal component is opened which contains search results. For each character added to the form, relevant users are fetched from the backend and the search results are re-rendered. Users can then click users to redirect to their profile page, or press enter to redirect to the first user listed in the search results.
+
+## 3. Follows
+The follows joins table links followers with the users they follow. In order to limit the current user's dashboard to posts from users they follow, AJAX requests are sent to the backend and the follows joins table is queried. Similarly, the association between users and their followers is used to populate the followers and following pages with the correct users.
+
+### <a name="mvps"></a> MVPs
 
 ## 1. Hosting on Heroku (3/26/19)
 ## 2. Authentication (3/27/19, 2 days)
