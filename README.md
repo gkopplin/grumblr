@@ -20,13 +20,46 @@ Grumbler is a full-stack clone of Tumbler for grumpy people. It features user au
 The following are notable features of Grumbler. A more comprehensive description of the functionality of the application is below. 
 
 ## 1. Splash Page
-The welcome page of Grumblr features a sliding carousel of pages, which rotates as the user scrolls or clicks the scroll icons. DOM event listeners change the classes of HTML elements when the user scrolls or clicks an icon. Different classes contain keyframes animations which cause certain elements to slide or fade. 
+The welcome page of Grumblr features a sliding carousel of pages, which rotates as the user scrolls or clicks the scroll icons. DOM event listeners change the classes of HTML elements when the user scrolls or clicks an icon. The updated classes contain keyframes animations which cause certain elements to slide or fade depending on the current position of the carousel and the direction of the scroll.
+
+For instance, if the user were viewing the second splash page and scrolled back up to the first, the direction key in the splash React component state would be changed to "up2-1" and the props of the individual splash pages would be updated accordingly. Within each splash page, the root HTML element is set to `props.direction`. The CSS class for up2-1 contains a keyframes animation with a translateY transformation from -100% to 0%. 
+
+When the user scrolls, it causes a series of scroll events (i.e. from 10 to 9, then 9 to 8, etc.) as opposed to a single click event. In order to avoid triggering multiple splash page scrolls when the user scrolls once, the helper function that updates the splash component's state is only invoked for the first scroll event. Since a series of scroll events can last up to a second, a variable named `scrollStop` is set to false on the initial scroll event and reset to true after 1000 milliseconds have passed.
+
+```if (this.scrollStop === true){
+            this.scrollHelper(e, newPos);
+            setTimeout(this.setScrollStop, 1000);
+        }
+
+        this.scrollStop = false;```
+
 
 ## 2. Search
 In the header of each page (except the splash page), there is a search bar which users can use to find users. When the user types into the search bar and adds characters to the search form element, a modal component is opened which contains search results. For each character added to the form, relevant users are fetched from the backend and the search results are re-rendered. Users can then click users to redirect to their profile page, or press enter to redirect to the first user listed in the search results.
 
+Below is the function that is run each time the user types into the search bar. The object passed to the `openModal` function is first saved to the Redux store under the UI slice of state and then passed as props to the search results component.
+
+```handleInput(e) {
+        this.setState({search: e.target.value});
+        if (e.target.value) {
+            this.props.fetchSearchResults(e.target.value);
+            this.props.openModal("search-results", {users: this.state.users, 
+            page: this.props.page, clearSearch: this.clearSearch});
+        }
+    }```
+
 ## 3. Follows
 The follows joins table links followers with the users they follow. In order to limit the current user's dashboard to posts from users they follow, AJAX requests are sent to the backend and the follows joins table is queried. Similarly, the association between users and their followers is used to populate the followers and following pages with the correct users.
+
+This code snippet from the follows controller illustrates how the boolean `followers` was used to specify the data require by the frontend components.
+
+```def index
+        if params[:followers] == "true"
+            @users = [User.includes(:followers).find(params[:userId])]
+        else
+            @users = User.includes(:followed_users).find(params[:userId]).followed_users
+        end
+    end```
 
 ### <a name="mvps"></a> MVPs
 
