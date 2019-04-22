@@ -28,11 +28,11 @@ When the user scrolls, it causes a series of scroll events (i.e. from 10 to 9, t
 
 ```
 if (this.scrollStop === true){
-            this.scrollHelper(e, newPos);
-            setTimeout(this.setScrollStop, 1000);
-        }
+    this.scrollHelper(e, newPos);
+    setTimeout(this.setScrollStop, 1000);
+}
 
-        this.scrollStop = false;
+this.scrollStop = false;
 ```
 
 
@@ -43,13 +43,13 @@ Below is the function that is run each time the user types into the search bar. 
 
 ```
 handleInput(e) {
-        this.setState({search: e.target.value});
-        if (e.target.value) {
-            this.props.fetchSearchResults(e.target.value);
-            this.props.openModal("search-results", {users: this.state.users, 
-            page: this.props.page, clearSearch: this.clearSearch});
-        }
+    this.setState({search: e.target.value});
+    if (e.target.value) {
+        this.props.fetchSearchResults(e.target.value);
+        this.props.openModal("search-results", {users: this.state.users, 
+        page: this.props.page, clearSearch: this.clearSearch});
     }
+}
 ```
 
 ## 3. Follows
@@ -59,12 +59,12 @@ This code snippet from the follows controller illustrates how the boolean `follo
 
 ```
 def index
-        if params[:followers] == "true"
-            @users = [User.includes(:followers).find(params[:userId])]
-        else
-            @users = User.includes(:followed_users).find(params[:userId]).followed_users
-        end
+    if params[:followers] == "true"
+        @users = [User.includes(:followers).find(params[:userId])]
+    else
+        @users = User.includes(:followed_users).find(params[:userId]).followed_users
     end
+end
 ```
 
 ### <a name="mvps"></a> MVPs
