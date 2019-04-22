@@ -26,12 +26,14 @@ For instance, if the user were viewing the second splash page and scrolled back 
 
 When the user scrolls, it causes a series of scroll events (i.e. from 10 to 9, then 9 to 8, etc.) as opposed to a single click event. In order to avoid triggering multiple splash page scrolls when the user scrolls once, the helper function that updates the splash component's state is only invoked for the first scroll event. Since a series of scroll events can last up to a second, a variable named `scrollStop` is set to false on the initial scroll event and reset to true after 1000 milliseconds have passed.
 
-```if (this.scrollStop === true){
+```
+if (this.scrollStop === true){
             this.scrollHelper(e, newPos);
             setTimeout(this.setScrollStop, 1000);
         }
 
-        this.scrollStop = false;```
+        this.scrollStop = false;
+```
 
 
 ## 2. Search
@@ -39,27 +41,31 @@ In the header of each page (except the splash page), there is a search bar which
 
 Below is the function that is run each time the user types into the search bar. The object passed to the `openModal` function is first saved to the Redux store under the UI slice of state and then passed as props to the search results component.
 
-```handleInput(e) {
+```
+handleInput(e) {
         this.setState({search: e.target.value});
         if (e.target.value) {
             this.props.fetchSearchResults(e.target.value);
             this.props.openModal("search-results", {users: this.state.users, 
             page: this.props.page, clearSearch: this.clearSearch});
         }
-    }```
+    }
+```
 
 ## 3. Follows
 The follows joins table links followers with the users they follow. In order to limit the current user's dashboard to posts from users they follow, AJAX requests are sent to the backend and the follows joins table is queried. Similarly, the association between users and their followers is used to populate the followers and following pages with the correct users.
 
 This code snippet from the follows controller illustrates how the boolean `followers` was used to specify the data require by the frontend components.
 
-```def index
+```
+def index
         if params[:followers] == "true"
             @users = [User.includes(:followers).find(params[:userId])]
         else
             @users = User.includes(:followed_users).find(params[:userId]).followed_users
         end
-    end```
+    end
+```
 
 ### <a name="mvps"></a> MVPs
 
