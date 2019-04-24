@@ -67,7 +67,11 @@ class Splash extends React.Component{
                 newPos = this.state.currentSplash - 1;
             }
             this.fullSplash.classList.add("overflow");
+            
         } else {
+            if (e.target.id !== this.state.currentSplash) {
+                this.fullSplash.scrollTop = e.target.id - 1;
+            }
             newPos = Number(e.target.id);
         }
 
