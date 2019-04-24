@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchSearchResults} from '../../actions/search_actions';
 import {openModal, closeModal} from '../../actions/modal_actions';
+import SearchIcon from './header-icons/search-icon';
 
 class Search extends React.Component {
     constructor(props){
@@ -47,12 +48,15 @@ class Search extends React.Component {
 
     render () {
         return (
-            <form onSubmit={this.handleSubmit} className="search-form">
-                <input type="text" className="search-bar"
-                                   onChange={this.handleInput} 
-                                   value={this.state.search} 
-                                   placeholder="Search Grumblr"/>
-            </form>
+            <div className="search-container">
+                <SearchIcon/>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" className="search-bar"
+                                    onChange={this.handleInput} 
+                                    value={this.state.search} 
+                                    placeholder="Search Grumblr"/>
+                </form>
+            </div>
         );
     }
 }

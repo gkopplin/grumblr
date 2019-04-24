@@ -175,7 +175,7 @@ main {
     left: 55px;
     border-radius: 5px;
     padding: 8px;
-    width: 34%;
+    width: 24%;
 }
 
 .search-results > a {
@@ -187,15 +187,38 @@ main {
     background: #21364F;
     color: whitesmoke;
     border: none;
-    padding: 12px;
-    margin-left: 10px;
+    padding: 12px 12px 12px 2px;
+    width: 270%;
     border-radius: 5px;
     font-size: 80%;
-    width: 270%;
+}
+
+.search-bar:focus {
+    outline: none;
+}
+
+.search-container {
+    margin-left: 10px;
+    background: #21364F;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .search-bar::placeholder {
     color: whitesmoke;
+}
+
+.search-bar:focus {
+    border: none;
+}
+
+.search-icon {
+    width: 10%;
+    height: 10%;
 }
 
 .header-left {
@@ -213,6 +236,7 @@ main {
 
 .user-result > span {
     line-height: 45px;
+    margin-left: 5px;
 }
 
 .follow, .unfollow {
