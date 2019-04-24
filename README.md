@@ -39,7 +39,7 @@ this.scrollStop = false;
 ## 2. Search
 In the header of each page (except the splash page), there is a search bar which users can use to find users. When the user types into the search bar and adds characters to the search form element, a modal component is opened which contains search results. For each character added to the form, relevant users are fetched from the backend and the search results are re-rendered. Users can then click users to redirect to their profile page, or press enter to redirect to the first user listed in the search results.
 
-Below is the function that is run each time the user types into the search bar. The object passed to the `openModal` function is first saved to the Redux store under the UI slice of state and then passed as props to the search results component.
+Below is the function that is run each time the user types into the search bar. The object passed to the `openModal` function is first saved to the Redux store under the UI slice of state and then passed as props to the search results component. The purpose of using the UI slice of state as opposed to storing the search results within the `entities.users` slice is to allow the search results to return nothing in some cases (i.e. when no user is found) without losing access to other users, such as the current user, in the entities slice of state. 
 
 ```javascript
 handleInput(e) {
