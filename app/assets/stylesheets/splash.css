@@ -228,9 +228,9 @@ input[class^='button-'] {
     top: -100%;
     width: 100%;
     height: 100%;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .sample-post {
@@ -241,7 +241,16 @@ input[class^='button-'] {
 }
 
 .sample-post-container {
-    width: 200%;
+    /* width: 200px; */
+    /* position: absolute;
+    bottom: 100px;
+    left: 10%;
+    display: flex; */
+        height: 100%;
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+    display: flex;
 }
 
 .sample-post .post-author {
@@ -253,7 +262,11 @@ input[class^='button-'] {
 } 
 
 .splash-text {
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    position: absolute;
+    width: 450px;
+    transform: translateY(100%);
+    left: 690px;
 }
 
 .splash-icons {

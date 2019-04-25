@@ -18,17 +18,20 @@ export default props => {
                         
                         <NoLinkPost post={props.firstPost}
                             author={props.author} />
+                            
+                        <NoLinkPost post={props.firstPost}
+                            author={props.author} />
                         
                     </div>
-                </div>
-                <div className="splash-text">
-                    <h1>You already know how this works.</h1>
-                    <p>When you follow someone, you'll see all of their
-                        latest grumblings on your dashboard, just like you'd
-                        expect. Like other people's complaints to let them
-                        know you share their frustration. Search for
-                        users to follow to find your new favorite curmudgeon.
-                        </p>
+                    <div className="splash-text">
+                        <h1>You already know how this works.</h1>
+                        <p>When you follow someone, you'll see all of their
+                            latest grumblings on your dashboard, just like you'd
+                            expect. Like other people's complaints to let them
+                            know you share their frustration. Search for
+                            users to follow to find your new favorite curmudgeon.
+                            </p>
+                    </div>
                 </div>
 
             </div>
