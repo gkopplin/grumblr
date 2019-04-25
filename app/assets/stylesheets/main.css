@@ -221,6 +221,11 @@ main {
     height: 10%;
 }
 
+.no-users {
+    color: black;
+    font-size: 80%;
+}
+
 .header-left {
     display: flex;
     flex-direction: row;

@@ -15,9 +15,10 @@ const SearchResults = props => {
                     <ProfilePic user={user} small={true}/>
                 </div>
                 </Link>})
+
     return (
         <ul className='search-results'>
-            {results}
+            {results.length > 0 ? results : <p className="no-users">No users with that username</p>}
         </ul>
     );
 }
