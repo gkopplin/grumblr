@@ -27,7 +27,9 @@ class Header extends React.Component {
 
     render () {
         if (this.props.loggedIn) {
-            <LoggedInHeader page={this.props.page} history={this.props.history}/>
+            return (
+                <LoggedInHeader page={this.props.page} history={this.props.history}/>
+            );
         } else {
             return (
                 <header className="splash-header">
