@@ -315,7 +315,7 @@ input[class^='button-'] {
 }
 
 .fadeIn {
-    animation: fadeIn 3s;
+    animation: fadeIn 1.5s;
     animation-iteration-count: 1;
     animation-fill-mode:forwards;
 }
@@ -372,7 +372,7 @@ input[class^='button-'] {
 }
 
 .slideUp {
-    animation: slideUp 2s;
+    animation: slideUp 1.2s;
     animation-iteration-count: 1;
     animation-fill-mode:forwards;
 }

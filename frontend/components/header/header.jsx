@@ -28,7 +28,13 @@ class Header extends React.Component {
     render () {
         if (this.props.loggedIn) {
             return (
-                <LoggedInHeader page={this.props.page} history={this.props.history}/>
+                <LoggedInHeader page={this.props.page} 
+                                history={this.props.history}
+                                currentUser={this.props.currentUser}
+                                userId ={this.props.userId}
+                                followers = {this.props.followers}
+                                deleteFollow = {this.props.deleteFollow}
+                                createFollow = {this.props.createFollow}/>
             );
         } else {
             return (
