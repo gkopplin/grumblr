@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../header/header';
 import {connect} from 'react-redux';
 import {removeUsers} from '../../actions/user_actions';
 
